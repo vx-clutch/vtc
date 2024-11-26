@@ -14,6 +14,22 @@ This places a twelve at the top of the stack
 FTL is based on a stack machine, which is a computation model that performs all operations on a stack. See Figures 2-X
 
 Figure 2.
+start
 | Index | Value |
 | - | - |
 | 0 | 0 |
+prog: 3 4 *
+
+first operand
+| Index | Value |
+| - | - |
+| 0 | 3 |
+second operand
+| Index | Value |
+| - | - |
+| 0 | 3 |
+| 0 | 4 |
+operation
+| Index | Value |
+| - | - |
+| 0 | 12 |
