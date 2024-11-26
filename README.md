@@ -18,18 +18,22 @@ start
 | Index | Value |
 | - | - |
 | 0 | 0 |
+| - | - |
 prog: 3 4 *
 
 first operand
 | Index | Value |
 | - | - |
 | 0 | 3 |
+| - | - |
 second operand
 | Index | Value |
 | - | - |
 | 0 | 3 |
 | 0 | 4 |
+| - | - |
 operation
 | Index | Value |
 | - | - |
 | 0 | 12 |
+| - | - |
