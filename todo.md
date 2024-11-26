@@ -2,9 +2,9 @@
 ### CLI
 * Parse args
   * long args
-   * --help
-   * --version
+    * --help
+    * --version
   * short args
-   * -o
-   * -S
-   * -c
+    * -o
+    * -S
+    * -c
