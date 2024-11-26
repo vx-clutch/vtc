@@ -15,7 +15,7 @@ FTL is based on a stack machine, which is a computation model that performs all 
 
   Figure 2.
 
-  start
+  starting state
 
   | Index | Value |
   | - | - |
@@ -23,20 +23,20 @@ FTL is based on a stack machine, which is a computation model that performs all 
 
   prog: 3 4 *
 
-  first operand
+  push 3
 
   | Index | Value |
   | - | - |
   | 0 | 3 |
 
-  second operand
+  push 4
 
   | Index | Value |
   | - | - |
   | 0 | 3 |
   | 0 | 4 |
 
-  operation
+  multiplication 
 
   | Index | Value |
   | - | - |
