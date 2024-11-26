@@ -21,7 +21,10 @@ FTL is based on a stack machine, which is a computation model that performs all 
   | - | - |
   | 0 | 0 |
 
-  prog: 3 4 *
+  input program
+  ```
+  3 4 *
+  ```
 
   push 3
 
