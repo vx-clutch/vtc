@@ -6,10 +6,12 @@
 typedef struct {
     bool S;
     bool c;
-    char *o;
+    char o;
     bool help;
     bool version;
 
 } Options;
+
+int parse_args(int argc, char **argv);
 
 #endif

@@ -6,7 +6,7 @@ int main(int argc, char **argv) {
   if (argc < 2) {
     fatal_error("no input files.");
   }
-  int err = toplev();
+  int err = toplev(argc, argv);
   assert(err != 0);
   return 0;
 }
