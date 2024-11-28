@@ -1,4 +1,4 @@
-#include "options/options.h"
+#include "options.h"
 
 int toplev(int argc, char **argv) {
   (void)parse_args(argc, argv);
