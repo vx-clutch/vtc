@@ -1,3 +1,6 @@
+YEAR := 2024
+VERSION := alpha
+
 CC := gcc
 CFLAGS := -Wall -Wextra -pedantic -std=c11 -I./cftl
 LDFLAGS := 
@@ -11,7 +14,7 @@ EXEC := $(BIN_DIR)/ftl
 all: $(EXEC)
 
 $(EXEC): $(OBJ) | $(BIN_DIR)
-	$(CC) $(CFLAGS) $(OBJ) -o $(EXEC) $(LDFLAGS)
+	$(CC) -D YEAR=$(YEAR) -D VERSION=$(VERSION) $(CFLAGS) $(OBJ) -o $(EXEC) $(LDFLAGS)
 
 $(BIN_DIR):
 	mkdir -p $(BIN_DIR)

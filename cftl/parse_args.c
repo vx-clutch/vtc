@@ -1,6 +1,7 @@
-#include "options.h"
+#include "parse_args.h"
 #include "stdlib.h"
 #include <bits/getopt_core.h>
+#include <bits/getopt_ext.h>
 #include <stdio.h>
 #include <getopt.h>
 
@@ -25,7 +26,7 @@ void print_version() {
   printf("ftl (FTL) %s 2024-%s (vx-clutch)\nCopyright (C) 2024-%s vx-clutch\nThis is free software; see the source for copying conditions.   There is NO\nwarranty; not even for MERCHANTABLITY or FITNESS FOR A PARTICULAR PURPOSE", VERSION, YEAR, YEAR);
 }
 
-int parseArgs(int argc, char **argv) {
+int parse_args_long(int argc, char **argv) {
   int c;
   int option_index = 0;
   struct option long_options[] = {
@@ -48,4 +49,23 @@ int parseArgs(int argc, char **argv) {
     }
   }
   return 0;
+}
+
+Options parse_args_short(int argc, char **argv) {
+  int opt;
+  Options options;
+  while ((opt = getopt(argc, argv, "Sco:")) != -1) {
+    switch (opt) {
+      case 'S':
+        options.S = true;
+        break;
+      case 'c':
+        options.c = true;
+        break;
+      case 'o':
+        options.o = optarg;
+        break;
+    }
+  }
+  return options;
 }
