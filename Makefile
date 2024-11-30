@@ -9,12 +9,12 @@ OBJ := $(SRC:.c=.o)
 BIN_DIR := bin
 EXEC := $(BIN_DIR)/ftl
 
-.PHONY: all clean run ftl-check
+.PHONY: all clean run
 
 all: $(EXEC)
 
 $(EXEC): $(OBJ) | $(BIN_DIR)
-	$(CC) -D YEAR=$(YEAR) -D VERSION=$(VERSION) $(CFLAGS) $(OBJ) -o $(EXEC) $(LDFLAGS)
+	$(CC) -D YEAR="$(YEAR)" -D VERSION="$(VERSION)" $(CFLAGS) $(OBJ) -o $(EXEC) $(LDFLAGS)
 
 $(BIN_DIR):
 	mkdir -p $(BIN_DIR)
