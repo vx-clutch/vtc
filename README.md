@@ -11,36 +11,4 @@ Figure 1.
 This places a twelve at the top of the stack
 
 ### Stack Machine
-FTL is based on a stack machine, which is a computation model that performs all operations on a stack. See Figures 2-X
-
-  Figure 2.
-
-  starting state
-
-  | Index | Value |
-  | - | - |
-  | 0 | 0 |
-
-  input program
-  ```
-  3 4 *
-  ```
-
-  push 3
-
-  | Index | Value |
-  | - | - |
-  | 0 | 3 |
-
-  push 4
-
-  | Index | Value |
-  | - | - |
-  | 0 | 3 |
-  | 0 | 4 |
-
-  multiplication 
-
-  | Index | Value |
-  | - | - |
-  | 0 | 12 |
+FTL is based on a stack machine, which is a computation model that performs all operations on a stack. This works well with reverse polish notation, see [reverse polish notation](#reverse-polish-notation)
