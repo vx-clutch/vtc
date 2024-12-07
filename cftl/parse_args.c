@@ -22,9 +22,11 @@ void print_help() {
 #ifndef COMPILER_YEAR
 #define COMPILER_YEAR "unknown"
 #endif
-
+#ifndef COMPILER_PLATFORM
+#define COMPILER_PLATFORM "unknown unix system"
+#endif
 void print_version() {
-  printf("ftl (FTL) %s %s (vx-clutch)\nCopyright (C) %s vx-clutch\nThis is free software; see the source for copying conditions. There is NO\nwarranty; not even for MERCHANTABLITY or FITNESS FOR A PARTICULAR PURPOSE\n", COMPILER_VERSION, COMPILER_YEAR, COMPILER_YEAR);
+  printf("ftl (FTL) %s %s (%s)\nCopyright (C) %s vx-clutch\nThis is free software; see the source for copying conditions. There is NO\nwarranty; not even for MERCHANTABLITY or FITNESS FOR A PARTICULAR PURPOSE\n", COMPILER_VERSION, COMPILER_YEAR, COMPILER_PLATFORM, COMPILER_YEAR);
 }
 
 Options parse_args(int argc, char **argv) {
@@ -64,3 +66,4 @@ Options parse_args(int argc, char **argv) {
   }
   return options;
 }
+
