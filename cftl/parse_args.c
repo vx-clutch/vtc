@@ -1,3 +1,4 @@
+#include "config.h"
 #include "parse_args.h"
 #include <string.h>
 #include <getopt.h>
@@ -15,15 +16,15 @@ void print_help() {
   printf("  -c\t\tComppile and assemble, but do not link.\n");
 }
 
-#ifndef VERSION
-#define VERSION "unknown"
+#ifndef COMPILER_VERSION
+#define COMPILER_VERSION "unknown"
 #endif
-#ifndef YEAR
-#define YEAR "unknown"
+#ifndef COMPILER_YEAR
+#define COMPILER_YEAR "unknown"
 #endif
 
 void print_version() {
-  printf("ftl (FTL) %s 2024-%s (vx-clutch)\nCopyright (C) 2024-%s vx-clutch\nThis is free software; see the source for copying conditions. There is NO\nwarranty; not even for MERCHANTABLITY or FITNESS FOR A PARTICULAR PURPOSE\n", VERSION, YEAR, YEAR);
+  printf("ftl (FTL) %s %s (vx-clutch)\nCopyright (C) %s vx-clutch\nThis is free software; see the source for copying conditions. There is NO\nwarranty; not even for MERCHANTABLITY or FITNESS FOR A PARTICULAR PURPOSE\n", COMPILER_VERSION, COMPILER_YEAR, COMPILER_YEAR);
 }
 
 Options parse_args(int argc, char **argv) {
