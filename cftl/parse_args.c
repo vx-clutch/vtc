@@ -1,4 +1,5 @@
 #include "config.h"
+#include "error.h"
 #include "parse_args.h"
 #include <string.h>
 #include <getopt.h>
@@ -25,6 +26,7 @@ void print_help() {
 #ifndef COMPILER_PLATFORM
 #define COMPILER_PLATFORM "unknown unix system"
 #endif
+
 void print_version() {
   printf("ftl (FTL) %s %s (%s)\nCopyright (C) %s vx-clutch\nThis is free software; see the source for copying conditions. There is NO\nwarranty; not even for MERCHANTABLITY or FITNESS FOR A PARTICULAR PURPOSE\n", COMPILER_VERSION, COMPILER_YEAR, COMPILER_PLATFORM, COMPILER_YEAR);
 }
@@ -33,9 +35,11 @@ Options parse_args(int argc, char **argv) {
   int c;
   int option_index = 0;
   Options options;
+  options.E = false;
   options.c = false;
   options.S = false;
   options.o = NULL;
+  options.F =  NULL;
   struct option long_options[] = {
     {"version", no_argument, 0, 'v'},
     {"help", no_argument, 0, 'h'},
@@ -52,6 +56,9 @@ Options parse_args(int argc, char **argv) {
       case 'o':
         options.o = optarg;
         break;
+      case 'E':
+        options.E = true;
+        break;
       case 'h':
         print_help();
         exit(EXIT_SUCCESS);
@@ -64,6 +71,16 @@ Options parse_args(int argc, char **argv) {
         abort();
     }
   }
+  if (optind >= argc) {
+    fatal_error("no input files.");
+  }
+  for (int i = optind; i < argc; i++) {
+    const char *filename = argv[i];
+    FILE *file = fopen(filename, "r");
+    if (file == NULL) {
+      fatal_error("error opening file");
+    }
+    options.F = file;
+  }
   return options;
 }
-
