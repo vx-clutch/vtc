@@ -44,23 +44,29 @@ Options parse_args(int argc, char **argv) {
     {"help", no_argument, 0, 'h'},
     {0, 0, 0, 0}
   };
-  while ((c = getopt_long(argc, argv, "Sco:hv", long_options, &option_index)) != -1) {
+  while ((c = getopt_long(argc, argv, "SEco:hv", long_options, &option_index)) != -1) {
     switch (c) {
+      /* assembly */
       case 'S':
         options.S = true;
         break;
+      /* object */
       case 'c':
         options.c = true;
         break;
+      /* output */
       case 'o':
         options.o = optarg;
         break;
+      /* preproccsor */
       case 'E':
         options.E = true;
         break;
+      /* help */
       case 'h':
         print_help();
         exit(EXIT_SUCCESS);
+      /* version */
       case 'v':
         print_version();
         exit(EXIT_SUCCESS);
@@ -70,9 +76,13 @@ Options parse_args(int argc, char **argv) {
         abort();
     }
   }
+
   if (optind >= argc) {
     fatal_error("no input files.");
   }
+
+  /* file processing */
+  /* read file, and set options.F to the char[] of the contents */
   for (int i = optind; i < argc; i++) {
     FILE *fp;
     char *buffer;
@@ -90,6 +100,7 @@ Options parse_args(int argc, char **argv) {
     if (file_size >= MAXINPUTBUFFER) {
       fclose(fp);
       fatal_errorf("input buffer exceeds buffer capacity (%d bytes).", MAXINPUTBUFFER);
+    } else if (file_size == 0) {
     }
 
     buffer = (char *)malloc(file_size +1);

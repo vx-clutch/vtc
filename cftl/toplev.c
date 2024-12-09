@@ -1,3 +1,4 @@
+#include "config.h"
 #include "processor.h"
 #include "parse_args.h"
 #include <stddef.h>
@@ -5,11 +6,20 @@
 #include <stdlib.h>
 
 int toplev(int argc, char **argv) {
-  Options options = parse_args(argc, argv);
   char *source;
+  Options options = parse_args(argc, argv);
+  source = options.F;
   source = processor(source);
   if (options.E) {
-    (void)printf("%s\n", source);
+    char default_val[MAXOUTPUTPATH];
+    if (options.o == default_val) {
+      (void)printf("%s\n", source);
+      exit(0);
+    }
+    FILE *fp;
+    fp = fopen(options.o, "w");
+    fprintf(fp, "%s\n", source);
+    fclose(fp);
     exit(0);
   }
   return 0;

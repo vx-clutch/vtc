@@ -9,7 +9,7 @@ typedef struct {
     bool S;
     bool c;
     bool E;
-    char *o;
+    char o[MAXOUTPUTPATH];
     char F[MAXINPUTBUFFER];
 } Options;
 
