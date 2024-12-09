@@ -17,6 +17,7 @@ void print_help() {
   printf("  -c\t\tComppile and assemble, but do not link.\n");
 }
 
+/* see config.h */
 #ifndef COMPILER_VERSION
 #define COMPILER_VERSION "unknown"
 #endif
