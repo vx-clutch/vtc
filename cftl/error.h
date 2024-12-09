@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdarg.h>
 
 // ANSI color codes
 static const char *RESET = "\033[0m";
@@ -12,6 +13,17 @@ static const char *PURPLE = "\033[0;95m";
 // Function prototypes
 static inline void fatal_error(const char *message) {
     (void)fprintf(stderr, "ftl: %sfatal error%s: %s\ncompilation terminated.\n", RED, RESET, message);
+    exit(EXIT_FAILURE);
+}
+
+
+static inline void fatal_errorf(const char *format, ...) {
+    va_list args;
+    va_start(args, format);
+    (void)fprintf(stderr, "ftl: %sfatal error%s: ", RED, RESET);
+    (void)vfprintf(stderr, format, args);
+    (void)fprintf(stderr, "\ncompilation terminated.\n");
+    va_end(args);
     exit(EXIT_FAILURE);
 }
 

@@ -6,6 +6,6 @@
 
 #define COMPILER_META_TARGET_BUFFER 256
 
-#define MAXSOURCE 1024
+#define MAXINPUTBUFFER 1024
 
 #endif

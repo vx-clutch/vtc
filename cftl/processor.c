@@ -1,5 +1,5 @@
 #include "processor.h"
 
-char *process(char *source) {
+char *processor(char *source) {
   return "modified source";
 }

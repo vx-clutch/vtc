@@ -39,7 +39,6 @@ Options parse_args(int argc, char **argv) {
   options.c = false;
   options.S = false;
   options.o = NULL;
-  options.F =  NULL;
   struct option long_options[] = {
     {"version", no_argument, 0, 'v'},
     {"help", no_argument, 0, 'h'},
@@ -75,12 +74,39 @@ Options parse_args(int argc, char **argv) {
     fatal_error("no input files.");
   }
   for (int i = optind; i < argc; i++) {
-    const char *filename = argv[i];
-    FILE *file = fopen(filename, "r");
-    if (file == NULL) {
-      fatal_error("error opening file");
+    FILE *fp;
+    char *buffer;
+    long file_size;
+    char *path = argv[i];
+    fp = fopen(path, "r");
+    if (fp == NULL) {
+      fatal_error("cannot open file.");
     }
-    options.F = file;
+
+    fseek(fp, 0, SEEK_END);
+    file_size = ftell(fp);
+    rewind(fp);
+
+    if (file_size >= MAXINPUTBUFFER) {
+      fclose(fp);
+      fatal_errorf("input buffer exceeds buffer capacity (%d bytes).", MAXINPUTBUFFER);
+    }
+
+    buffer = (char *)malloc(file_size +1);
+    if (buffer == NULL) {
+      fclose(fp);
+      fatal_error("error allocating memory.");
+    }
+
+    fread(buffer, 1, file_size, fp);
+    buffer[file_size] = '\0'; /* null terminator */
+    
+    strncpy(options.F, buffer, MAXINPUTBUFFER - 1);
+    options.F[MAXINPUTBUFFER - 1] = '\0'; /* null terminator */
+
+    fclose(fp);
+    free(buffer);
+
   }
   return options;
 }
