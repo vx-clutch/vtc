@@ -1,0 +1,21 @@
+#!/bin/bash
+
+exists() {
+if ! command -v $1 2>&1 >/dev/null
+then
+  echo "failure to configure: cannot find $1 in user path."
+  action=true
+fi
+}
+
+depends_on="gcc nasm ld"
+action=false
+
+for cmd in $depends_on; do
+  exists $cmd
+done
+
+if $action
+then
+  echo "Install the needed binarys before continuing to compilation."
+fi
