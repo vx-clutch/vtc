@@ -9,7 +9,7 @@
 static const char *RESET = "\033[0m";
 static const char *RED = "\033[1;91m";
 static const char *PURPLE = "\033[0;95m";
-static const char *WHITE = "\033[0;91m";
+static const char *WHITE = "\033[0;97m";
 
 
 /* fatal */

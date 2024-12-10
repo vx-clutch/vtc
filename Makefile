@@ -1,7 +1,7 @@
 CC := gcc
-CFLAGS := -Wall -Wextra -pedantic -std=c11 -I./cftl
+CFLAGS := -Wall -Wextra -pedantic -std=c11 -I./ftl
 LDFLAGS := 
-SRC := $(wildcard cftl/*.c) $(wildcard cftl/options/*.c)
+SRC := $(wildcard ftl/*.c) $(wildcard ftl/options/*.c)
 OBJ := $(SRC:.c=.o)
 BIN_DIR := bin
 EXEC := $(BIN_DIR)/ftl
