@@ -1,6 +1,7 @@
 #ifndef PROCESSOR_H
 #define PROCESSOR_H
 
-char *processor(char *source);
+#include "config.h"
+char *processor(char source[MAXINPUTBUFFER]);
 
 #endif
