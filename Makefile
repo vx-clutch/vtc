@@ -1,5 +1,5 @@
 CC := gcc
-CFLAGS := -Wall -Wextra -pedantic -std=c11 -I./ftl
+CFLAGS := -Wall -Wextra -pedantic -std=c11 -I./ftl -D COMPILER_PLATFORM="\"$(shell uname -o) $(shell uname -r)\""
 LDFLAGS := 
 SRC := $(wildcard ftl/*.c) $(wildcard ftl/options/*.c)
 OBJ := $(SRC:.c=.o)
