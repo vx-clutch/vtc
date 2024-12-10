@@ -39,7 +39,6 @@ Options parse_args(int argc, char **argv) {
   options.E = false;
   options.c = false;
   options.S = false;
-  options.o = NULL;
   struct option long_options[] = {
     {"version", no_argument, 0, 'v'},
     {"help", no_argument, 0, 'h'},
@@ -57,7 +56,7 @@ Options parse_args(int argc, char **argv) {
         break;
       /* output */
       case 'o':
-        options.o = optarg;
+        strncpy(options.o, optarg, MAXINPUTBUFFER);
         break;
       /* preproccsor */
       case 'E':

@@ -50,7 +50,7 @@ static inline int warning(const char *message) {
 static inline void warningf(const char *format, ...) {
     va_list args;
     va_start(args, format);
-    (void)fprintf(stderr, "ftl: %warning%s: ", PURPLE, RESET);
+    (void)fprintf(stderr, "ftl: %swarning%s: ", PURPLE, RESET);
     (void)vfprintf(stderr, format, args);
     va_end(args);
 }

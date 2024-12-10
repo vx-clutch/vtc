@@ -12,7 +12,7 @@ int toplev(int argc, char **argv) {
   source = processor(source);
   if (options.E) {
     char default_val[MAXOUTPUTPATH];
-    if (options.o == default_val) {
+    if (options.o[0] == '\0') {
       (void)printf("%s\n", source);
       exit(0);
     }
