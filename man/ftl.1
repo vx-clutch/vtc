@@ -1,0 +1,73 @@
+.TH FTL 1 "December 2024" "FTL Compiler 1.0" "FTL Manual"
+.SH NAME
+ftl \- A fast and lightweight compiler.
+.SH SYNOPSIS
+.B ftl
+.RI [options] " file..."
+.SH DESCRIPTION
+.B ftl
+is a compiler that processes source files and generates executable programs, object files, or assembly output depending on the options provided.
+
+Each input
+.I file
+is processed according to the specified options and can be compiled, assembled, or linked to produce the desired output.
+
+.SH OPTIONS
+.TP
+.BR \-\-help
+Display this help message and exit.
+
+.TP
+.BR \-\-version
+Display the version information and exit.
+
+.TP
+.BR \-o " <file>"
+Write output to the specified
+.IR <file>.
+
+.TP
+.BR \-S
+Compile only; do not assemble or link. The output will be in assembly format.
+
+.TP
+.BR \-c
+Compile and assemble, but do not link. The output will be an object file.
+
+.SH OPERANDS
+Each
+.I file
+is treated as a source file to be compiled, or an object file to be linked, depending on the options specified.
+
+.SH EXAMPLES
+Compile a file into an object file:
+.EX
+ftl -c source.ftl
+.EE
+
+Compile and assemble a file, then specify an output file:
+.EX
+ftl -o output.o -c source.ftl
+.EE
+
+Print version information:
+.EX
+ftl --version
+.EE
+
+.SH BUGS
+To report bugs or request features, please visit:
+.EX
+https://github.com/vx-clutch/ftl/issues
+.EE
+
+.SH AUTHOR
+Developed and maintained by
+.B vx-clutch.
+
+.SH COPYRIGHT
+Copyright 2024 vx-clutch. Distributed under the terms of the BSD 3-Clause Licence
+
+.SH SEE ALSO
+.BR ld (1),
+.BR nasm (1)
