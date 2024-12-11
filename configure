@@ -17,5 +17,5 @@ done
 
 if $action
 then
-  echo "Install the needed binarys before continuing to compilation."
+  echo "Install the needed binarys before continuing to compilation. If you with to use a C compiler other than gcc, modify the CC variable in the Makefile"
 fi
