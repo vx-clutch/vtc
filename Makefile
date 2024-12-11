@@ -37,4 +37,4 @@ install: $(EXEC)
 
 uninstall:
 	$(RM) $(PREFIX)/bin/ftl
-	$(RM_ $(MAN_DEST)
+	$(RM) $(MAN_DEST)
