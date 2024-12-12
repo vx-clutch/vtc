@@ -1,2 +1,3 @@
 * -text
 *.ftl linguist-language=FTL
+configure linguist-language=Shell
