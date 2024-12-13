@@ -1,7 +1,8 @@
+/* this is for assembly generation  */
 package main
 
 func main() {}
 
-func Add(x int, y int) int {
-	return x + y;
+func Get_str(str string) string {
+	return str;
 }
