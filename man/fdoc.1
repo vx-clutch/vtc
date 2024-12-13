@@ -1,0 +1,61 @@
+.TH FTL 1 "December 2024" "FTL Compiler alpha" "FDOC Manual"
+.SH NAME
+fdoc \- a terminal documentation tool for the FTL language.
+.SH SYNOPSIS
+.B ftl
+.RI [options] " feature..."
+.SH DESCRIPTION
+.B fdoc
+is a documentation tool that prints out relavent information based on your input argument and options.
+
+Each input
+.I file
+is processed according to the specified options and can be compiled, assembled, or linked to produce the desired output.
+
+.SH OPTIONS
+.TP
+.BR \-\-help
+Display this help message and exit.
+
+.TP
+.BR \-\-version
+Display the version information and exit.
+
+.TP
+.BR \-o " <file>"
+Write output to the specified
+.IR <file>.
+
+.SH OPERANDS
+Each
+.I feature
+is treated as a lanugae feature, depending on the options specified.
+
+.SH EXAMPLES
+Print information on the exit keyword:
+.EX
+fdoc exit
+.EE
+
+Print version information:
+.EX
+fdoc --version
+.EE
+
+.SH BUGS
+To report bugs or request features, please visit:
+.EX
+https://github.com/vx-clutch/ftl/issues
+.EE
+
+.SH AUTHOR
+Developed and maintained by
+.B vx-clutch.
+
+.SH COPYRIGHT
+Copyright 2024 vx-clutch. Distributed under the terms of the BSD 3-Clause Licence
+
+.SH SEE ALSO
+.BR ld (1),
+.BR nasm (1),
+.BR ftl (1)
