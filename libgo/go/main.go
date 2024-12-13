@@ -3,6 +3,6 @@ package main
 
 func main() {}
 
-func Get_str(str string) string {
-	return str;
+func Add(a int, b int) int {
+	return a + b
 }
