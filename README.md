@@ -1,8 +1,8 @@
 # ftl
-Faster-than-Light    
+Faster-than-Light
 
 > [!NOTE]  
-> ftl is currently in its alpha stages of development and should not be used for anything major.  
+> ftl is currently in its alpha stages of development and should not be used for anything major.
 
 ## Install
 ### Linux
