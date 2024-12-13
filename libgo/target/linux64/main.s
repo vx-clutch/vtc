@@ -1,3 +1,5 @@
+%include exit.inc
+
 section .text
 global _start
 
