@@ -1,17 +1,32 @@
 #ifndef LEXER_H
 #define LEXER_H
 
-#include "config.h"
+#include "ctype.h"
+#include "string.h"
+
+typedef enum {
+    TOKEN_NUMBER,
+    TOKEN_PLUS,
+    TOKEN_MINUS,
+    TOKEN_STAR,
+    TOKEN_SLASH,
+    TOKEN_LPAREN,
+    TOKEN_RPAREN,
+    TOKEN_EOF,
+    TOKEN_UNKNOWN,
+} TokenType;
 
 typedef struct {
-    char *type;
+    TokenType type;
     char *value;
 } Token;
 
 typedef struct {
-    Token tokens[MAXTOKENS];
-} TokenArray;
+    const char *input;
+    size_t pos;
+} Lexer;
 
-TokenArray lexer(const char* source);
+void print_token(const Token *token);
+void free_token(Token *token);
 
 #endif

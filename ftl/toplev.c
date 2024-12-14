@@ -1,4 +1,5 @@
 #include "processor.h"
+#include "lexer.h"
 #include "parse_args.h"
 #include <stddef.h>
 #include <stdio.h>
@@ -23,6 +24,21 @@ int toplev(int argc, char **argv) {
   source = processor(source);
   if (options.E) {
     kill_proc(options, source);
+  }
+
+  Lexer lexer = {source, 0};
+  printf("Lexing source: %s\n", source);
+
+  while (1) {
+    Token token = next_token(&lexer);
+    print_token(&token);
+
+    if (token.type == TOKEN_EOF) {
+      free_token(&token);
+      break;
+    }
+
+    free_token(&token);
   }
   return 0;
 }
