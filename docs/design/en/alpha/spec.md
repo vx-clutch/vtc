@@ -1,0 +1,2 @@
+# FTL Specification
+## Version Alpha
