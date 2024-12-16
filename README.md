@@ -8,7 +8,7 @@ Faster-than-Light
 ### Linux
 On linux systems, run these commands.
 ```
-./configure
-make
-sudo make install
+$ ./configure
+$ make
+$ sudo make install
 ```
