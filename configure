@@ -8,7 +8,7 @@ then
 fi
 }
 
-depends_on="gcc nasm ld"
+depends_on="gcc nasm ld go"
 action=false
 
 for cmd in $depends_on; do
