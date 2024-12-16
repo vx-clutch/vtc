@@ -1,8 +1,8 @@
 /* this is for assembly generation  */
 package main
 
-func main() {}
+import (
+	"embed_linuxx64"
+)
 
-func Add(a int, b int) int {
-	return a + b
-}
+func main() {}
