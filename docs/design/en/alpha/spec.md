@@ -10,3 +10,29 @@ For example:
 This would compute to 12 and place it on the stack.
 
 See Stack Machine.
+
+## Comments
+Coments are defined with two semi-colons.
+```
+;; This is a comment
+````
+
+## Variables
+### Define
+#### Integers
+```
+x;
+int x;
+```
+#### String
+```
+string x;
+```
+## Assign
+You can asign to a variable with the assignment operator
+```
+3 4 * -> x;
+```
+This sets `x` to 12.
+
+## 
