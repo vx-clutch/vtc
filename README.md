@@ -6,7 +6,7 @@ Faster-than-Light
 
 ## Install
 ### Linux
-On linux system you must use the famous incantation
+On linux systems, run these commands.
 ```
 ./configure
 make
