@@ -18,6 +18,9 @@ Coments are defined with two semi-colons.
 ````
 
 ## Variables
+### General
+All variables are global scope.
+
 ### Define
 #### Integers
 ```
@@ -31,8 +34,8 @@ string x;
 ## Assign
 You can asign to a variable with the assignment operator
 ```
-3 4 * -> x;
+3 4 * -> $x;
 ```
 This sets `x` to 12.
-
-## 
+## Using
+To use a variable you place a `$` infront of it, i.e. `$x`
