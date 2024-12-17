@@ -29,4 +29,6 @@ typedef struct {
 void print_token(const Token *token);
 void free_token(Token *token);
 
+Token next_token(Lexer *lexer);
+
 #endif

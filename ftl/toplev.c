@@ -1,8 +1,6 @@
 #include "lexer.h"
 #include "parse_args.h"
 #include "processor.h"
-#include <stddef.h>
-#include <stdio.h>
 #include <stdlib.h>
 
 void kill_proc(Options options, char *source) {

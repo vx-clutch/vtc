@@ -3,12 +3,12 @@ ifeq ($(PREFIX),)
 endif
 
 CC := gcc
-CFLAGS := -Wall -Wextra -pedantic -std=c11 -I./ftl -D COMPILER_PLATFORM="\"$(shell uname -o) $(shell uname -r)\""
-LDFLAGS := -rpath=bin
+CFLAGS := -Wall -Wextra -pedantic -std=c11 -I./ftl -D COMPILER_PLATFORM="\"$(shell uname -o) $(shell uname -r)\"" -ggdb
+LDFLAGS :=
 SRC := $(wildcard ftl/*.c) $(wildcard ftl/options/*.c)
 OBJ := $(SRC:.c=.o)
 BIN_DIR := bin
-EXEC := $(BIN_DIR)/output/ftl
+EXEC := $(BIN_DIR)/ftl
 MAN_DIR := $(PREFIX)/share/man
 MAN_SRC := man/ftl.1
 MAN_DEST := $(MAN_DIR)/man1/ftl.1

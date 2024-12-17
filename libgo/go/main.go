@@ -1,8 +1,7 @@
-/* this is for assembly generation  */
 package main
 
 import (
-	"embed_linuxx64"
+	_ "libgo/target/linux/x86/64"
 )
 
 func main() {}

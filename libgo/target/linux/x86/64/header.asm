@@ -1,13 +1,11 @@
-%include exit.inc
-
 section .text
 global _start
 
 _start:
   call main
-  jmp main_exit
+  jmp main_exit_
 
-main_exit:
+main_exit_:
   mov rax, 60
   xor rdi, rdi
   syscall
