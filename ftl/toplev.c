@@ -1,20 +1,20 @@
-#include "processor.h"
 #include "lexer.h"
 #include "parse_args.h"
+#include "processor.h"
 #include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
 
 void kill_proc(Options options, char *source) {
-    if (options.o[0] == '\0') {
-      (void)printf("%s", source);
-      exit(0);
-    }
-    FILE *fp;
-    fp = fopen(options.o, "w");
-    fprintf(fp, "%s", source);
-    fclose(fp);
+  if (options.o[0] == '\0') {
+    (void)printf("%s", source);
     exit(0);
+  }
+  FILE *fp;
+  fp = fopen(options.o, "w");
+  fprintf(fp, "%s", source);
+  fclose(fp);
+  exit(0);
 }
 
 int toplev(int argc, char **argv) {

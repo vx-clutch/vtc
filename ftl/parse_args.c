@@ -1,11 +1,10 @@
+#include "parse_args.h"
 #include "config.h"
 #include "error.h"
-#include "parse_args.h"
-#include <string.h>
 #include <getopt.h>
 #include <stdio.h>
-#include <getopt.h>
 #include <stdlib.h>
+#include <string.h>
 
 void print_help() {
   printf("Usage: ftl [options] file...\n\n");
@@ -29,7 +28,11 @@ void print_help() {
 #endif
 
 void print_version() {
-  printf("ftl (FTL) %s %s (%s)\nCopyright (C) %s vx-clutch\nThis is free software; see the source for copying conditions. There is NO\nwarranty; not even for MERCHANTABLITY or FITNESS FOR A PARTICULAR PURPOSE\n", COMPILER_VERSION, COMPILER_YEAR, COMPILER_PLATFORM, COMPILER_YEAR);
+  printf(
+      "ftl (FTL) %s %s (%s)\nCopyright (C) %s vx-clutch\nThis is free "
+      "software; see the source for copying conditions. There is NO\nwarranty; "
+      "not even for MERCHANTABLITY or FITNESS FOR A PARTICULAR PURPOSE\n",
+      COMPILER_VERSION, COMPILER_YEAR, COMPILER_PLATFORM, COMPILER_YEAR);
 }
 
 Options parse_args(int argc, char **argv) {
@@ -39,41 +42,40 @@ Options parse_args(int argc, char **argv) {
   options.E = false;
   options.c = false;
   options.S = false;
-  struct option long_options[] = {
-    {"version", no_argument, 0, 'v'},
-    {"help", no_argument, 0, 'h'},
-    {0, 0, 0, 0}
-  };
-  while ((c = getopt_long(argc, argv, "SEco:hv", long_options, &option_index)) != -1) {
+  struct option long_options[] = {{"version", no_argument, 0, 'v'},
+                                  {"help", no_argument, 0, 'h'},
+                                  {0, 0, 0, 0}};
+  while ((c = getopt_long(argc, argv, "SEco:hv", long_options,
+                          &option_index)) != -1) {
     switch (c) {
-      /* assembly */
-      case 'S':
-        options.S = true;
-        break;
-      /* object */
-      case 'c':
-        options.c = true;
-        break;
-      /* output */
-      case 'o':
-        strncpy(options.o, optarg, MAXINPUTBUFFER);
-        break;
-      /* preproccsor */
-      case 'E':
-        options.E = true;
-        break;
-      /* help */
-      case 'h':
-        print_help();
-        exit(EXIT_SUCCESS);
-      /* version */
-      case 'v':
-        print_version();
-        exit(EXIT_SUCCESS);
-      case '?':
-        exit(EXIT_FAILURE);
-      default:
-        abort();
+    /* assembly */
+    case 'S':
+      options.S = true;
+      break;
+    /* object */
+    case 'c':
+      options.c = true;
+      break;
+    /* output */
+    case 'o':
+      strncpy(options.o, optarg, MAXINPUTBUFFER);
+      break;
+    /* preproccsor */
+    case 'E':
+      options.E = true;
+      break;
+    /* help */
+    case 'h':
+      print_help();
+      exit(EXIT_SUCCESS);
+    /* version */
+    case 'v':
+      print_version();
+      exit(EXIT_SUCCESS);
+    case '?':
+      exit(EXIT_FAILURE);
+    default:
+      abort();
     }
   }
 
@@ -99,11 +101,12 @@ Options parse_args(int argc, char **argv) {
 
     if (file_size >= MAXINPUTBUFFER) {
       fclose(fp);
-      fatal_errorf("input buffer exceeds buffer capacity (%d bytes).", MAXINPUTBUFFER);
+      fatal_errorf("input buffer exceeds buffer capacity (%d bytes).",
+                   MAXINPUTBUFFER);
     } else if (file_size == 0) {
     }
 
-    buffer = (char *)malloc(file_size +1);
+    buffer = (char *)malloc(file_size + 1);
     if (buffer == NULL) {
       fclose(fp);
       fatal_error("error allocating memory.");
@@ -111,13 +114,12 @@ Options parse_args(int argc, char **argv) {
 
     fread(buffer, 1, file_size, fp);
     buffer[file_size] = '\0'; /* null terminator */
-    
+
     strncpy(options.F, buffer, MAXINPUTBUFFER - 1);
     options.F[MAXINPUTBUFFER - 1] = '\0'; /* null terminator */
 
     fclose(fp);
     free(buffer);
-
   }
   return options;
 }

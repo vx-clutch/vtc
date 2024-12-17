@@ -1,9 +1,7 @@
-#include "config.h"
 #include "processor.h"
+#include "config.h"
 
-char *remove_comments(char source[MAXINPUTBUFFER]) {
-  return source;
-}
+char *remove_comments(char source[MAXINPUTBUFFER]) { return source; }
 
 char *processor(char source[MAXINPUTBUFFER]) {
   /* TODO:

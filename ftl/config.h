@@ -1,7 +1,6 @@
 #ifndef CONFIG_H
 #define CONFIG_H
 
-
 /* versioning information. */
 #define COMPILER_VERSION "alpha"
 #define COMPILER_YEAR "2024"

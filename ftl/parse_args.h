@@ -6,11 +6,11 @@
 #include <stdio.h>
 
 typedef struct {
-    bool S;
-    bool c;
-    bool E;
-    char o[MAXOUTPUTPATH];
-    char F[MAXINPUTBUFFER];
+  bool S;
+  bool c;
+  bool E;
+  char o[MAXOUTPUTPATH];
+  char F[MAXINPUTBUFFER];
 } Options;
 
 Options parse_args(int argc, char **argv);
