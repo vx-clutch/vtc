@@ -3,7 +3,7 @@ ifeq ($(PREFIX),)
 endif
 
 CC := gcc
-CFLAGS := -Wall -Wextra -pedantic -std=c11 -I./ftl -D COMPILER_PLATFORM="\"$(shell uname -o) $(shell uname -r)\"" -ggdb
+CFLAGS := -Wall -Wextra -Werror -O2 -pedantic -std=c11 -I./ftl -D COMPILER_PLATFORM="\"$(shell uname -o) $(shell uname -r)\"" -ggdb
 LDFLAGS :=
 SRC := $(wildcard ftl/*.c) $(wildcard ftl/options/*.c)
 BIN_DIR := build
