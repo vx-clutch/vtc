@@ -1,6 +1,12 @@
 #!/bin/bash
 
+RESET="\e[0m"
+GREEN=\e[1;32m
+YELLOW=\e[1;33m	
+RED=\e[0;31m	
+
 exists() {
+echo ===> "Checking for $1"
 if ! command -v $1 2>&1 >/dev/null
 then
   echo "failure to configure: cannot find $1 in user path."
