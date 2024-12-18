@@ -12,12 +12,11 @@ function find_cc {
     if command -v $cc 2>&1 >/dev/null
     then
       echo -e "  ${GREEN}found $cc${RESET}"
-      foundCC=true
       return
     fi
   done
-  echo "  failure to configure: cannot find a C compiler in user path."
-  echo "  If you with to use a C compiler other than gcc, modify the CC variable in the Makefile"
+  echo -e "  ${RED}failure to configure: cannot find a C compiler in user path.${RESET}"
+  echo -e "  ${RED}If you with to use a C compiler other than gcc, modify the CC variable in the Makefile${RESET}"
 }
 
 exists() {
@@ -34,7 +33,6 @@ exists() {
 
 depends_on="nasm ld go"
 action=false
-foundCC=false
 
 find_cc
 
@@ -47,9 +45,4 @@ done
 if $action
 then
   echo "Install the needed binarys before continuing to compilation."
-fi
-
-if ! $foundCC
-then
-    echo "If you with to use a C compiler other than gcc or clang, modify the CC variable in the Makefile"
 fi
