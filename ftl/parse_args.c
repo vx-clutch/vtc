@@ -112,7 +112,7 @@ Options parse_args(int argc, char **argv) {
       fatal_error("error allocating memory.");
     }
 
-    fread(buffer, 1, file_size, fp);
+    (void)fread(buffer, 1, file_size, fp);
     buffer[file_size] = '\0'; /* null terminator */
 
     strncpy(options.F, buffer, MAXINPUTBUFFER - 1);

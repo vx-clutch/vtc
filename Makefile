@@ -3,7 +3,7 @@ ifeq ($(PREFIX),)
 endif
 
 CC := $(shell ./configure -from-make)
-CFLAGS := -Wall -Wextra -Werror -O2 -pedantic -std=c11 -I./ftl -D COMPILER_PLATFORM="\"$(shell uname -o) $(shell uname -r)\"" -ggdb
+CFLAGS := -Wall -Wextra -O2 -pedantic -std=c11 -I./ftl -D COMPILER_PLATFORM="\"$(shell uname -o) $(shell uname -r)\"" -ggdb
 GOC := go build 
 GOFLAGS := -buildmmode=c-shared
 LDFLAGS :=

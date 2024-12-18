@@ -18,19 +18,21 @@ RED="\033[0;31m"
 
 function find_cc {
   echo "====> Checking for CC"
-  CCs="gcc"
+  CCs="gcc clang"
   for cc in $CCs; do
     if command -v $cc 2>&1 >/dev/null
     then
       echo -e "  ${GREEN}found $cc${RESET}"
-      return
+      foundCC=true
     fi
   done
-  echo -e "  ${RED}failure to configure: cannot find a C compiler in user path.${RESET}"
-  echo -e "  ${RED}If you with to use a C compiler other than gcc, modify the CC variable in the Makefile${RESET}"
+  if ! $foundCC; then
+    echo -e "  ${RED}failure to configure: cannot find a C compiler in user path.${RESET}"
+    echo -e "  ${RED}If you with to use a C compiler other than gcc, modify the CC variable in the Makefile${RESET}"
+  fi
 }
 
-exists() {
+function exists {
     echo -e "${YELLOW}===> Checking for $1${RESET}"
     if ! command -v $1 2>&1 >/dev/null
     then
@@ -44,6 +46,7 @@ exists() {
 
 depends_on="nasm ld go"
 action=false
+foundCC=false
 
 find_cc
 
@@ -55,5 +58,7 @@ done
 
 if $action
 then
-  echo "Install the needed binarys before continuing to compilation."
+  echo -e "${RED}Some checks failed.${RESET} Install the needed binarys before continuing to compilation."
+else 
+  echo -e "${GREEN}All checks pass!${RESET} You can now run 'make' to compile the project."
 fi
