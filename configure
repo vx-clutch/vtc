@@ -5,25 +5,43 @@ GREEN="\033[1;32m"
 YELLOW="\033[1;33m"	
 RED="\033[0;31m"
 
+function find_cc {
+  echo "====> Checking for CC"
+  CCs="gcc"
+  for cc in $CCs; do
+    if command -v $cc 2>&1 >/dev/null
+    then
+      echo -e "  ${GREEN}found $cc${RESET}"
+      foundCC=true
+      return
+    fi
+  done
+  echo "  failure to configure: cannot find a C compiler in user path."
+  echo "  If you with to use a C compiler other than gcc, modify the CC variable in the Makefile"
+}
+
 exists() {
-    echo "${YELLOW}===> Checking for $1${RESET}"
+    echo -e "${YELLOW}===> Checking for $1${RESET}"
     if ! command -v $1 2>&1 >/dev/null
     then
-        echo "  failure to configure: cannot find $1 in user path."
+        echo -e "  ${RED}failure to configure: cannot find $1 in user path.${RESET}"
         action=true
-    fi
-    if $1 == "gcc"
-    then
-        foundCC=true
+    else
+        echo -e "  ${GREEN}found $1${RESET}"
+    
     fi
 }
 
-depends_on="gcc nasm ld go"
+depends_on="nasm ld go"
 action=false
 foundCC=false
 
+find_cc
+
+echo "====> Checking for other dependencies"
+
 for cmd in $depends_on; do
-  exists $cmd
+  exists "$cmd"
 done
 
 if $action
@@ -33,5 +51,5 @@ fi
 
 if ! $foundCC
 then
-    echo "If you with to use a C compiler other than gcc, modify the CC variable in the Makefile"
+    echo "If you with to use a C compiler other than gcc or clang, modify the CC variable in the Makefile"
 fi
