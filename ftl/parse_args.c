@@ -13,7 +13,7 @@ void print_help() {
   printf("  --version\tPrints out the version number and exit.\n");
   printf("  -o <file>\tPlace the output into <file>.\n");
   printf("  -S\t\tCompile only; do not assembly or link.\n");
-  printf("  -c\t\tComppile and assemble, but do not link.\n");
+  printf("  -c\t\tCompile and assemble, but do not link.\n");
 }
 
 /* see config.h */

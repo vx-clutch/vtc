@@ -17,7 +17,6 @@ void remove_comments(char *source) {
 char *processor(char source[MAXINPUTBUFFER]) {
   /* TODO:
    *  + preprocessor macros
-   *  + cut comments
    */
   remove_comments(source);
   return source;

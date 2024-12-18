@@ -20,6 +20,27 @@ Token tokenize_number(Lexer *lexer) {
   return token;
 }
 
+Token tokenize_alpha(Lexer *lexer) {
+  size_t start = lexer->pos;
+
+  while ((peek(lexer) != '\0' && isalpha(peek(lexer))) || peek(lexer) == '_') {
+    advance(lexer);
+  }
+
+  size_t length = lexer->pos - start;
+
+  char *id = malloc(length + 1);
+  if (!id) {
+    fprintf(stderr, "Error: Memory allocation failed in tokenize_alpha.\n");
+    exit(EXIT_FAILURE);
+  }
+  strncpy(id, lexer->input + start, length);
+  id[length] = '\0';
+
+  Token token = {TOKEN_IDENT, id};
+  return token;
+}
+
 Token next_token(Lexer *lexer) {
   while (peek(lexer) != '\0') {
     char c = peek(lexer);
@@ -31,6 +52,10 @@ Token next_token(Lexer *lexer) {
 
     if (isdigit(c)) {
       return tokenize_number(lexer);
+    }
+
+    if (isalpha(c)) {
+      return tokenize_alpha(lexer);
     }
 
     advance(lexer);
@@ -48,6 +73,12 @@ Token next_token(Lexer *lexer) {
       return (Token){TOKEN_LPAREN, NULL};
     case ')':
       return (Token){TOKEN_RPAREN, NULL};
+    case ',':
+      return (Token){TOKEN_COMMA, NULL};
+    case ':':
+      return (Token){TOKEN_COLON, NULL};
+    case ';':
+      return (Token){TOKEN_SEMICOLON, NULL};
     default:
       return (Token){TOKEN_UNKNOWN, NULL};
     }
@@ -59,6 +90,9 @@ void print_token(const Token *token) {
   switch (token->type) {
   case TOKEN_NUMBER:
     printf("NUMBER(%s)\n", token->value);
+    break;
+  case TOKEN_IDENT:
+    printf("IDENT(%s)\n", token->value);
     break;
   case TOKEN_PLUS:
     printf("PLUS\n");
@@ -77,6 +111,15 @@ void print_token(const Token *token) {
     break;
   case TOKEN_RPAREN:
     printf("RPAREN\n");
+    break;
+  case TOKEN_COMMA:
+    printf("COMMA\n");
+    break;
+  case TOKEN_COLON:
+    printf("COLON\n");
+    break;
+  case TOKEN_SEMICOLON:
+    printf("SEMICOLON\n");
     break;
   case TOKEN_EOF:
     printf("EOF\n");
