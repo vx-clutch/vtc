@@ -6,40 +6,37 @@ CC := gcc
 CFLAGS := -Wall -Wextra -pedantic -std=c11 -I./ftl -D COMPILER_PLATFORM="\"$(shell uname -o) $(shell uname -r)\"" -ggdb
 LDFLAGS :=
 SRC := $(wildcard ftl/*.c) $(wildcard ftl/options/*.c)
-OBJ := $(SRC:.c=.o)
-BIN_DIR := bin
-EXEC := $(BIN_DIR)/ftl
+BIN_DIR := build
+OBJ_DIR := $(BIN_DIR)/obj
+OBJ := $(patsubst %.c,$(OBJ_DIR)/%.o,$(SRC))
+EXEC := $(BIN_DIR)/bin/ftl
 MAN_DIR := $(PREFIX)/share/man
 MAN_SRC := man/ftl.1
 MAN_DEST := $(MAN_DIR)/man1/ftl.1
 
 .PHONY: all clean install uninstall
 
-all: $(EXEC) $(FDOC)
+all: $(EXEC)
 
-$(EXEC): $(OBJ) | $(BIN_DIR)
-	$(CC) $(CFLAGS) $(OBJ) -o $(EXEC) $(LDFLAGS)
+$(EXEC): $(OBJ) | $(BIN_DIR)/bin
+	$(CC) $(CFLAGS) $(OBJ) -o $@ $(LDFLAGS)
 
-$(FDOC): $(OBJ) | $(BIN_DIR)
-	$(CC) $(CFLAGS) $(OBJ) -o $(FDOC) $(LDFLAGS)
+$(BIN_DIR)/bin $(OBJ_DIR):
+	mkdir -p $@
 
-$(BIN_DIR):
-	mkdir -p $(BIN_DIR)
-
-ftl/%.o: ftl/%.c
+$(OBJ_DIR)/%.o: %.c | $(OBJ_DIR)
+	mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	$(RM) $(OBJ) $(EXEC)
+	$(RM) -r $(BIN_DIR)
 
 install: $(EXEC)
 	install -d $(PREFIX)/bin
 	install $(EXEC) $(PREFIX)/bin/
-	install $(FDOC) $(PREFIX)/bin/
 	install -d $(MAN_DIR)/man1
 	install -m 644 $(MAN_SRC) $(MAN_DEST)
 
 uninstall:
 	$(RM) $(PREFIX)/bin/ftl
-	$(RM) $(PREFIX)/bin/fdoc
 	$(RM) $(MAN_DEST)
