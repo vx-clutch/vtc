@@ -1,17 +1,17 @@
 #!/bin/bash
 
 RESET="\e[0m"
-GREEN=\e[1;32m
-YELLOW=\e[1;33m	
-RED=\e[0;31m	
+GREEN="\e[1;32m"
+YELLOW="\e[1;33m"	
+RED="\e[0;31m"
 
 exists() {
-echo ===> "Checking for $1"
-if ! command -v $1 2>&1 >/dev/null
-then
-  echo "failure to configure: cannot find $1 in user path."
-  action=true
-fi
+    echo "===> Checking for $1"
+    if ! command -v $1 2>&1 >/dev/null
+    then
+        echo "  failure to configure: cannot find $1 in user path."
+        action=true
+    fi
 }
 
 depends_on="gcc nasm ld go"
@@ -23,5 +23,10 @@ done
 
 if $action
 then
-  echo "Install the needed binarys before continuing to compilation. If you with to use a C compiler other than gcc, modify the CC variable in the Makefile"
+  echo "Install the needed binarys before continuing to compilation."
+fi
+
+if ! $foundCC
+then
+    echo "If you with to use a C compiler other than gcc, modify the CC variable in the Makefile"
 fi
