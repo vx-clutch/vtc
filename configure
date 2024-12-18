@@ -12,10 +12,15 @@ exists() {
         echo "  failure to configure: cannot find $1 in user path."
         action=true
     fi
+    if $1 == "gcc"
+    then
+        foundCC=true
+    fi
 }
 
 depends_on="gcc nasm ld go"
 action=false
+foundCC=false
 
 for cmd in $depends_on; do
   exists $cmd
