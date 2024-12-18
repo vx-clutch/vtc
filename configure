@@ -44,7 +44,7 @@ function exists {
     fi
 }
 
-depends_on="nasm ld go"
+depends_on="nasm ld go uname"
 action=false
 foundCC=false
 
