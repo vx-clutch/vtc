@@ -9,10 +9,6 @@ Faster-than-Light
 On linux systems, run these commands.
 ```
 $ ./configure
-```
-```
 $ make
-```
-```
 $ sudo make install
 ```

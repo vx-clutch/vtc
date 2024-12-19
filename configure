@@ -1,7 +1,8 @@
 #!/bin/bash
 
+CCs="gcc clang cc CC g++"
+
 if [[ $1 == "-from-make" ]]; then
-  CCs="gcc clang"
   for cc in $CCs; do
     if command -v $cc 2>&1 >/dev/null
     then
@@ -18,7 +19,6 @@ RED="\033[0;31m"
 
 function find_cc {
   echo "====> Checking for CC"
-  CCs="gcc clang"
   for cc in $CCs; do
     if command -v $cc 2>&1 >/dev/null
     then
