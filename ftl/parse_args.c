@@ -27,6 +27,7 @@ void print_help() {
 #define COMPILER_PLATFORM "unknown unix system"
 #endif
 
+/* print versioning information */
 void print_version() {
   printf(
       "ftl (FTL) %s %s (%s)\nCopyright (C) %s vx-clutch\nThis is free "
@@ -38,10 +39,14 @@ void print_version() {
 Options parse_args(int argc, char **argv) {
   int c;
   int option_index = 0;
+
+  /* init options struct */
   Options options;
   options.E = false;
   options.c = false;
   options.S = false;
+
+  /* define long options */
   struct option long_options[] = {{"version", no_argument, 0, 'v'},
                                   {"help", no_argument, 0, 'h'},
                                   {0, 0, 0, 0}};
@@ -90,7 +95,10 @@ Options parse_args(int argc, char **argv) {
     char *buffer;
     long file_size;
     char *path = argv[i];
+
+    /* file pointer */
     fp = fopen(path, "r");
+
     if (fp == NULL) {
       fatal_error("cannot open file.");
     }
@@ -99,6 +107,7 @@ Options parse_args(int argc, char **argv) {
     file_size = ftell(fp);
     rewind(fp);
 
+    /* is file small enough (you can increase this limit in config.h) */
     if (file_size >= MAXINPUTBUFFER) {
       fclose(fp);
       fatal_errorf("input buffer exceeds buffer capacity (%d bytes).",
@@ -113,10 +122,10 @@ Options parse_args(int argc, char **argv) {
     }
 
     (void)fread(buffer, 1, file_size, fp);
-    buffer[file_size] = '\0'; /* null terminator */
+    buffer[file_size] = '\0';
 
     strncpy(options.F, buffer, MAXINPUTBUFFER - 1);
-    options.F[MAXINPUTBUFFER - 1] = '\0'; /* null terminator */
+    options.F[MAXINPUTBUFFER - 1] = '\0';
 
     fclose(fp);
     free(buffer);

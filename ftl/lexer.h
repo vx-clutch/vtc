@@ -4,6 +4,7 @@
 #include "ctype.h"
 #include "string.h"
 
+/* token types */
 typedef enum {
   TOKEN_NUMBER,
   TOKEN_IDENT,
@@ -32,7 +33,6 @@ typedef struct {
 
 void print_token(const Token *token);
 void free_token(Token *token);
-
 Token next_token(Lexer *lexer);
 
 #endif

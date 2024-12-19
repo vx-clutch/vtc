@@ -5,8 +5,7 @@
 #include <stdlib.h>
 
 /* kill_proc either prints to stdout, or to the set file in the options struct
- * then exits with status code 0
- */
+ * then exits with status code 0 */
 void kill_proc(Options options, char *source) {
   if (options.o[0] == '\0') {
     (void)printf("%s", source);
@@ -29,14 +28,14 @@ int toplev(int argc, char **argv) {
   }
 
   Lexer lexer = {source, 0};
-  Token tokens[MAXTOKENS];
+  Token token_buffer[MAXTOKENS];
   int i;
-  i = 0;
 
+  /* iterate over source and get tokens */
   while (1) {
     Token token = next_token(&lexer);
 
-    tokens[i] = token;
+    token_buffer[i] = token;
 
     if (token.type == TOKEN_EOF) {
       free_token(&token);
@@ -45,6 +44,14 @@ int toplev(int argc, char **argv) {
 
     free_token(&token);
     i++;
+  }
+
+  Token tokens[i];
+
+  /* takes the first i elemets in token_buffer and place them in the
+   * corresponding place in tokens */
+  for (int j = 0; j < i; j++) {
+    tokens[i] = token_buffer[i];
   }
 
   return 0;
