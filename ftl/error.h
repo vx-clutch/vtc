@@ -41,6 +41,7 @@ static inline void errorf(const char *format, ...) {
   va_start(args, format);
   (void)fprintf(stderr, "%sftl%s: %serror%s: ", WHITE, RESET, RED, RESET);
   (void)vfprintf(stderr, format, args);
+  (void)printf("\n");
   va_end(args);
 }
 
@@ -56,13 +57,23 @@ static inline void warningf(const char *format, ...) {
   va_start(args, format);
   (void)fprintf(stderr, "%sftl%s: %swarning%s: ", WHITE, RESET, PURPLE, RESET);
   (void)vfprintf(stderr, format, args);
+  (void)printf("\n");
   va_end(args);
 }
 
 /* debug */
 static inline int debug(const char *tag, const char *message) {
-  (void)printf("debug: %s:\n%s", tag, message);
+  (void)printf("debug: %s: %s", tag, message);
   return 0;
+}
+
+static inline void debugf(const char *tag, const char *format, ...) {
+  va_list args;
+  va_start(args, format);
+  (void)fprintf(stdout, "%s%s%s: ", WHITE, tag, RESET);
+  (void)vfprintf(stdout, format, args);
+  (void)printf("\n");
+  va_end(args);
 }
 
 #endif
