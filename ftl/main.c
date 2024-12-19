@@ -6,6 +6,7 @@
 #endif
 
 int main(int argc, char **argv) {
+  /* call toplev which is where all of the main logic is held */
   (void)toplev(argc, argv);
   return 0;
 }

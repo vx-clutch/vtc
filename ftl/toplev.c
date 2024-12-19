@@ -4,6 +4,9 @@
 #include "processor.h"
 #include <stdlib.h>
 
+/* kill_proc either prints to stdout, or to the set file in the options struct
+ * then exits with status code 0
+ */
 void kill_proc(Options options, char *source) {
   if (options.o[0] == '\0') {
     (void)printf("%s", source);
