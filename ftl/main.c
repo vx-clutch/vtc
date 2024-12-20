@@ -1,5 +1,4 @@
 #include "toplev.h"
-#include "error.h"
 
 #ifndef __linux__
 #error                                                                         \
@@ -7,7 +6,6 @@
 #endif
 
 int main(int argc, char **argv) {
-  fatal_errorf("%s", 123);
   /* call toplev which is where all of the main logic is held */
   (void)toplev(argc, argv);
   return 0;
