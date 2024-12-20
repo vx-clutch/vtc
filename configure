@@ -1,6 +1,6 @@
 #!/bin/bash
 
-CCs="gcc clang cc CC g++"
+CCs="gcc clang cc CC g++ icc icx armclang xlc armclang++ cl"
 
 if [[ $1 == "-from-make" ]]; then
   for cc in $CCs; do
