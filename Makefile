@@ -3,7 +3,7 @@ ifeq ($(PREFIX),)
 endif
 
 CC := $(shell ./configure -from-make)
-CFLAGS := -Wall -Wextra -O2 -pedantic -std=c11 -I./ftl -D COMPILER_PLATFORM="\"$(shell uname -o) $(shell uname -r)\"" -ggdb
+CFLAGS := -Wall -Wextra -O2 -pedantic -std=c11 -I./ftl -D COMPILER_PLATFORM="\"$(shell uname -o) $(shell uname -r)\""
 LDFLAGS :=
 SRC := $(wildcard ftl/*.c) $(wildcard ftl/options/*.c)
 BIN_DIR := build
@@ -25,6 +25,9 @@ all: $(EXEC) $(LIBGO_SO)
 
 $(EXEC): $(OBJ) | $(BIN_DIR)/bin
 	$(CC) $(CFLAGS) $(OBJ) -o $@ $(LDFLAGS)
+
+debug: $(OBJ) | $(BIN_DIR)/bin
+	$(CC) $(CFLAGS) -ggdb $(OBJ) -o $@ $(LDFLAGS)
 
 $(LIBGO_SO): $(GOSRC) | $(LIBGO_DIR) $(BIN_DIR)/obj/libgo
 	cd $(LIBGO_DIR) && $(GC) $(GOFLAGS) -o ../$(LIBGO_SO) go/main.go
