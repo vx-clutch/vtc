@@ -1,6 +1,8 @@
 #include "parser.h"
+#include "lexer.h"
 #include <string.h>
 
-node **parser(const char *source) {
+node **parser(Token source[]) {
+  int pc;
   return NULL;
 }
