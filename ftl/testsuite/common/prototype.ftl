@@ -1,6 +1,13 @@
-use io;
+#use <io.def>
 
 &main: void {
-	printfn("Hello, World!");
-	return 0;
+  printfn("Hello, World!");
+  out;
+  out = add(34, 35);
+  printfn("%d", $out);
+  return 0;
+} int;
+
+&add: (int x, int y) {
+  return x y +;
 } int;
