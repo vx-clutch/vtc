@@ -2,9 +2,9 @@
 
 &main: void {
   printfn("Hello, World!");
-  out;
+  let mut out;
   out = add(34, 35);
-  printfn("%d", $out);
+  printfn("%d", out);
   return 0;
 } int;
 

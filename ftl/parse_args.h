@@ -6,10 +6,10 @@
 #include <stdio.h>
 
 typedef struct {
-  bool S; /* assembly */
-  bool c; /* object */
-  bool E; /* expand */
-  char o[MAXOUTPUTPATH]; /* outfile */
+  bool S;                 /* assembly */
+  bool c;                 /* object */
+  bool E;                 /* expand */
+  char o[MAXOUTPUTPATH];  /* outfile */
   char F[MAXINPUTBUFFER]; /* input file */
 } Options;
 

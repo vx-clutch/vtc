@@ -3,13 +3,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/* see next token */
 char peek(Lexer *lexer) { return lexer->input[lexer->pos]; }
-
-/* get next token */
 void advance(Lexer *lexer) { lexer->pos++; }
 
-/* get number and turn it into a token */
 Token tokenize_number(Lexer *lexer) {
   size_t start = lexer->pos;
   while (isdigit(peek(lexer))) {
@@ -23,7 +19,6 @@ Token tokenize_number(Lexer *lexer) {
   return token;
 }
 
-/* turn A-Za-z into single token */
 Token tokenize_alpha(Lexer *lexer) {
   size_t start = lexer->pos;
 
@@ -45,8 +40,6 @@ Token tokenize_alpha(Lexer *lexer) {
   return token;
 }
 
-/* for external use
- * get the next token in *lexer */
 Token next_token(Lexer *lexer) {
   while (peek(lexer) != '\0') {
     char c = peek(lexer);
@@ -92,7 +85,6 @@ Token next_token(Lexer *lexer) {
   return (Token){TOKEN_EOF, NULL};
 }
 
-/* print token type and value if it has one */
 void print_token(const Token *token) {
   switch (token->type) {
   case TOKEN_NUMBER:
@@ -137,7 +129,6 @@ void print_token(const Token *token) {
   }
 }
 
-/* free token memory */
 void free_token(Token *token) {
   if (token->type == TOKEN_NUMBER) {
     free(token->value);

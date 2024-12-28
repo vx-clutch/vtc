@@ -52,8 +52,5 @@ Mkfile.old
 dkms.conf
 
 .vscode
-build/bin/*
-!build/bin/*.*
-
-build/obj/*
-!build/obj/*.*
+build/*
+!build
