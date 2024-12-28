@@ -4,9 +4,8 @@
 #include "config.h"
 
 typedef struct {
-  char *KWORD;
-  char *assembly;
-  char macros[MAXMACROS];
+  char KWORD[MAXKWORDLEN];
+  char assembly[MAXASM];
 } module;
 
 module get_module(const char *source);

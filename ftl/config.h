@@ -14,7 +14,8 @@
 /* max ammout of tokens */
 #define MAXTOKENS 1024
 
-/* max macros in module */
-#define MAXMACROS 1024
+/* defines for modules */
+#define MAXKWORDLEN 32
+#define MAXASM 256
 
 #endif
