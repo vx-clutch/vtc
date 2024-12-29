@@ -29,7 +29,7 @@ int toplev(int argc, char **argv) {
 
   Lexer lexer = {source, 0};
   Token token_buffer[MAXTOKENS];
-  int i;
+  int i = 0;
 
   /* iterate over source and get tokens */
   while (1) {

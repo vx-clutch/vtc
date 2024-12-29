@@ -51,7 +51,7 @@ Options parse_args(int argc, char **argv) {
   struct option long_options[] = {{"version", no_argument, 0, 'v'},
                                   {"help", no_argument, 0, 'h'},
                                   {0, 0, 0, 0}};
-  while ((c = getopt_long(argc, argv, "SEco:hv", long_options,
+  while ((c = getopt_long(argc, argv, "SEco:hvM:", long_options,
                           &option_index)) != -1) {
     switch (c) {
     /* assembly */
@@ -65,6 +65,10 @@ Options parse_args(int argc, char **argv) {
     /* output */
     case 'o':
       strncpy(options.o, optarg, MAXINPUTBUFFER);
+      break;
+    /* module */
+    case 'M':
+      strncpy(options.M, optarg, MAXINPUTBUFFER);
       break;
     /* preproccsor */
     case 'E':

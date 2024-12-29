@@ -18,7 +18,7 @@ module get_module(const char *source) {
   if (start) {
     start += 7;
     const char *end = strchr(start, ';');
-    if (end && (end - start) < sizeof(module.KWORD)) {
+    if ((long unsigned int)(end && (end - start)) < sizeof(module.KWORD)) {
       strncpy(module.KWORD, start, end - start);
       module.KWORD[end - start] = '\0';
     }

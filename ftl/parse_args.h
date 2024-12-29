@@ -9,6 +9,7 @@ typedef struct {
   bool S;                 /* assembly */
   bool c;                 /* object */
   bool E;                 /* expand */
+  char M[MAXINPUTBUFFER]; /* module */
   char o[MAXOUTPUTPATH];  /* outfile */
   char F[MAXINPUTBUFFER]; /* input file */
 } Options;
