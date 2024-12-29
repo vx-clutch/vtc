@@ -14,6 +14,7 @@ void print_help() {
   printf("  -o <file>\tPlace the output into <file>.\n");
   printf("  -S\t\tCompile only; do not assembly or link.\n");
   printf("  -c\t\tCompile and assemble, but do not link.\n");
+  printf("  -M\t\tSets the module directory\n");
 }
 
 /* see config.h */
