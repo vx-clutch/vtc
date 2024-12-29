@@ -3,7 +3,7 @@ ifeq ($(PREFIX),)
 endif
 
 CC := $(shell ./configure -from-make)
-CFLAGS := -Wall -Wextra -Werror -Wno-stringop-truncation -O2 -pedantic -std=c11 -I./ftl -D COMPILER_PLATFORM="\"$(shell uname -o) $(shell uname -r)\""
+CFLAGS := -Wall -Wextra -O2 -pedantic -std=c11 -I./ftl -D COMPILER_PLATFORM="\"$(shell uname -o) $(shell uname -r)\""
 LDFLAGS :=
 SRC := $(wildcard ftl/*.c) $(wildcard ftl/options/*.c)
 BIN_DIR := build
@@ -51,3 +51,6 @@ install: $(EXEC) $(LIBGO_SO)
 uninstall:
 	$(RM) $(PREFIX)/bin/ftl
 	$(RM) $(MAN_DEST)
+run:
+	export LD_LIBRARY_PATH=.
+	./build/bin/ftl
