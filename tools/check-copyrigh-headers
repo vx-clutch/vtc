@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+if pwd | grep -q tools; then
+  cd ..
+fi
+
 header="// Copyright (C) 2024 vx-clutch\n// See end of file for extended copyright information."
 footer="
 /* ftl is a simple and extensible compiler.
@@ -17,4 +21,25 @@ footer="
  */
 "
 
-echo -e "$header\n\n$(cat $1)\n$footer" > $1
+add_to_file () {
+  read -p "Would you like to add copyright information to $1? (Y/n): " confirm
+  if ! "$confirm" == [yY]; then
+    # echo -e "$header\n\n$(cat $1)\n$footer" > $1
+    echo appended
+  fi
+}
+
+check_file () {
+  local file=$1
+  if ! [ grep -q "$header" "$1"; then
+    printf "error: file missing copyright: %s\n" "${file}"
+  fi
+}
+
+files=$(find ftl -maxdepth 1 -name '*.c')
+
+for file in files; do
+  if ! [ grep -q "$header" "$1"; then
+    printf "error: file missing copyright: %s\n" "${file}"
+  fi
+done
