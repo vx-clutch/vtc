@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 header="// Copyright (C) 2024 vx-clutch\n// See end of file for extended copyright information."
 footer="
