@@ -5,7 +5,7 @@
 #include "lexer.h"
 #include <string.h>
 
-node **parser(Token source[]) { 
+node **parser(Token tokens[]) { 
   return NULL;
 }
 

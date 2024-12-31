@@ -1,8 +1,8 @@
 // Copyright (C) 2024 vx-clutch
 // See end of file for extended copyright information.
 
-#ifndef ERROR_H
-#define ERROR_H
+#ifndef OUTPUT_H
+#define OUTPUT_H
 
 #include <stdarg.h>
 #include <stdio.h>

@@ -3,7 +3,7 @@
 
 #include "parse_args.h"
 #include "config.h"
-#include "error.h"
+#include "output.h"
 #include <getopt.h>
 #include <stdio.h>
 #include <stdlib.h>
