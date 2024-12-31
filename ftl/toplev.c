@@ -11,7 +11,7 @@
  * then exits with status code 0 */
 void kill_proc(Options options, char *source) {
   if (options.o[0] == '\0') {
-    (void)printf("%s", source);
+    (void)printf("%s\n", source);
     exit(0);
   }
   FILE *fp;

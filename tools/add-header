@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-header="// Copyright (C) 2024 vx-clutch\n// See end of file for extended copyright information."
+header="// Copyright (C) 2024 vx-clutch
+// See end of file for extended copyright information."
 footer="
 /* ftl is a simple and extensible compiler.
  * Copyright (C) 2024 vx-clutch
@@ -33,4 +34,7 @@ footer="
  */
 "
 
-echo -ne "$header\n\n$(cat $1)\n$footer" > "$1"
+echo -ne "$header
+
+$(cat $1)
+$footer" > "$1"

@@ -1,1 +1,1 @@
-SYSCALL(60, 0);
+SYSCALL(60, 0); ;; Exits with status 0.
