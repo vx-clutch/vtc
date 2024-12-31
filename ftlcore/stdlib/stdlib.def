@@ -1,3 +1,0 @@
-fn exit(const int status): void {
-    syscall(SYS_exit, status);
-}

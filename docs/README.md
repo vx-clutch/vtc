@@ -1,6 +1,2 @@
 # Docs
-This directory and all subidrectory contain the following:
-  * Language Speifications
-
-## Supported Languages
-* English
+what is this documentation city?

@@ -1,14 +1,7 @@
-// Copyright (C) 2024 vx-clutch
-// See end of file for extended copyright information.
+#!/usr/bin/env bash
 
-#include "parser.h"
-#include "lexer.h"
-#include <string.h>
-
-node **parser(Token source[]) { 
-  return NULL;
-}
-
+header="// Copyright (C) 2024 vx-clutch\n// See end of file for extended copyright information."
+footer="
 /* ftl is a simple and extensible compiler.
  * Copyright (C) 2024 vx-clutch
  *
@@ -38,3 +31,6 @@ node **parser(Token source[]) {
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
+"
+
+echo -ne "$header\n\n$(cat $1)\n$footer" > "$1"
