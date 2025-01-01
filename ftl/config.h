@@ -17,10 +17,6 @@
 /* max ammout of tokens */
 #define MAXTOKENS 1024
 
-/* defines for modules */
-#define MAXKWORDLEN 32
-#define MAXASM 256
-
 #endif
 
 /* ftl is a simple and extensible compiler.
