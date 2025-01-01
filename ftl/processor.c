@@ -40,9 +40,8 @@ void colapse_whitespace(char *source) {
   }
 
   // Remove trailing space if present
-  if (j > 0 && source[j - 1] == ' ') {
+  if (j > 0 && source[j - 1] == ' ')
     j--;
-  }
 
   source[j] = '\0'; // Null-terminate the cleaned string
 }

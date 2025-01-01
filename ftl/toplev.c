@@ -26,9 +26,8 @@ int toplev(int argc, char **argv) {
   Options options = parse_args(argc, argv);
   source = options.F;
   source = processor(source);
-  if (options.E) {
+  if (options.E)
     kill_proc(options, source);
-  }
 
   Lexer lexer = {source, 0};
   Token token_buffer[MAXTOKENS];
@@ -53,9 +52,8 @@ int toplev(int argc, char **argv) {
 
   /* takes the first i elemets in token_buffer and place them in the
    * corresponding place in tokens */
-  for (int j = 0; j < i; j++) {
+  for (int j = 0; j < i; j++)
     tokens[i] = token_buffer[i];
-  }
 
   return 0;
 }

@@ -91,9 +91,8 @@ Options parse_args(int argc, char **argv) {
     }
   }
 
-  if (optind >= argc) {
+  if (optind >= argc)
     fatal_error("no input files.");
-  }
 
   /* file processing */
   /* read file, and set options.F to the char[] of the contents */
@@ -106,9 +105,8 @@ Options parse_args(int argc, char **argv) {
     /* file pointer */
     fp = fopen(path, "r");
 
-    if (fp == NULL) {
+    if (fp == NULL)
       fatal_error("cannot open file.");
-    }
 
     fseek(fp, 0, SEEK_END);
     file_size = ftell(fp);

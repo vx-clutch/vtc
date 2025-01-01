@@ -11,9 +11,8 @@ void advance(Lexer *lexer) { lexer->pos++; }
 
 Token tokenize_number(Lexer *lexer) {
   size_t start = lexer->pos;
-  while (isdigit(peek(lexer))) {
+  while (isdigit(peek(lexer)))
     advance(lexer);
-  }
   size_t length = lexer->pos - start;
   char *num = malloc(length + 1);
   strncpy(num, lexer->input + start, length);
@@ -25,9 +24,8 @@ Token tokenize_number(Lexer *lexer) {
 Token tokenize_alpha(Lexer *lexer) {
   size_t start = lexer->pos;
 
-  while ((peek(lexer) != '\0' && isalpha(peek(lexer))) || peek(lexer) == '_') {
+  while ((peek(lexer) != '\0' && isalpha(peek(lexer))) || peek(lexer) == '_')
     advance(lexer);
-  }
 
   size_t length = lexer->pos - start;
 
@@ -52,13 +50,11 @@ Token next_token(Lexer *lexer) {
       continue;
     }
 
-    if (isdigit(c)) {
+    if (isdigit(c))
       return tokenize_number(lexer);
-    }
 
-    if (isalpha(c)) {
+    if (isalpha(c))
       return tokenize_alpha(lexer);
-    }
 
     advance(lexer);
 
@@ -133,9 +129,8 @@ void print_token(const Token *token) {
 }
 
 void free_token(Token *token) {
-  if (token->type == TOKEN_NUMBER) {
+  if (token->type == TOKEN_NUMBER)
     free(token->value);
-  }
 }
 
 /* ftl is a simple and extensible compiler.
