@@ -1,6 +1,5 @@
 // Copyright (C) 2024 vx-clutch
 // See end of file for extended copyright information.
-
 #include "parse_args.h"
 #include "config.h"
 #include "output.h"

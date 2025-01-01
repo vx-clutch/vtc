@@ -3,10 +3,10 @@
 
 #include "parser.h"
 #include "lexer.h"
-#include <string.h>
 
-node **parser(Token tokens[]) { 
-  return NULL;
+node *parser(Token tokens[]) {
+  node *prog;
+  return prog;
 }
 
 /* ftl is a simple and extensible compiler.
