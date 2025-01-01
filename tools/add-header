@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-header="// Copyright (C) 2024 vx-clutch
+header="// Copyright (C) 2024 vx-clutch ( owestness@gmail.com )
 // See end of file for extended copyright information."
 footer="
 /* ftl is a simple and extensible compiler.
