@@ -2,6 +2,7 @@
 // See end of file for extended copyright information.
 
 #include "toplev.h"
+#include <stdlib.h>
 
 #ifndef __linux__
 #error                                                                         \
@@ -11,7 +12,7 @@
 int main(int argc, char **argv) {
   /* call toplev which is where all of the main logic is held */
   (void)toplev(argc, argv);
-  return 0;
+  return EXIT_SUCCESS;
 }
 
 /* ftl is a simple and extensible compiler.
