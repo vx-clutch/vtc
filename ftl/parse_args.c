@@ -17,6 +17,7 @@ void print_help() {
   printf("  -S\t\tCompile only; do not assembly or link.\n");
   printf("  -c\t\tCompile and assemble, but do not link.\n");
   printf("  -M\t\tSets the module directory\n");
+  printf("  -v\t\tEnables verbose output\n");
 }
 
 /* see config.h */
@@ -50,8 +51,8 @@ Options parse_args(int argc, char **argv) {
   options.S = false;
 
   /* define long options */
-  struct option long_options[] = {{"version", no_argument, 0, 'v'},
-                                  {"help", no_argument, 0, 'h'},
+  struct option long_options[] = {{"version", no_argument, 0, 1},
+                                  {"help", no_argument, 0, 2},
                                   {0, 0, 0, 0}};
   opterr = 0;
   while ((opt = getopt_long(argc, argv, "SEco:hvM:", long_options,
@@ -80,18 +81,19 @@ Options parse_args(int argc, char **argv) {
       options.E = true;
       break;
     /* help */
-    case 'h':
+    case 2:
       print_help();
       exit(EXIT_SUCCESS);
     /* version */
-    case 'v':
+    case 1:
       print_version();
       exit(EXIT_SUCCESS);
     case '?':
-      perrorf("unreconized command-line argument '%s'", (char *)optopt);
+      perrorf("unreconized command-line argument '%s'", argv[optind - 1]);
       break;
     default:
-      abort();
+      perrorf("unreconized command-line argument '%s'", argv[optind - 1]);
+      break;
     }
   }
 
@@ -110,7 +112,7 @@ Options parse_args(int argc, char **argv) {
     fp = fopen(path, "r");
 
     if (fp == NULL)
-      pfatal("cannot open file.");
+      pfatalf("no such file or directory '%s'", path);
 
     fseek(fp, 0, SEEK_END);
     file_size = ftell(fp);
