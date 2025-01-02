@@ -23,7 +23,8 @@ void kill_proc(Options options, char *source) {
 
 int toplev(int argc, char **argv) {
   char *source;
-  Options options = parse_args(argc, argv);
+  Options options;
+  options = parse_args(argc, argv);
   source = options.F;
   source = processor(source);
   if (options.E)
