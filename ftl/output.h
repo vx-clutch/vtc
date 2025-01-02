@@ -5,6 +5,7 @@
 #define OUTPUT_H
 
 #include "config.h"
+#include "parse_args.h"
 #include <stdarg.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -94,13 +95,12 @@ static inline void plog(const char *message, int level) {
    * 1 - warning
    * 2+ - error
    */
-  if (level == 0) {
+  if (level == 0)
     (void)printf("[ %sOK%s ] %s", GREEN, RESET, message);
-  } else if (level == 1) {
+  else if (level == 1)
     (void)printf("[ %sWARNING%s ] %s", YELLOW, RESET, message);
-  } else {
+  else
     (void)printf("[ %sFAILURE%s ] %s", RED, RESET, message);
-  }
 }
 
 #endif
