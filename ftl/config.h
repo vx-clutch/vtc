@@ -8,6 +8,9 @@
 #define COMPILER_VERSION "alpha"
 #define COMPILER_YEAR "2024"
 
+/* compiler name for output.h */
+#define COMPILER_NAME "ftl"
+
 /* max charecters an input buffer can be. */
 #define MAXINPUTBUFFER 4069
 

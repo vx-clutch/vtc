@@ -40,7 +40,7 @@ void print_version() {
 }
 
 Options parse_args(int argc, char **argv) {
-  int c;
+  size_t opt;
   int option_index = 0;
 
   /* init options struct */
@@ -53,9 +53,10 @@ Options parse_args(int argc, char **argv) {
   struct option long_options[] = {{"version", no_argument, 0, 'v'},
                                   {"help", no_argument, 0, 'h'},
                                   {0, 0, 0, 0}};
-  while ((c = getopt_long(argc, argv, "SEco:hvM:", long_options,
-                          &option_index)) != -1) {
-    switch (c) {
+  opterr = 0;
+  while ((opt = getopt_long(argc, argv, "SEco:hvM:", long_options,
+                            &option_index)) != -1) {
+    switch (opt) {
     /* assembly */
     case 'S':
       options.S = true;
@@ -66,11 +67,13 @@ Options parse_args(int argc, char **argv) {
       break;
     /* output */
     case 'o':
-      strncpy(options.o, optarg, MAXINPUTBUFFER);
-      break;
-    /* module */
-    case 'M':
-      strncpy(options.M, optarg, MAXINPUTBUFFER);
+      if (optarg == NULL || optarg[0] == '-') {
+        perror("missing filename after '-o'");
+        break;
+      } else {
+        plog("case o", 0);
+        strncpy(options.o, optarg, MAXINPUTBUFFER);
+      }
       break;
     /* preproccsor */
     case 'E':
@@ -85,14 +88,15 @@ Options parse_args(int argc, char **argv) {
       print_version();
       exit(EXIT_SUCCESS);
     case '?':
-      exit(EXIT_FAILURE);
+      perrorf("unreconized command-line argument '%s'", (char *)optopt);
+      break;
     default:
       abort();
     }
   }
 
   if (optind >= argc)
-    fatal_error("no input files.");
+    pfatal("no input files.");
 
   /* file processing */
   /* read file, and set options.F to the char[] of the contents */
@@ -106,7 +110,7 @@ Options parse_args(int argc, char **argv) {
     fp = fopen(path, "r");
 
     if (fp == NULL)
-      fatal_error("cannot open file.");
+      pfatal("cannot open file.");
 
     fseek(fp, 0, SEEK_END);
     file_size = ftell(fp);
@@ -115,15 +119,15 @@ Options parse_args(int argc, char **argv) {
     /* is file small enough (you can increase this limit in config.h) */
     if (file_size >= MAXINPUTBUFFER) {
       fclose(fp);
-      fatal_errorf("input buffer exceeds buffer capacity (%d bytes).",
-                   MAXINPUTBUFFER);
+      pfatalf("input buffer exceeds buffer capacity (%d bytes).",
+              MAXINPUTBUFFER);
     } else if (file_size == 0) {
     }
 
     buffer = (char *)malloc(file_size + 1);
     if (buffer == NULL) {
       fclose(fp);
-      fatal_error("error allocating memory.");
+      pfatal("error allocating memory.");
     }
 
     (void)fread(buffer, 1, file_size, fp);
