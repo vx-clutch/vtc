@@ -24,22 +24,24 @@ LIBGO_SO := $(OBJ_DIR)/libgo/libgo.so
 all: $(EXEC) $(LIBGO_SO)
 
 $(EXEC): $(OBJ) | $(BIN_DIR)/bin
+	@echo -n "  CALL  "
 	$(CC) $(CFLAGS) $(OBJ) -o $@ $(LDFLAGS)
 
-debug: $(OBJ) | $(BIN_DIR)/bin
-	$(CC) $(CFLAGS) -ggdb $(OBJ) -o $@ $(LDFLAGS)
-
 $(LIBGO_SO): $(GOSRC) | $(LIBGO_DIR) $(BIN_DIR)/obj/libgo
+	@echo -n "  CALL  "
 	cd $(LIBGO_DIR) && $(GC) $(GOFLAGS) -o ../$(LIBGO_SO) go/main.go
 
 $(BIN_DIR)/bin $(OBJ_DIR) $(BIN_DIR)/obj/libgo:
+	@echo -n "  CALL  "
 	mkdir -p $@
 
 $(OBJ_DIR)/%.o: %.c | $(OBJ_DIR)
+	@echo -n "  CALL  "
 	mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
+	@echo -n "  CALL  "
 	$(RM) -r $(BIN_DIR)
 
 install: $(EXEC) $(LIBGO_SO)
