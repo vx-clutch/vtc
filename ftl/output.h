@@ -18,7 +18,7 @@ static const char *RED = "\033[1;91m";
 static const char *PURPLE = "\033[0;95m";
 static const char *WHITE = "\033[0;97m";
 static const char *GREEN = "\033[1;32m";
-static const char *YELLOW = "\e[0;33m";
+static const char *YELLOW = "\033[0;33m";
 
 /* fatal */
 static inline void pfatal(const char *message) {
