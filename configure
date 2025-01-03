@@ -3,7 +3,7 @@
 
 #!/bin/bash
 
-CCs="gcc clang cc CC g++ icc icx armclang xlc armclang++ cl"
+CCs="gcc clang icc dpc++ tcc pcc armcc mingw32-gcc riscv64-unknown-elf-gcc xlc pgcc opencc pathcc"
 
 if [[ $1 == "-from-make" ]]; then
   for cc in $CCs; do
@@ -27,6 +27,8 @@ function find_cc {
     then
       echo -e "  ${GREEN}found $cc${RESET}"
       foundCC=true
+    else 
+      echo -e "  ${YELLOW}not found $cc${RESET}"
     fi
   done
   if ! $foundCC; then
