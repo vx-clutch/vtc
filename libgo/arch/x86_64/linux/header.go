@@ -1,7 +1,7 @@
 // Copyright (C) 2024 vx-clutch
 // See end of file for extended copyright information.
 
-package linux_x86_64
+package linuxx64
 
 import (
   "C"

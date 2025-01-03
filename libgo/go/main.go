@@ -6,8 +6,7 @@ package main
 import "C"
 
 import (
-	"libgo/target/linux/x86/32"
-	"libgo/target/linux/x86/64"
+	"libgo/arch/x86_64/linux"
 )
 
 func main() {}
@@ -16,10 +15,8 @@ func main() {}
 func get_header_for(__which *C.char) *C.char {
 	which := C.GoString(__which)
 	switch which {
-	case "linux_x86_64":
-		return (*C.char)(linux_x86_64.Get())
-	case "linux_x86_32":
-		return (*C.char)(linux_x86_32.Get())
+	case "linuxx64":
+		return (*C.char)(linuxx64.Get())
 	default:
 		return C.CString("")
 	}
