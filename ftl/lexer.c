@@ -17,7 +17,7 @@ Token tokenize_number(Lexer *lexer) {
   char *num = malloc(length + 1);
   strncpy(num, lexer->input + start, length);
   num[length] = '\0';
-  Token token = {TOKEN_NUMBER, num};
+  Token token = {INT, num};
   return token;
 }
 
@@ -37,7 +37,7 @@ Token tokenize_alpha(Lexer *lexer) {
   strncpy(id, lexer->input + start, length);
   id[length] = '\0';
 
-  Token token = {TOKEN_IDENT, id};
+  Token token = {IDENT, id};
   return token;
 }
 
@@ -60,76 +60,36 @@ Token next_token(Lexer *lexer) {
 
     switch (c) {
     case '+':
-      return (Token){TOKEN_PLUS, NULL};
+      return (Token){PLUS, NULL};
     case '-':
-      return (Token){TOKEN_MINUS, NULL};
+      return (Token){MINUS, NULL};
     case '*':
-      return (Token){TOKEN_STAR, NULL};
+      return (Token){STAR, NULL};
     case '/':
-      return (Token){TOKEN_SLASH, NULL};
+      return (Token){SLASH, NULL};
     case '(':
-      return (Token){TOKEN_LPAREN, NULL};
+      return (Token){LPAREN, NULL};
     case ')':
-      return (Token){TOKEN_RPAREN, NULL};
+      return (Token){RPAREN, NULL};
     case ',':
-      return (Token){TOKEN_COMMA, NULL};
+      return (Token){COMMA, NULL};
     case ':':
-      return (Token){TOKEN_COLON, NULL};
+      return (Token){COLON, NULL};
     case ';':
-      return (Token){TOKEN_SEMICOLON, NULL};
+      return (Token){SEMICOLON, NULL};
+    case '#':
+      return (Token){POUND, NULL};
+    case '%':
+      return (Token){PERCENT, NULL};
     default:
-      return (Token){TOKEN_UNKNOWN, NULL};
+      return (Token){UNKNOWN, NULL};
     }
   }
-  return (Token){TOKEN_EOF, NULL};
-}
-
-void print_token(const Token *token) {
-  switch (token->type) {
-  case TOKEN_NUMBER:
-    printf("NUMBER(%s)\n", token->value);
-    break;
-  case TOKEN_IDENT:
-    printf("IDENT(%s)\n", token->value);
-    break;
-  case TOKEN_PLUS:
-    printf("PLUS\n");
-    break;
-  case TOKEN_MINUS:
-    printf("MINUS\n");
-    break;
-  case TOKEN_STAR:
-    printf("STAR\n");
-    break;
-  case TOKEN_SLASH:
-    printf("SLASH\n");
-    break;
-  case TOKEN_LPAREN:
-    printf("LPAREN\n");
-    break;
-  case TOKEN_RPAREN:
-    printf("RPAREN\n");
-    break;
-  case TOKEN_COMMA:
-    printf("COMMA\n");
-    break;
-  case TOKEN_COLON:
-    printf("COLON\n");
-    break;
-  case TOKEN_SEMICOLON:
-    printf("SEMICOLON\n");
-    break;
-  case TOKEN_EOF:
-    printf("EOF\n");
-    break;
-  default:
-    printf("UNKNOWN\n");
-    break;
-  }
+  return (Token){EOF, NULL};
 }
 
 void free_token(Token *token) {
-  if (token->type == TOKEN_NUMBER)
+  if (token->type == INT)
     free(token->value);
 }
 

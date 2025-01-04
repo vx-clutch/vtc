@@ -3,6 +3,7 @@
 
 #include "config.h"
 #include "lexer.h"
+#include "output.h"
 #include "parse_args.h"
 #include "processor.h"
 #include <stdlib.h>
@@ -10,12 +11,12 @@
 /* kill_proc either prints to stdout, or to the set file in the options struct
  * then exits with status code 0 */
 void kill_proc(Options options, char *source) {
-  if (options.o[0] == '\0') {
+  if (options.output[0] == '\0') {
     (void)printf("%s\n", source);
     exit(0);
   }
   FILE *fp;
-  fp = fopen(options.o, "w");
+  fp = fopen(options.output, "w");
   fprintf(fp, "%s", source);
   fclose(fp);
   exit(0);
@@ -23,12 +24,14 @@ void kill_proc(Options options, char *source) {
 
 int toplev(int argc, char **argv) {
   char *source;
-  Options options;
-  options = parse_args(argc, argv);
-  source = options.F;
+  plog("parsing args", 0);
+  parse_args(argc, argv);
+  source = options.file;
   source = processor(source);
-  if (options.E)
+  if (options.expanded) {
+    plog("-E was passed.", 1);
     kill_proc(options, source);
+  }
 
   Lexer lexer = {source, 0};
   Token token_buffer[MAXTOKENS];
@@ -40,7 +43,7 @@ int toplev(int argc, char **argv) {
 
     token_buffer[i] = token;
 
-    if (token.type == TOKEN_EOF) {
+    if (token.type == EOF) {
       free_token(&token);
       break;
     }

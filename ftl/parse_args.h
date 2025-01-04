@@ -9,12 +9,16 @@
 #include <stdio.h>
 
 typedef struct {
-  bool S;                 /* assembly */
-  bool c;                 /* object */
-  bool E;                 /* expand */
-  char o[MAXOUTPUTPATH];  /* outfile */
-  char F[MAXINPUTBUFFER]; /* input file */
+  bool __parsed;
+  bool assembly;
+  bool object;
+  bool expanded;
+  bool verbose;
+  char output[MAXOUTPUTPATH];
+  char file[MAXINPUTBUFFER];
 } Options;
+
+extern Options options;
 
 Options parse_args(int argc, char **argv);
 

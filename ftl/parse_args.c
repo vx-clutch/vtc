@@ -20,6 +20,15 @@ void print_help() {
   printf("  -v\t\tEnables verbose output\n");
 }
 
+Options options = {
+  .assembly = false,
+  .object = false,
+  .expanded = false,
+  .verbose = false,
+  .output = "",
+  .file = "",
+};
+
 /* see config.h */
 #ifndef COMPILER_VERSION
 #define COMPILER_VERSION "unknown"
@@ -44,12 +53,6 @@ Options parse_args(int argc, char **argv) {
   size_t opt;
   int option_index = 0;
 
-  /* init options struct */
-  Options options;
-  options.E = false;
-  options.c = false;
-  options.S = false;
-
   /* define long options */
   struct option long_options[] = {{"version", no_argument, 0, 1},
                                   {"help", no_argument, 0, 2},
@@ -60,11 +63,11 @@ Options parse_args(int argc, char **argv) {
     switch (opt) {
     /* assembly */
     case 'S':
-      options.S = true;
+      options.assembly = true;
       break;
     /* object */
     case 'c':
-      options.c = true;
+      options.object = true;
       break;
     /* output */
     case 'o':
@@ -73,12 +76,16 @@ Options parse_args(int argc, char **argv) {
         break;
       } else {
         plog("case o", 0);
-        strncpy(options.o, optarg, MAXINPUTBUFFER);
+        strncpy(options.output, optarg, MAXINPUTBUFFER);
       }
       break;
     /* preproccsor */
     case 'E':
-      options.E = true;
+      options.expanded = true;
+      break;
+    /* verbose */
+    case 'v':
+      options.verbose = true;
       break;
     /* help */
     case 2:
@@ -95,6 +102,7 @@ Options parse_args(int argc, char **argv) {
       perrorf("unreconized command-line argument '%s'", argv[optind - 1]);
       break;
     }
+    options.__parsed = true;
   }
 
   if (optind >= argc)
@@ -135,8 +143,8 @@ Options parse_args(int argc, char **argv) {
     (void)fread(buffer, 1, file_size, fp);
     buffer[file_size] = '\0';
 
-    strncpy(options.F, buffer, MAXINPUTBUFFER - 1);
-    options.F[MAXINPUTBUFFER - 1] = '\0';
+    strncpy(options.file, buffer, MAXINPUTBUFFER - 1);
+    options.file[MAXINPUTBUFFER - 1] = '\0';
 
     fclose(fp);
     free(buffer);

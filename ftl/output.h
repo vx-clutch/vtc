@@ -90,17 +90,26 @@ static inline int pdebugf(const char *tag, const char *format, ...) {
 }
 
 static inline void plog(const char *message, int level) {
-  /* levels:
-   * 0 - all good
-   * 1 - warning
-   * 2+ - error
-   */
+  static bool error_printed = false;
+
+  if (!options.__parsed && !error_printed) {
+    (void)fprintf(
+        stderr, "%serror%s: plog has been called before options were parsed.\n",
+        RED, RESET);
+    error_printed = true;
+    return;
+  }
+
+  if (!options.verbose)
+    return;
+
+  /* Log messages based on the level */
   if (level == 0)
-    (void)printf("[ %sOK%s ] %s", GREEN, RESET, message);
+    (void)printf("[ %sOK%s ] %s\n", GREEN, RESET, message);
   else if (level == 1)
-    (void)printf("[ %sWARNING%s ] %s", YELLOW, RESET, message);
+    (void)printf("[ %sWARNING%s ] %s\n", YELLOW, RESET, message);
   else
-    (void)printf("[ %sFAILURE%s ] %s", RED, RESET, message);
+    (void)printf("[ %sFAILURE%s ] %s\n", RED, RESET, message);
 }
 
 #endif

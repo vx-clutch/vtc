@@ -1,6 +1,7 @@
 // Copyright (C) 2024 vx-clutch ( owestness@gmail.com )
 // See end of file for extended copyright information.
 
+#include "output.h"
 #include "toplev.h"
 #include <stdlib.h>
 
@@ -10,6 +11,9 @@
 #endif
 
 int main(int argc, char **argv) {
+  plog("ok", 0);
+  plog("warn", 1);
+  plog("fail", 2);
   /* call toplev which is where all of the main logic is held */
   (void)toplev(argc, argv);
   return EXIT_SUCCESS;
