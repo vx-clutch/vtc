@@ -43,11 +43,6 @@ int toplev(int argc, char **argv) {
     plog("-E was passed.", 1);
     kill_proc(options, source);
   }
-
-  plog("ok", 0);
-  plog("warn", 1);
-  plog("fail", 2);
-
   Lexer lexer = {source, 0};
   Token token_buffer[MAXTOKENS];
   int i = 0;
