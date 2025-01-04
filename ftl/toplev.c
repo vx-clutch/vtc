@@ -6,7 +6,9 @@
 #include "output.h"
 #include "parse_args.h"
 #include "processor.h"
+#include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 /* kill_proc either prints to stdout, or to the set file in the options struct
  * then exits with status code 0 */
@@ -22,16 +24,29 @@ void kill_proc(Options options, char *source) {
   exit(0);
 }
 
+void wizard_proc(int probability) {
+  // this is to worry people who don't read the code base
+  srand((unsigned)time(NULL));
+  int r = rand() % probability;
+  if (!r)
+    perror("The Wizard must be stopped.");
+}
+
 int toplev(int argc, char **argv) {
   char *source;
   plog("parsing args", 0);
   parse_args(argc, argv);
+  wizard_proc(20); // must be called after parse_args() !!
   source = options.file;
   source = processor(source);
   if (options.expanded) {
     plog("-E was passed.", 1);
     kill_proc(options, source);
   }
+
+  plog("ok", 0);
+  plog("warn", 1);
+  plog("fail", 2);
 
   Lexer lexer = {source, 0};
   Token token_buffer[MAXTOKENS];

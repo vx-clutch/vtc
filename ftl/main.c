@@ -11,9 +11,6 @@
 #endif
 
 int main(int argc, char **argv) {
-  plog("ok", 0);
-  plog("warn", 1);
-  plog("fail", 2);
   /* call toplev which is where all of the main logic is held */
   (void)toplev(argc, argv);
   return EXIT_SUCCESS;

@@ -90,16 +90,6 @@ static inline int pdebugf(const char *tag, const char *format, ...) {
 }
 
 static inline void plog(const char *message, int level) {
-  static bool error_printed = false;
-
-  if (!options.__parsed && !error_printed) {
-    (void)fprintf(
-        stderr, "%serror%s: plog has been called before options were parsed.\n",
-        RED, RESET);
-    error_printed = true;
-    return;
-  }
-
   if (!options.verbose)
     return;
 
