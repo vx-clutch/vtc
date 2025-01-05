@@ -1,6 +1,7 @@
 // Copyright (C) 2024 vx-clutch ( owestness@gmail.com )
 // See end of file for extended copyright information.
 
+#include "output.h"
 #include "toplev.h"
 #include <stdlib.h>
 
@@ -13,7 +14,7 @@ int
 main(int argc, char **argv)
 {
   /* call toplev which is where all of the main logic is held */
-  (void)toplev(argc, argv);
+  (void)toplev(argc, argv); /* MUST be called FIRST before any other function */
   return EXIT_SUCCESS;
 }
 

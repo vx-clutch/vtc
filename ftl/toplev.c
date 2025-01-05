@@ -12,10 +12,12 @@
 /* kill_proc either prints to stdout, or to the set file in the options struct
  * then exits with status code 0 */
 void
-kill_proc(Options options, char *source)
+__pkill(Options options, char *source)
 {
+  plog(0, "internal pkill called");
   if (options.output[0] == '\0')
   {
+    plog(0, "printing to stdout");
     (void)printf("%s\n", source);
     exit(0);
   }
@@ -23,6 +25,7 @@ kill_proc(Options options, char *source)
   fp = fopen(options.output, "w");
   fprintf(fp, "%s", source);
   fclose(fp);
+  plog(OK "terminating compilation");
   exit(0);
 }
 
@@ -30,14 +33,16 @@ int
 toplev(int argc, char **argv)
 {
   char *source;
-  plog("parsing args", 0);
+  plog(INFO "parsing args");
   parse_args(argc, argv);
   source = options.file;
+  plog(INFO "Preprocessor stage");
   source = processor(source);
+  plog(OK "Preprocessor completed");
   if (options.expanded)
   {
-    plog("Expansion flag was parsed", 1);
-    kill_proc(options, source);
+    plog(INFO "The process will exit and output the preprocessed source code");
+    __pkill(options, source);
   }
   Lexer lexer = {source, 0};
   Token token_buffer[MAXTOKENS];

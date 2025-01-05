@@ -21,85 +21,110 @@ static const char *GREEN = "\033[1;32m";
 static const char *YELLOW = "\033[0;33m";
 
 /* fatal */
-static inline void pfatal(const char *message) {
+static inline void
+pfatal(const char *__message)
+{
   (void)fprintf(stderr,
                 "%s%s%s: %sfatal error%s: %s\ncompilation terminated.\n", WHITE,
-                COMPILER_NAME, RESET, RED, RESET, message);
+                COMPILER_NAME, RESET, RED, RESET, __message);
   exit(EXIT_FAILURE);
 }
 
-static inline void pfatalf(const char *format, ...) {
+static inline void
+pfatalf(const char *__format, ...)
+{
   va_list args;
-  va_start(args, format);
+  va_start(args, __format);
   (void)fprintf(stderr, "%s%s%s: %sfatal error%s: ", WHITE, COMPILER_NAME,
                 RESET, RED, RESET);
-  (void)vfprintf(stderr, format, args);
+  (void)vfprintf(stderr, __format, args);
   (void)fprintf(stderr, "\ncompilation terminated.\n");
   va_end(args);
   exit(EXIT_FAILURE);
 }
 
 /* error */
-static inline int __perror(const char *message) {
+static inline int
+__perror(const char *__message)
+{
   (void)fprintf(stderr, "%s%s%s: %serror%s: %s\n", WHITE, COMPILER_NAME, RESET,
-                RED, RESET, message);
+                RED, RESET, __message);
   return 0;
 }
 
-static inline void perrorf(const char *format, ...) {
+static inline void
+perrorf(const char *__format, ...)
+{
   va_list args;
-  va_start(args, format);
+  va_start(args, __format);
   (void)fprintf(stderr, "%s%s%s: %serror%s: ", WHITE, COMPILER_NAME, RESET, RED,
                 RESET);
-  (void)vfprintf(stderr, format, args);
+  (void)vfprintf(stderr, __format, args);
   (void)printf("\n");
   va_end(args);
 }
 
 /* warning */
-static inline int pwarning(const char *message) {
+static inline int
+pwarning(const char *__message)
+{
   (void)fprintf(stderr, "%s%s%s: %swarning%s: %s\n", WHITE, COMPILER_NAME,
-                RESET, PURPLE, RESET, message);
+                RESET, PURPLE, RESET, __message);
   return 0;
 }
 
-static inline void pwarningf(const char *format, ...) {
+static inline void
+pwarningf(const char *__format, ...)
+{
   va_list args;
-  va_start(args, format);
+  va_start(args, __format);
   (void)fprintf(stderr, "%s%s%s: %swarning%s: ", WHITE, COMPILER_NAME, RESET,
                 PURPLE, RESET);
-  (void)vfprintf(stderr, format, args);
+  (void)vfprintf(stderr, __format, args);
   (void)printf("\n");
   va_end(args);
 }
 
 /* debug */
-static inline int pdebug(const char *tag, const char *message) {
-  (void)printf("debug: %s: %s", tag, message);
+static inline int
+pdebug(const char *_desc, const char *__message)
+{
+  (void)printf("debug: %s: %s", _desc, __message);
   return 0;
 }
 
-static inline int pdebugf(const char *tag, const char *format, ...) {
+static inline int
+pdebugf(const char *__desc, const char *__format, ...)
+{
   va_list args;
-  va_start(args, format);
-  (void)fprintf(stdout, "%s%s%s: ", WHITE, tag, RESET);
-  (void)vfprintf(stdout, format, args);
+  va_start(args, __format);
+  (void)fprintf(stdout, "%s%s%s: ", WHITE, __desc, RESET);
+  (void)vfprintf(stdout, __format, args);
   (void)printf("\n");
   va_end(args);
   return 0;
 }
 
-static inline void plog(const char *message, int level) {
+#define INFO 0, 
+#define OK 1, 
+#define WARNING 2, 
+#define FAILURE 3, 
+
+static inline void
+plog(const int __status, const char *__message)
+{
   if (!options.verbose)
     return;
 
   /* Log messages based on the level */
-  if (level == 0)
-    (void)printf("[ %sOK%s ] %s\n", GREEN, RESET, message);
-  else if (level == 1)
-    (void)printf("[ %sWARNING%s ] %s\n", YELLOW, RESET, message);
-  else
-    (void)printf("[ %sFAILURE%s ] %s\n", RED, RESET, message);
+  if (__status == 0)
+    (void)printf("[ %sINFO%s ] %s\n", PURPLE, RESET, __message);
+  else if (__status == 1)
+    (void)printf("[ %sOKAY%s ] %s\n", GREEN, RESET, __message);
+  else if (__status == 2)
+    (void)printf("[ %sWARN%s ] %s\n", YELLOW, RESET, __message);
+  else if (__status == 3)
+    (void)printf("[ %sFAIL%s ] %s\n", RED, RESET, __message);
 }
 
 #endif

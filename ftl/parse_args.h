@@ -5,15 +5,15 @@
 #define OPT_H
 
 #include "config.h"
-#include <stdbool.h>
+#include <stdint.h>
 #include <stdio.h>
 
 typedef struct {
-  bool __parsed;
-  bool assembly;
-  bool object;
-  bool expanded;
-  bool verbose;
+  uint8_t __parsed;
+  uint8_t assembly;
+  uint8_t object;
+  uint8_t expanded;
+  uint8_t verbose;
   char output[MAXOUTPUTPATH];
   char file[MAXINPUTBUFFER];
 } Options;

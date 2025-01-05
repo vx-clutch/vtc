@@ -23,10 +23,10 @@ print_help()
 }
 
 Options options = {
-    .assembly = false,
-    .object = false,
-    .expanded = false,
-    .verbose = false,
+    .assembly = 0,
+    .object = 0,
+    .expanded = 0,
+    .verbose = 0,
     .output = "",
     .file = "",
 };
@@ -71,11 +71,11 @@ parse_args(int argc, char **argv)
     {
     /* assembly */
     case 'S':
-      options.assembly = true;
+      options.assembly = 1;
       break;
     /* object */
     case 'c':
-      options.object = true;
+      options.object = 1;
       break;
     /* output */
     case 'o':
@@ -86,17 +86,16 @@ parse_args(int argc, char **argv)
       }
       else
       {
-        plog("case o", 0);
         strncpy(options.output, optarg, MAXINPUTBUFFER);
       }
       break;
     /* preproccsor */
     case 'E':
-      options.expanded = true;
+      options.expanded = 1;
       break;
     /* verbose */
     case 'v':
-      options.verbose = true;
+      options.verbose = 1;
       break;
     /* help */
     case 2:
@@ -113,7 +112,7 @@ parse_args(int argc, char **argv)
       perrorf("unreconized command-line argument '%s'", argv[optind - 1]);
       break;
     }
-    options.__parsed = true;
+    options.__parsed = 1;
   }
 
   if (optind >= argc)
