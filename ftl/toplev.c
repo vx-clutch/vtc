@@ -3,7 +3,7 @@
 
 #include "config.h"
 #include "lexer.h"
-#include "output.h"
+#include "error.h"
 #include "parse_args.h"
 #include "processor.h"
 #include <stdio.h>

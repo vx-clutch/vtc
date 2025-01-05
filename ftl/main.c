@@ -1,12 +1,12 @@
 // Copyright (C) 2024 vx-clutch ( owestness@gmail.com )
 // See end of file for extended copyright information.
 
-#include "output.h"
+#include "error.h"
 #include "toplev.h"
 #include <stdlib.h>
 
 #ifndef __linux__
-#error \
+#error                                                                         \
     "the ftl software at its current stage of development only features unix support. If you do not like this feel free to make a pull request."
 #endif
 
@@ -14,7 +14,12 @@ int
 main(int argc, char **argv)
 {
   /* call toplev which is where all of the main logic is held */
-  (void)toplev(argc, argv); /* MUST be called FIRST before any other function */
+  int err =
+      toplev(argc, argv); /* MUST be called FIRST before any other function */
+  if (err)
+    perror("toplev failed");
+  else
+    plog(OK "toplev successed");
   return EXIT_SUCCESS;
 }
 

@@ -8,7 +8,7 @@ endif
 CC := $(shell ./configure -from-make)
 CFLAGS := -Wall -Wextra -O2 -pedantic -static -std=c11 -I./ftl -D COMPILER_PLATFORM="\"$(shell uname -o) $(shell uname -r)\""
 LDFLAGS :=
-SRC := $(wildcard ftl/*.c) $(wildcard ftl/options/*.c)
+SRC := $(wildcard ftl/*.c) $(wildcard ftl/error/*.c)
 BIN_DIR := build
 OBJ_DIR := $(BIN_DIR)/obj
 OBJ := $(patsubst %.c,$(OBJ_DIR)/%.o,$(SRC))

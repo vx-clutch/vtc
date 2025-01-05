@@ -2,7 +2,7 @@
 // See end of file for extended copyright information.
 #include "parse_args.h"
 #include "config.h"
-#include "output.h"
+#include "error.h"
 #include <getopt.h>
 #include <stdio.h>
 #include <stdlib.h>
