@@ -7,7 +7,7 @@ fi
 files=$(find ftl \( -name '*.c' -o -name '*.h' \))
 files+=" $(find . -maxdepth 1 -type f)"
 
-ignore=".gitattributes README.md LICENSE CONTRIBUTORS .gitignore"
+ignore=".gitattributes README.md LICENSE CONTRIBUTORS .gitignore .clang-format"
 
 if [ -z "$files" ]; then
   echo "No files found"
