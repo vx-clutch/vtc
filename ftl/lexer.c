@@ -6,10 +6,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-char peek(Lexer *lexer) { return lexer->input[lexer->pos]; }
-void advance(Lexer *lexer) { lexer->pos++; }
+char
+peek(Lexer *lexer)
+{
+  return lexer->input[lexer->pos];
+}
+void
+advance(Lexer *lexer)
+{
+  lexer->pos++;
+}
 
-Token tokenize_number(Lexer *lexer) {
+Token
+tokenize_number(Lexer *lexer)
+{
   size_t start = lexer->pos;
   while (isdigit(peek(lexer)))
     advance(lexer);
@@ -21,7 +31,9 @@ Token tokenize_number(Lexer *lexer) {
   return token;
 }
 
-Token tokenize_alpha(Lexer *lexer) {
+Token
+tokenize_alpha(Lexer *lexer)
+{
   size_t start = lexer->pos;
 
   while ((peek(lexer) != '\0' && isalpha(peek(lexer))) || peek(lexer) == '_')
@@ -30,7 +42,8 @@ Token tokenize_alpha(Lexer *lexer) {
   size_t length = lexer->pos - start;
 
   char *id = malloc(length + 1);
-  if (!id) {
+  if (!id)
+  {
     fprintf(stderr, "Error: Memory allocation failed in tokenize_alpha.\n");
     exit(EXIT_FAILURE);
   }
@@ -41,11 +54,15 @@ Token tokenize_alpha(Lexer *lexer) {
   return token;
 }
 
-Token next_token(Lexer *lexer) {
-  while (peek(lexer) != '\0') {
+Token
+next_token(Lexer *lexer)
+{
+  while (peek(lexer) != '\0')
+  {
     char c = peek(lexer);
 
-    if (isspace(c)) {
+    if (isspace(c))
+    {
       advance(lexer);
       continue;
     }
@@ -58,7 +75,8 @@ Token next_token(Lexer *lexer) {
 
     advance(lexer);
 
-    switch (c) {
+    switch (c)
+    {
     case '+':
       return (Token){PLUS, NULL};
     case '-':
@@ -90,7 +108,9 @@ Token next_token(Lexer *lexer) {
   return (Token){EOF, NULL};
 }
 
-void free_token(Token *token) {
+void
+free_token(Token *token)
+{
   if (token->type == INT)
     free(token->value);
 }

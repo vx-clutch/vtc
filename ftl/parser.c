@@ -4,7 +4,9 @@
 #include "parser.h"
 #include "lexer.h"
 
-node *parser(Token tokens[]) {
+node *
+parser(Token tokens[])
+{
   node *prog;
   return prog;
 }

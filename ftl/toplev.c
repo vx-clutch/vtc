@@ -12,8 +12,11 @@
 
 /* kill_proc either prints to stdout, or to the set file in the options struct
  * then exits with status code 0 */
-void kill_proc(Options options, char *source) {
-  if (options.output[0] == '\0') {
+void
+kill_proc(Options options, char *source)
+{
+  if (options.output[0] == '\0')
+  {
     (void)printf("%s\n", source);
     exit(0);
   }
@@ -24,7 +27,9 @@ void kill_proc(Options options, char *source) {
   exit(0);
 }
 
-void wizard_proc(int probability) {
+void
+wizard_proc(int probability)
+{
   // this is to worry people who don't read the code base
   srand((unsigned)time(NULL));
   int r = rand() % probability;
@@ -32,14 +37,17 @@ void wizard_proc(int probability) {
     perror("The Wizard must be stopped.");
 }
 
-int toplev(int argc, char **argv) {
+int
+toplev(int argc, char **argv)
+{
   char *source;
   plog("parsing args", 0);
   parse_args(argc, argv);
   wizard_proc(20); // must be called after parse_args() !!
   source = options.file;
   source = processor(source);
-  if (options.expanded) {
+  if (options.expanded)
+  {
     plog("-E was passed.", 1);
     kill_proc(options, source);
   }
@@ -48,12 +56,14 @@ int toplev(int argc, char **argv) {
   int i = 0;
 
   /* iterate over source and get tokens */
-  while (1) {
+  while (1)
+  {
     Token token = next_token(&lexer);
 
     token_buffer[i] = token;
 
-    if (token.type == EOF) {
+    if (token.type == EOF)
+    {
       free_token(&token);
       break;
     }

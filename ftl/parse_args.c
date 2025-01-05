@@ -8,7 +8,9 @@
 #include <stdlib.h>
 #include <string.h>
 
-void print_help() {
+void
+print_help()
+{
   printf("Usage: ftl [options] file...\n\n");
   printf("Options:\n");
   printf("  --help\tPrints out the help and exit.\n");
@@ -21,12 +23,12 @@ void print_help() {
 }
 
 Options options = {
-  .assembly = false,
-  .object = false,
-  .expanded = false,
-  .verbose = false,
-  .output = "",
-  .file = "",
+    .assembly = false,
+    .object = false,
+    .expanded = false,
+    .verbose = false,
+    .output = "",
+    .file = "",
 };
 
 /* see config.h */
@@ -41,7 +43,9 @@ Options options = {
 #endif
 
 /* print versioning information */
-void print_version() {
+void
+print_version()
+{
   printf(
       "ftl (FTL) %s %s (%s)\nCopyright (C) %s vx-clutch\nThis is free "
       "software; see the source for copying conditions. There is NO\nwarranty; "
@@ -49,7 +53,9 @@ void print_version() {
       COMPILER_VERSION, COMPILER_YEAR, COMPILER_PLATFORM, COMPILER_YEAR);
 }
 
-Options parse_args(int argc, char **argv) {
+Options
+parse_args(int argc, char **argv)
+{
   size_t opt;
   int option_index = 0;
 
@@ -59,8 +65,10 @@ Options parse_args(int argc, char **argv) {
                                   {0, 0, 0, 0}};
   opterr = 0;
   while ((opt = getopt_long(argc, argv, "SEco:hvM:", long_options,
-                            &option_index)) != -1) {
-    switch (opt) {
+                            &option_index)) != -1)
+  {
+    switch (opt)
+    {
     /* assembly */
     case 'S':
       options.assembly = true;
@@ -71,10 +79,13 @@ Options parse_args(int argc, char **argv) {
       break;
     /* output */
     case 'o':
-      if (optarg == NULL || optarg[0] == '-') {
+      if (optarg == NULL || optarg[0] == '-')
+      {
         perror("missing filename after '-o'");
         break;
-      } else {
+      }
+      else
+      {
         plog("case o", 0);
         strncpy(options.output, optarg, MAXINPUTBUFFER);
       }
@@ -110,7 +121,8 @@ Options parse_args(int argc, char **argv) {
 
   /* file processing */
   /* read file, and set options.F to the char[] of the contents */
-  for (int i = optind; i < argc; i++) {
+  for (int i = optind; i < argc; i++)
+  {
     FILE *fp;
     char *buffer;
     long file_size;
@@ -127,15 +139,19 @@ Options parse_args(int argc, char **argv) {
     rewind(fp);
 
     /* is file small enough (you can increase this limit in config.h) */
-    if (file_size >= MAXINPUTBUFFER) {
+    if (file_size >= MAXINPUTBUFFER)
+    {
       fclose(fp);
       pfatalf("input buffer exceeds buffer capacity (%d bytes).",
               MAXINPUTBUFFER);
-    } else if (file_size == 0) {
+    }
+    else if (file_size == 0)
+    {
     }
 
     buffer = (char *)malloc(file_size + 1);
-    if (buffer == NULL) {
+    if (buffer == NULL)
+    {
       fclose(fp);
       pfatal("error allocating memory.");
     }
