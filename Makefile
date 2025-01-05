@@ -17,22 +17,22 @@ MAN_DIR := $(PREFIX)/share/man
 MAN_SRC := man/ftl.1
 MAN_DEST := $(MAN_DIR)/man1/ftl.1
 GC := go build
-GOFLAGS := -buildmode=c-shared
+GOFLAGS := -buildmode=c-archive
 GOSRC := libgo/go/main.go
 LIBGO_DIR := libgo
-LIBGO_SO := $(OBJ_DIR)/libgo/libgo.so
+LIBGO_A := $(OBJ_DIR)/libgo/libgo.a
 
 .PHONY: all clean install uninstall
 
-all: $(EXEC) $(LIBGO_SO)
+all: $(EXEC) $(LIBGO_A)
 
 $(EXEC): $(OBJ) | $(BIN_DIR)/bin
 	@echo -n "  CALL  "
 	$(CC) $(CFLAGS) $(OBJ) -o $@ $(LDFLAGS)
 
-$(LIBGO_SO): $(GOSRC) | $(LIBGO_DIR) $(BIN_DIR)/obj/libgo
+$(LIBGO_A): $(GOSRC) | $(LIBGO_DIR) $(BIN_DIR)/obj/libgo
 	@echo -n "  CALL  "
-	cd $(LIBGO_DIR) && $(GC) $(GOFLAGS) -o ../$(LIBGO_SO) go/main.go
+	cd $(LIBGO_DIR) && $(GC) $(GOFLAGS) -o ../$(LIBGO_A) go/main.go
 
 $(BIN_DIR)/bin $(OBJ_DIR) $(BIN_DIR)/obj/libgo:
 	@echo -n "  CALL  "
@@ -48,7 +48,7 @@ clean:
 	@echo -n "  CALL  "
 	$(RM) -r $(BIN_DIR)
 
-install: $(EXEC) $(LIBGO_SO)
+install: $(EXEC) $(LIBGO_A)
 	install -d $(PREFIX)/bin
 	install $(EXEC) $(PREFIX)/bin/
 	install -d $(MAN_DIR)/man1
