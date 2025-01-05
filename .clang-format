@@ -6,5 +6,9 @@ AlwaysBreakAfterReturnType: All
 AlwaysBreakBeforeMultilineStrings: true
 DerivePointerAlignment: false
 PointerAlignment: Right
-ColumnLimit: 0
-SortIncludes: false
+ColumnLimit: 80
+SortIncludes: true
+AllowShortBlocksOnASingleLine: true
+AllowShortIfStatementsOnASingleLine: true
+BraceWrapping:
+  AfterControlStatement: false
