@@ -36,7 +36,7 @@ toplev(int argc, char **argv)
   source = processor(source);
   if (options.expanded)
   {
-    plog("-E was passed.", 1);
+    plog("Expansion flag was parsed", 1);
     kill_proc(options, source);
   }
   Lexer lexer = {source, 0};
