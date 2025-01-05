@@ -1,4 +1,4 @@
-# Copyright (C) 2025 vx-clutch ( owestness@gmail.com )
+# Copyright (C) 2024 vx-clutch ( owestness@gmail.com )
 # See end of file for extended copyright information.
 
 ifeq ($(PREFIX),)
