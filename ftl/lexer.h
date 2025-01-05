@@ -22,6 +22,7 @@ typedef enum {
   SEMICOLON,
   POUND,
   PERCENT,
+  BANG,
   EOF,
   UNKNOWN,
 } TokenType;

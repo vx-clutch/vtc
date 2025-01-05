@@ -81,6 +81,8 @@ Token next_token(Lexer *lexer) {
       return (Token){POUND, NULL};
     case '%':
       return (Token){PERCENT, NULL};
+    case '!':
+      return (Token){BANG, NULL};
     default:
       return (Token){UNKNOWN, NULL};
     }
