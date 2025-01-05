@@ -1,0 +1,10 @@
+Language: Cpp
+BasedOnStyle: LLVM
+BreakBeforeBraces: Allman
+AllowShortFunctionsOnASingleLine: Empty
+AlwaysBreakAfterReturnType: All
+AlwaysBreakBeforeMultilineStrings: true
+DerivePointerAlignment: false
+PointerAlignment: Right
+ColumnLimit: 0
+SortIncludes: false
