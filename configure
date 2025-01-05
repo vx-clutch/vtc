@@ -3,7 +3,7 @@
 
 #!/bin/bash
 
-CCs="gcc clang icc dpc++ tcc pcc armcc mingw32-gcc riscv64-unknown-elf-gcc xlc pgcc opencc pathcc"
+CCs="clang gcc icc dpc++ tcc pcc armcc mingw32-gcc riscv64-unknown-elf-gcc xlc pgcc opencc pathcc"
 
 if [[ $1 == "-from-make" ]]; then
   for cc in $CCs; do
