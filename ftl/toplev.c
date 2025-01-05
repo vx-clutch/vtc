@@ -8,7 +8,6 @@
 #include "processor.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
 
 /* kill_proc either prints to stdout, or to the set file in the options struct
  * then exits with status code 0 */
