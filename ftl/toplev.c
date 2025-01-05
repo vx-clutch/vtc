@@ -27,23 +27,12 @@ kill_proc(Options options, char *source)
   exit(0);
 }
 
-void
-wizard_proc(int probability)
-{
-  // this is to worry people who don't read the code base
-  srand((unsigned)time(NULL));
-  int r = rand() % probability;
-  if (!r)
-    perror("The Wizard must be stopped.");
-}
-
 int
 toplev(int argc, char **argv)
 {
   char *source;
   plog("parsing args", 0);
   parse_args(argc, argv);
-  wizard_proc(20); // must be called after parse_args() !!
   source = options.file;
   source = processor(source);
   if (options.expanded)
