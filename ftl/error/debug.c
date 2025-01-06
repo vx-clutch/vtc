@@ -2,11 +2,12 @@
 // See end of file for extended copyright information.
 
 #include "../error.h"
+#include <stdio.h>
 
 int
 pdebug(const char *desc, const char *message)
 {
-  printf("debug: %s: %s", desc, message);
+  printf("debug: %s: %s\n", desc, message);
   return 0;
 }
 
@@ -17,8 +18,7 @@ pdebugf(const char *desc, const char *format, ...)
   va_start(args, format);
   fprintf(stdout, "%s%s%s: ", WHITE, desc, RESET);
   vfprintf(stdout, format, args);
-  printf("
-");
+  putchar('\n');
   va_end(args);
   return 0;
 }

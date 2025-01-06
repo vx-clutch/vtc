@@ -7,6 +7,8 @@
 #include "ctype.h"
 #include "string.h"
 
+#define EOF __EOF
+
 /* token types */
 typedef enum {
   INT,
@@ -23,7 +25,7 @@ typedef enum {
   POUND,
   PERCENT,
   BANG,
-  EOF,
+  __EOF,
   UNKNOWN,
 } TokenType;
 

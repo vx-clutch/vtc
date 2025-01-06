@@ -6,11 +6,8 @@
 int
 pwarning(const char *message)
 {
-  fprintf(stderr,
-          "%s%s%s: %swarning%s: %s
-          ", WHITE, COMPILER_NAME, RESET,
-          PURPLE,
-          RESET, message);
+  fprintf(stderr, "%s%s%s: %swarning%s: %s\n", WHITE, COMPILER_NAME, RESET,
+          PURPLE, RESET, message);
   return 0;
 }
 
@@ -22,8 +19,7 @@ pwarningf(const char *format, ...)
   fprintf(stderr, "%s%s%s: %swarning%s: ", WHITE, COMPILER_NAME, RESET, PURPLE,
           RESET);
   vfprintf(stderr, format, args);
-  fprintf(stderr, "
-");
+  fprintf(stderr, "\n");
   va_end(args);
 }
 
