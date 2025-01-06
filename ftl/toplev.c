@@ -2,8 +2,8 @@
 // See end of file for extended copyright information.
 
 #include "config.h"
-#include "lexer.h"
 #include "error.h"
+#include "lexer.h"
 #include "parse_args.h"
 #include "processor.h"
 #include <stdio.h>

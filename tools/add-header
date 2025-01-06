@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 header="// Copyright (C) 2025 vx-clutch ( owestness@gmail.com )
-// See end of file for extended copyright information."
+// See end of file for extended copyright information.\n"
 footer="
 /* ftl is a simple and extensible compiler.
  * Copyright (C) 2024 vx-clutch
@@ -34,7 +34,17 @@ footer="
  */
 "
 
-echo -ne "$header
+if [[ "$#" -lt 1 ]]; then
+  echo "Usage: $0 file1 [file2 ...]"
+  exit 1
+fi
 
-$(cat $1)
-$footer" > "$1"
+for file in "$@"; do
+  if [[ ! -f "$file" ]]; then
+    echo "Error: File '$file' not found, skipping."
+    continue
+  fi
+
+  echo -e "$header\n$(cat "$file")\n$footer" >"$file"
+  echo "Processed file: $file"
+done
