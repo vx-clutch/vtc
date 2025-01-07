@@ -1,6 +1,6 @@
 ; Output file: ELF 64-bit executable
 ; Compiler: $@
-; Source: $@1
+; Source: $@
 
 section .text
 global _start
