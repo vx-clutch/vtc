@@ -6,7 +6,8 @@ package main
 import "C"
 
 import (
-	"libgo/arch/x86_64/linux"
+	linuxx64 "libgo/arch/x86_64/linux"
+	"strings"
 )
 
 func main() {}
@@ -22,9 +23,11 @@ func get_header_for(__which *C.char) *C.char {
 	}
 }
 
-func poppulate_header(__header string, version string, source string) string {
-	return __header.Replace("$@", version).Replace("$@", source)
+func poppulate_header(__header *C.char, version *C.char, source *C.char) *C.char {
+	pop := strings.Replace(strings.Replace(C.GoString(__header), "$@", C.GoString(source), 1), "$$", C.GoString(version), 1)
+	return C.CString(pop)
 }
+
 /* ftl is a simple and extensible compiler.
  * Copyright (C) 2024 vx-clutch
  *

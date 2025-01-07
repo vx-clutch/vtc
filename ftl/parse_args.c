@@ -60,7 +60,7 @@ print_version()
 Options
 parse_args(int argc, char **argv)
 {
-  size_t opt;
+  int opt;
   int option_index = 0;
 
   /* define long options */
@@ -119,6 +119,7 @@ parse_args(int argc, char **argv)
     options.__parsed = 1;
   }
 
+  plog(INFO "Looking for input files.");
   if (optind >= argc)
     pfatal("no input files.");
 
@@ -159,7 +160,7 @@ parse_args(int argc, char **argv)
       pfatal("error allocating memory.");
     }
 
-    (void)fread(buffer, 1, file_size, fp);
+    int res = fread(buffer, 1, file_size, fp);
     buffer[file_size] = '\0';
 
     strncpy(options.file, buffer, MAXINPUTBUFFER - 1);
