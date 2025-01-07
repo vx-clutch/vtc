@@ -49,7 +49,7 @@ function exists {
     fi
 }
 
-depends_on="nasm ld go uname"
+depends_on="nasm ld go uname make"
 action=false
 foundCC=false
 

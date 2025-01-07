@@ -1,4 +1,4 @@
-#include "libgo.h"
+#include "../../../../build/obj/libgo/libgo.h"
 #include "../../../config.h"
 #include <stdio.h>
 

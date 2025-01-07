@@ -12,10 +12,10 @@
 #define COMPILER_NAME "ftl"
 
 /* max charecters an input buffer can be. */
-#define MAXINPUTBUFFER 4069
+#define MAXINPUTBUFFER 4096
 
 /* max length the name of the output file can be. */
-#define MAXOUTPUTPATH 4069
+#define MAXOUTPUTPATH 4096
 
 /* max ammout of tokens */
 #define MAXTOKENS 1024
