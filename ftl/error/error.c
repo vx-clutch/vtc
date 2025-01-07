@@ -6,7 +6,7 @@
 int
 perror(const char *message)
 {
-  fprintf(stderr, "%s%s%s: %serror%s: %s", WHITE, COMPILER_NAME, RESET, RED,
+  fprintf(stderr, "%s%s%s: %serror%s: %s\n", WHITE, COMPILER_NAME, RESET, RED,
           RESET, message);
   return 0;
 }

@@ -7,7 +7,8 @@
 int
 pdebug(const char *desc, const char *message)
 {
-  printf("debug: %s: %s\n", desc, message);
+  printf("%s%s%s: %sdebug%s: %s: %s\n", WHITE, COMPILER_NAME, RESET, WHITE,
+         RESET, desc, message);
   return 0;
 }
 
@@ -16,7 +17,8 @@ pdebugf(const char *desc, const char *format, ...)
 {
   va_list args;
   va_start(args, format);
-  fprintf(stdout, "%s%s%s: ", WHITE, desc, RESET);
+  printf("%s%s%s: %sdebug%s: ", WHITE, COMPILER_NAME, RESET, WHITE, RESET);
+  fprintf(stdout, "%s: ", desc);
   vfprintf(stdout, format, args);
   putchar('\n');
   va_end(args);

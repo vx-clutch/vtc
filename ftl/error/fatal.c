@@ -19,7 +19,7 @@ pfatalf(const char *format, ...)
   fprintf(stderr, "%s%s%s: %sfatal error%s: ", WHITE, COMPILER_NAME, RESET,
           RED, RESET);
   vfprintf(stderr, format, args);
-  fprintf(stderr, "compilation terminated.\n");
+  fprintf(stderr, "\ncompilation terminated.\n");
   va_end(args);
   exit(EXIT_FAILURE);
 }
