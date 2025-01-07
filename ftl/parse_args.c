@@ -90,9 +90,12 @@ parse_args(int argc, char **argv)
       }
       else
       {
+        #pragma GCC diagnostic push
+        #pragma GCC diagnostic ignored "-Wstringop-truncation"
         strncpy(options.output, optarg, MAXINPUTBUFFER);
+        #pragma GCC diagnostic pop
+        break;
       }
-      break;
     /* preproccsor */
     case 'E':
       options.expanded = 1;
@@ -160,7 +163,9 @@ parse_args(int argc, char **argv)
       pfatal("error allocating memory.");
     }
 
-    int res = fread(buffer, 1, file_size, fp);
+    int elem = fread(buffer, 1, file_size, fp);
+    if (elem != file_size)
+      pfatalf("error reading file. Expected %d bytes, got %d bytes.", file_size, elem);
     buffer[file_size] = '\0';
 
     strncpy(options.file, buffer, MAXINPUTBUFFER - 1);
