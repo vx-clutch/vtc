@@ -5,19 +5,19 @@
 #include <stdio.h>
 
 int
-pdebug(const char *desc, const char *message)
+__pdebug(int line, const char *file, const char *desc, const char *message)
 {
-  printf("%s%s%s: %sdebug%s: %s: %s\n", WHITE, COMPILER_NAME, RESET, WHITE,
-         RESET, desc, message);
+  printf("%s%s%s: %sdebug: %s:%d%s: %s: %s\n", WHITE, COMPILER_NAME, RESET, WHITE,
+         file, line, RESET, desc, message);
   return 0;
 }
 
 int
-pdebugf(const char *desc, const char *format, ...)
+__pdebugf(int line, const char *file, const char *desc, const char *format, ...)
 {
   va_list args;
   va_start(args, format);
-  printf("%s%s%s: %sdebug%s: ", WHITE, COMPILER_NAME, RESET, WHITE, RESET);
+  printf("%s%s%s: %sdebug: %s:%d%s: ", WHITE, COMPILER_NAME, RESET, WHITE, file, line, RESET);
   fprintf(stdout, "%s: ", desc);
   vfprintf(stdout, format, args);
   putchar('\n');

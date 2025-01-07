@@ -30,17 +30,21 @@ __perror(const char *message);
 void
 perrorf(const char *format, ...);
 
+
 int
 pwarning(const char *message);
 
 void
 pwarningf(const char *format, ...);
 
-int
-pdebug(const char *desc, const char *message);
+#define pdebug(desc, message) __pdebug(__LINE__, __FILE__, desc, message)
+#define pdebugf(desc, message, ...) __pdebugf(__LINE__, __FILE__, desc, message, ##__VA_ARGS__)
 
 int
-pdebugf(const char *desc, const char *format, ...);
+__pdebug(int line, const char *file, const char *desc, const char *message);
+
+int
+__pdebugf(int line, const char *file, const char *desc, const char *format, ...);
 
 void
 plog(int status, const char *message);

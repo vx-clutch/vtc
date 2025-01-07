@@ -7,8 +7,12 @@ error_impl+=../../../error/error.c
 error_impl+=../../../error/fatal.c
 error_impl+=../../../error/warning.c
 
-all: test_error.c | test_fatalf.c
+all: test_error test_fatalf
+
+test_error: test_error.c 
 	$(CC) -o test_error test_error.c $(error_impl)
+
+test_fatalf: test_fatalf.c
 	$(CC) -o test_fatalf test_fatalf.c $(error_impl)
 
 clean:
