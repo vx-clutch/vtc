@@ -1,7 +1,10 @@
 # Specification
 
 > [!WARNING]  
-> ftl is currently in its **alpha** stages of development. Most of this specification document will not be implemented yet, and will be subject to change.
+> vx turning language is currently in its **alpha** stages of development. Most of this specification document will not be implemented yet, and will be subject to change.
+
+## File
+The vx turning language uses the `.vl` file extention
 
 ## Types
 void

@@ -1,11 +1,11 @@
-.TH FTL 1 "December 2024" "FTL Compiler alpha" "FTL Manual"
+.TH VTC 1 "December 2024" "VTC Compiler alpha" "VTC Manual"
 .SH NAME
-ftl \- A fast and lightweight compiler.
+vtc \- A fast and lightweight compiler.
 .SH SYNOPSIS
-.B ftl
+.B vtc
 .RI [options] "files..."
 .SH DESCRIPTION
-.B ftl
+.B vtc
 is a compiler that processes source files and generates executable programs, object files, or assembly output depending on the options provided.
 
 Each input
@@ -46,23 +46,23 @@ is treated as a source file to be compiled, or an object file to be linked, depe
 .SH EXAMPLES
 Compile a file into an object file:
 .EX
-ftl -c source.ftl
+vtc -c source.vtc
 .EE
 
 Compile and assemble a file, then specify an output file:
 .EX
-ftl -o output.o -c source.ftl
+vtc -o output.o -c source.vtc
 .EE
 
 Print version information:
 .EX
-ftl --version
+vtc --version
 .EE
 
 .SH BUGS
 To report bugs or request features, please visit:
 .EX
-https://github.com/vx-clutch/ftl/issues
+https://github.com/vx-clutch/vtc/issues
 .EE
 
 .SH AUTHOR

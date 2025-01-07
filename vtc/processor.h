@@ -1,32 +1,18 @@
-// Copyright (C) 2025 vx-clutch ( owestness@gmail.com )
+// Copyright (C) 2024 vx-clutch ( owestness@gmail.com )
 // See end of file for extended copyright information.
 
-#include "../error.h"
+#ifndef PROCESSOR_H
+#define PROCESSOR_H
 
-int
-pwarning(const char *message)
-{
-  fprintf(stderr, "%s%s%s: %swarning%s: %s\n", WHITE, COMPILER_NAME, RESET,
-          PURPLE, RESET, message);
-  return 0;
-}
+#include "config.h"
+char *processor(char source[MAXINPUTBUFFER]);
 
-void
-pwarningf(const char *format, ...)
-{
-  va_list args;
-  va_start(args, format);
-  fprintf(stderr, "%s%s%s: %swarning%s: ", WHITE, COMPILER_NAME, RESET, PURPLE,
-          RESET);
-  vfprintf(stderr, format, args);
-  fprintf(stderr, "\n");
-  va_end(args);
-}
+#endif
 
-/* ftl is a simple and extensible compiler.
+/* vtc is a simple and extensible compiler.
  * Copyright (C) 2024 vx-clutch
  *
- * The file is part of ftl.
+ * The file is part of vtc.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
@@ -40,7 +26,7 @@ pwarningf(const char *format, ...)
  * used to endorse or promote products derived from this software without
  * specific prior written permission.
  *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\"
  * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
  * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
  * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE

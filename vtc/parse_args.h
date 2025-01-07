@@ -1,17 +1,33 @@
 // Copyright (C) 2024 vx-clutch ( owestness@gmail.com )
 // See end of file for extended copyright information.
 
-#ifndef TOPLEV_H
-#define TOPLEV_H
+#ifndef OPT_H
+#define OPT_H
 
-int toplev(int argc, char **argv);
+#include "config.h"
+#include <stdint.h>
+#include <stdio.h>
+
+typedef struct {
+  uint8_t __parsed;
+  uint8_t assembly;
+  uint8_t object;
+  uint8_t expanded;
+  uint8_t verbose;
+  char output[MAXOUTPUTPATH];
+  char file[MAXINPUTBUFFER];
+} Options;
+
+extern Options options;
+
+Options parse_args(int argc, char **argv);
 
 #endif
 
-/* ftl is a simple and extensible compiler.
+/* vtc is a simple and extensible compiler.
  * Copyright (C) 2024 vx-clutch
  *
- * The file is part of ftl.
+ * The file is part of vtc.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:

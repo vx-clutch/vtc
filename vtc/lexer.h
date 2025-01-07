@@ -44,10 +44,10 @@ Token next_token(Lexer *lexer);
 
 #endif
 
-/* ftl is a simple and extensible compiler.
+/* vtc is a simple and extensible compiler.
  * Copyright (C) 2024 vx-clutch
  * 
- * The file is part of ftl.
+ * The file is part of vtc.
  * 
  * Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
  *

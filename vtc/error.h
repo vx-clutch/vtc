@@ -1,32 +1,65 @@
-// Copyright (C) 2024 vx-clutch ( owestness@gmail.com )
+// Copyright (C) 2025 vx-clutch ( owestness@gmail.com )
 // See end of file for extended copyright information.
+#ifndef EREROR_H
+#define EREROR_H
 
-#include "error.h"
-#include "toplev.h"
+#include "config.h"
+#include "parse_args.h"
+#include <stdarg.h>
+#include <stdio.h>
 #include <stdlib.h>
 
-#ifndef __linux__
-#error                                                                         \
-    "the ftl software at its current stage of development only features unix support. If you do not like this feel free to make a pull request."
-#endif
+// ANSI color codes
+extern const char *RESET;
+extern const char *RED;
+extern const char *PURPLE;
+extern const char *WHITE;
+extern const char *GREEN;
+extern const char *YELLOW;
+
+void
+pfatal(const char *message);
+
+void
+pfatalf(const char *format, ...);
+
+#define perror __perror
+int
+__perror(const char *message);
+
+void
+perrorf(const char *format, ...);
+
 
 int
-main(int argc, char **argv)
-{
-  /* call toplev which is where all of the main logic is held */
-  int err =
-      toplev(argc, argv); /* MUST be called FIRST before any other function */
-  if (err)
-    perror("toplev failed");
-  else
-    plog(OK "toplev successed");
-  return EXIT_SUCCESS;
-}
+pwarning(const char *message);
 
-/* ftl is a simple and extensible compiler.
+void
+pwarningf(const char *format, ...);
+
+#define pdebug(desc, message) __pdebug(__LINE__, __FILE__, desc, message)
+#define pdebugf(desc, message, ...) __pdebugf(__LINE__, __FILE__, desc, message, ##__VA_ARGS__)
+
+int
+__pdebug(int line, const char *file, const char *desc, const char *message);
+
+int
+__pdebugf(int line, const char *file, const char *desc, const char *format, ...);
+
+void
+plog(int status, const char *message);
+
+#define INFO 0,
+#define OK 1,
+#define WARNING 2,
+#define FAILURE 3,
+
+#endif
+
+/* vtc is a simple and extensible compiler.
  * Copyright (C) 2024 vx-clutch
  *
- * The file is part of ftl.
+ * The file is part of vtc.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
@@ -40,7 +73,7 @@ main(int argc, char **argv)
  * used to endorse or promote products derived from this software without
  * specific prior written permission.
  *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\"
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
  * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
  * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
  * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
@@ -52,3 +85,4 @@ main(int argc, char **argv)
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
+

@@ -15,7 +15,7 @@ void print_version(void);
 void
 print_help()
 {
-  printf("Usage: ftl [options] file...\n\n");
+  printf("Usage: vtc [options] file...\n\n");
   printf("Options:\n");
   printf("  --help\tPrints out the help and exit.\n");
   printf("  --version\tPrints out the version number and exit.\n");
@@ -51,7 +51,7 @@ void
 print_version()
 {
   printf(
-      "ftl (FTL) %s %s (%s)\nCopyright (C) %s vx-clutch\nThis is free "
+      "vtc (VTC) %s %s (%s)\nCopyright (C) %s vx-clutch\nThis is free "
       "software; see the source for copying conditions. There is NO\nwarranty; "
       "not even for MERCHANTABLITY or FITNESS FOR A PARTICULAR PURPOSE\n",
       COMPILER_VERSION, COMPILER_YEAR, COMPILER_PLATFORM, COMPILER_YEAR);
@@ -171,10 +171,10 @@ parse_args(int argc, char **argv)
   return options;
 }
 
-/* ftl is a simple and extensible compiler.
+/* vtc is a simple and extensible compiler.
  * Copyright (C) 2024 vx-clutch
  *
- * The file is part of ftl.
+ * The file is part of vtc.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:

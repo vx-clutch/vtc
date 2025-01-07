@@ -2,18 +2,33 @@
 // See end of file for extended copyright information.
 
 #include "../error.h"
+#include <stdio.h>
 
-const char *RESET = "[0m";
-const char *RED = "[1;91m";
-const char *PURPLE = "[0;95m";
-const char *WHITE = "[0;97m";
-const char *GREEN = "[1;32m";
-const char *YELLOW = "[0;33m";
+int
+__pdebug(int line, const char *file, const char *desc, const char *message)
+{
+  printf("%s%s%s: %sdebug: %s:%d%s: %s: %s\n", WHITE, COMPILER_NAME, RESET, WHITE,
+         file, line, RESET, desc, message);
+  return 0;
+}
 
-/* ftl is a simple and extensible compiler.
+int
+__pdebugf(int line, const char *file, const char *desc, const char *format, ...)
+{
+  va_list args;
+  va_start(args, format);
+  printf("%s%s%s: %sdebug: %s:%d%s: ", WHITE, COMPILER_NAME, RESET, WHITE, file, line, RESET);
+  fprintf(stdout, "%s: ", desc);
+  vfprintf(stdout, format, args);
+  putchar('\n');
+  va_end(args);
+  return 0;
+}
+
+/* vtc is a simple and extensible compiler.
  * Copyright (C) 2024 vx-clutch
  *
- * The file is part of ftl.
+ * The file is part of vtc.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:

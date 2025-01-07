@@ -1,33 +1,35 @@
-// Copyright (C) 2024 vx-clutch ( owestness@gmail.com )
+// Copyright (C) 2025 vx-clutch ( owestness@gmail.com )
 // See end of file for extended copyright information.
 
-#ifndef OPT_H
-#define OPT_H
+#include "../error.h"
 
-#include "config.h"
-#include <stdint.h>
-#include <stdio.h>
+void
+plog(int status, const char *message)
+{
+  if (!options.verbose)
+    return;
 
-typedef struct {
-  uint8_t __parsed;
-  uint8_t assembly;
-  uint8_t object;
-  uint8_t expanded;
-  uint8_t verbose;
-  char output[MAXOUTPUTPATH];
-  char file[MAXINPUTBUFFER];
-} Options;
+  switch (status)
+  {
+  case 0:
+    printf("[ %sINFO%s ] %s\n", PURPLE, RESET, message);
+    break;
+  case 1:
+    printf("[ %sOKAY%s ] %s\n", GREEN, RESET, message);
+    break;
+  case 2:
+    printf("[ %sWARN%s ] %s\n", YELLOW, RESET, message);
+    break;
+  case 3:
+    printf("[ %sFAIL%s ] %s\n", RED, RESET, message);
+    break;
+  }
+}
 
-extern Options options;
-
-Options parse_args(int argc, char **argv);
-
-#endif
-
-/* ftl is a simple and extensible compiler.
+/* vtc is a simple and extensible compiler.
  * Copyright (C) 2024 vx-clutch
  *
- * The file is part of ftl.
+ * The file is part of vtc.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
@@ -41,7 +43,7 @@ Options parse_args(int argc, char **argv);
  * used to endorse or promote products derived from this software without
  * specific prior written permission.
  *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\"
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
  * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
  * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
  * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE

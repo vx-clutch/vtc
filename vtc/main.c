@@ -1,34 +1,32 @@
-// Copyright (C) 2025 vx-clutch ( owestness@gmail.com )
+// Copyright (C) 2024 vx-clutch ( owestness@gmail.com )
 // See end of file for extended copyright information.
 
-#include "../error.h"
-#include <stdio.h>
+#include "error.h"
+#include "toplev.h"
+#include <stdlib.h>
+
+#ifndef __linux__
+#error                                                                         \
+    "the vtc software at its current stage of development only features unix support. If you do not like this feel free to make a pull request."
+#endif
 
 int
-__pdebug(int line, const char *file, const char *desc, const char *message)
+main(int argc, char **argv)
 {
-  printf("%s%s%s: %sdebug: %s:%d%s: %s: %s\n", WHITE, COMPILER_NAME, RESET, WHITE,
-         file, line, RESET, desc, message);
-  return 0;
+  /* call toplev which is where all of the main logic is held */
+  int err =
+      toplev(argc, argv); /* MUST be called FIRST before any other function */
+  if (err)
+    perror("toplev failed");
+  else
+    plog(OK "toplev successed");
+  return EXIT_SUCCESS;
 }
 
-int
-__pdebugf(int line, const char *file, const char *desc, const char *format, ...)
-{
-  va_list args;
-  va_start(args, format);
-  printf("%s%s%s: %sdebug: %s:%d%s: ", WHITE, COMPILER_NAME, RESET, WHITE, file, line, RESET);
-  fprintf(stdout, "%s: ", desc);
-  vfprintf(stdout, format, args);
-  putchar('\n');
-  va_end(args);
-  return 0;
-}
-
-/* ftl is a simple and extensible compiler.
+/* vtc is a simple and extensible compiler.
  * Copyright (C) 2024 vx-clutch
  *
- * The file is part of ftl.
+ * The file is part of vtc.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
@@ -42,7 +40,7 @@ __pdebugf(int line, const char *file, const char *desc, const char *format, ...)
  * used to endorse or promote products derived from this software without
  * specific prior written permission.
  *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\"
  * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
  * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
  * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE

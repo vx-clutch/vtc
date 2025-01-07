@@ -1,31 +1,20 @@
 // Copyright (C) 2024 vx-clutch ( owestness@gmail.com )
 // See end of file for extended copyright information.
 
-#ifndef CONFIG_H
-#define CONFIG_H
+#include "parser.h"
+#include "lexer.h"
 
-/* versioning information. */
-#define COMPILER_VERSION "alpha"
-#define COMPILER_YEAR "2024"
+node *
+parser(Token tokens[])
+{
+  node *prog;
+  return prog;
+}
 
-/* compiler name for output.h */
-#define COMPILER_NAME "ftl"
-
-/* max charecters an input buffer can be. */
-#define MAXINPUTBUFFER 4096
-
-/* max length the name of the output file can be. */
-#define MAXOUTPUTPATH 4096
-
-/* max ammout of tokens */
-#define MAXTOKENS 1024
-
-#endif
-
-/* ftl is a simple and extensible compiler.
+/* vtc is a simple and extensible compiler.
  * Copyright (C) 2024 vx-clutch
  *
- * The file is part of ftl.
+ * The file is part of vtc.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:

@@ -29,10 +29,10 @@ func populate(__header *C.char, source *C.char, version *C.char) *C.char {
 	return C.CString(pop)
 }
 
-/* ftl is a simple and extensible compiler.
+/* vtc is a simple and extensible compiler.
  * Copyright (C) 2024 vx-clutch
  *
- * The file is part of ftl.
+ * The file is part of vtc.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:

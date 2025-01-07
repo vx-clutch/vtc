@@ -1,84 +1,17 @@
 // Copyright (C) 2024 vx-clutch ( owestness@gmail.com )
 // See end of file for extended copyright information.
 
-#include "config.h"
-#include "error.h"
-#include "lexer.h"
-#include "parse_args.h"
-#include "processor.h"
-#include <stdio.h>
-#include <stdlib.h>
+#ifndef TOPLEV_H
+#define TOPLEV_H
 
-/* kill_proc either prints to stdout, or to the set file in the options struct
- * then exits with status code 0 */
-void
-__pkill(Options options, char *source)
-{
-  plog(0, "internal pkill called");
-  if (options.output[0] == '\0')
-  {
-    plog(0, "printing to stdout");
-    (void)printf("%s\n", source);
-    exit(0);
-  }
-  FILE *fp;
-  fp = fopen(options.output, "w");
-  fprintf(fp, "%s", source);
-  fclose(fp);
-  plog(OK "terminating compilation");
-  exit(0);
-}
+int toplev(int argc, char **argv);
 
-int
-toplev(int argc, char **argv)
-{
-  char *source;
-  plog(INFO "parsing args");
-  parse_args(argc, argv);
-  source = options.file;
-  plog(INFO "Preprocessor stage");
-  source = processor(source);
-  plog(OK "Preprocessor completed");
-  if (options.expanded)
-  {
-    plog(INFO "The process will exit and output the preprocessed source code");
-    __pkill(options, source);
-  }
-  Lexer lexer = {source, 0};
-  Token token_buffer[MAXTOKENS];
-  int i = 0;
+#endif
 
-  /* iterate over source and get tokens */
-  while (1)
-  {
-    Token token = next_token(&lexer);
-
-    token_buffer[i] = token;
-
-    if (token.type == EOF)
-    {
-      free_token(&token);
-      break;
-    }
-
-    free_token(&token);
-    i++;
-  }
-
-  Token tokens[i];
-
-  /* takes the first i elemets in token_buffer and place them in the
-   * corresponding place in tokens */
-  for (int j = 0; j < i; j++)
-    tokens[i] = token_buffer[i];
-
-  return 0;
-}
-
-/* ftl is a simple and extensible compiler.
+/* vtc is a simple and extensible compiler.
  * Copyright (C) 2024 vx-clutch
  *
- * The file is part of ftl.
+ * The file is part of vtc.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:

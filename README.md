@@ -1,8 +1,8 @@
-# ftl
+# vtc
 Faster-than-Light
 
 > [!WARNING]  
-> ftl is currently in its **alpha** stages of development and should not be used for anything major.
+> vtc is currently in its **alpha** stages of development and should not be used for anything major.
 
 ## Install
 ### Linux
