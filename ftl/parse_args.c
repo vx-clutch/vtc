@@ -73,15 +73,12 @@ parse_args(int argc, char **argv)
   {
     switch (opt)
     {
-    /* assembly */
     case 'S':
       options.assembly = 1;
       break;
-    /* object */
     case 'c':
       options.object = 1;
       break;
-    /* output */
     case 'o':
       if (optarg == NULL || optarg[0] == '-')
       {
@@ -90,25 +87,22 @@ parse_args(int argc, char **argv)
       }
       else
       {
+        /* this is intended behavior */
         #pragma GCC diagnostic push
         #pragma GCC diagnostic ignored "-Wstringop-truncation"
         strncpy(options.output, optarg, MAXINPUTBUFFER);
         #pragma GCC diagnostic pop
         break;
       }
-    /* preproccsor */
     case 'E':
       options.expanded = 1;
       break;
-    /* verbose */
     case 'v':
       options.verbose = 1;
       break;
-    /* help */
     case 2:
       print_help();
       exit(EXIT_SUCCESS);
-    /* version */
     case 1:
       print_version();
       exit(EXIT_SUCCESS);
