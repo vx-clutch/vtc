@@ -22,6 +22,9 @@ func get_header_for(__which *C.char) *C.char {
 	}
 }
 
+func poppulate_header(__header string, version string, source string) string {
+	return __header.Replace("$@", version).Replace("$@", source)
+}
 /* ftl is a simple and extensible compiler.
  * Copyright (C) 2024 vx-clutch
  *
