@@ -2,6 +2,7 @@
 // See end of file for extended copyright information.
 
 #include "../error.h"
+#include <stdarg.h>
 
 void
 plog(int status, const char *message)
@@ -24,6 +25,37 @@ plog(int status, const char *message)
     printf("[ %sFAIL%s ] %s\n", RED, RESET, message);
     break;
   }
+}
+
+void
+plogf(int status, const char *format, ...)
+{
+  va_list args;
+  va_start(args, format);
+  if (!options.verbose)
+    return;
+
+  switch (status)
+  {
+  case 0:
+    printf("[ %sINFO%s ] ", PURPLE, RESET);
+    vprintf(format, args);
+    break;
+  case 1:
+    printf("[ %sOKAY%s ] ", GREEN, RESET);
+    vprintf(format, args);
+    break;
+  case 2:
+    printf("[ %sWARN%s ] ", YELLOW, RESET);
+    vprintf(format, args);
+    break;
+  case 3:
+    printf("[ %sFAIL%s ] ", RED, RESET);
+    vprintf(format, args);
+    break;
+  }
+  putchar('\n');
+  va_end(args);
 }
 
 /* vtc is a simple and extensible compiler.

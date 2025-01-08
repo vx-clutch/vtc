@@ -14,6 +14,7 @@ typedef struct {
   uint8_t object;
   uint8_t expanded;
   uint8_t verbose;
+  uint8_t debug;
   char output[MAXOUTPUTPATH];
   char file[MAXINPUTBUFFER];
 } Options;

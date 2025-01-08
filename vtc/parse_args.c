@@ -9,8 +9,10 @@
 #include <stdlib.h>
 #include <string.h>
 
-void print_help(void);
-void print_version(void);
+void
+print_help(void);
+void
+print_version(void);
 
 void
 print_help()
@@ -31,6 +33,7 @@ Options options = {
     .object = 0,
     .expanded = 0,
     .verbose = 0,
+    .debug = 0,
     .output = "",
     .file = "",
 };
@@ -66,11 +69,13 @@ parse_args(int argc, char **argv)
   /* define long options */
   struct option long_options[] = {{"version", no_argument, 0, 1},
                                   {"help", no_argument, 0, 2},
+                                  {"debug", no_argument, 0, 3},
                                   {0, 0, 0, 0}};
   opterr = 0;
   while ((opt = getopt_long(argc, argv, "SEco:hvM:", long_options,
                             &option_index)) != -1)
   {
+    plogf(INFO "opt: '%s'", argv[optind - 1]);
     switch (opt)
     {
     case 'S':
@@ -87,11 +92,11 @@ parse_args(int argc, char **argv)
       }
       else
       {
-        /* this is intended behavior */
-        #pragma GCC diagnostic push
-        #pragma GCC diagnostic ignored "-Wstringop-truncation"
+/* this is intended behavior */
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wstringop-truncation"
         strncpy(options.output, optarg, MAXINPUTBUFFER);
-        #pragma GCC diagnostic pop
+#pragma GCC diagnostic pop
         break;
       }
     case 'E':
@@ -100,12 +105,15 @@ parse_args(int argc, char **argv)
     case 'v':
       options.verbose = 1;
       break;
-    case 2:
-      print_help();
-      exit(EXIT_SUCCESS);
     case 1:
       print_version();
       exit(EXIT_SUCCESS);
+    case 2:
+      print_help();
+      exit(EXIT_SUCCESS);
+    case 3:
+      options.debug = 1;
+      break;
     case '?':
       perrorf("unreconized command-line argument '%s'", argv[optind - 1]);
       break;
@@ -159,7 +167,8 @@ parse_args(int argc, char **argv)
 
     int elem = fread(buffer, 1, file_size, fp);
     if (elem != file_size)
-      pfatalf("error reading file. Expected %d bytes, got %d bytes.", file_size, elem);
+      pfatalf("error reading file. Expected %d bytes, got %d bytes.", file_size,
+              elem);
     buffer[file_size] = '\0';
 
     strncpy(options.file, buffer, MAXINPUTBUFFER - 1);

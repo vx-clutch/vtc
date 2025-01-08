@@ -1,5 +1,5 @@
-#include "../../../lexer.h"
 #include "../../../config.h"
+#include "../../../lexer.h"
 #include <stdio.h>
 #include <stdlib.h>
 

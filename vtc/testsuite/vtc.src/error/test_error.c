@@ -2,8 +2,8 @@
 #include "../../../parse_args.h"
 
 Options options = {
-  .verbose = 1,
-  .__parsed = 1,
+    .verbose = 1,
+    .__parsed = 1,
 };
 
 int
@@ -13,6 +13,7 @@ main(void)
   plog(OK "ok");
   plog(WARNING "warning");
   plog(FAILURE "failure");
+  plogf(OK "format %s", "foo");
   pdebug("pdebug", "pdebug");
   pdebugf("pdebugf", "pdebug%s", "f");
   pwarning("pwarning");

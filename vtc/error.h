@@ -49,6 +49,9 @@ __pdebugf(int line, const char *file, const char *desc, const char *format, ...)
 void
 plog(int status, const char *message);
 
+void
+plogf(int status, const char *format, ...);
+
 #define INFO 0,
 #define OK 1,
 #define WARNING 2,

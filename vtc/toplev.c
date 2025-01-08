@@ -35,6 +35,7 @@ toplev(int argc, char **argv)
   char *source;
   plog(INFO "parsing args");
   parse_args(argc, argv);
+  pdebug("test --debug", "this should be printed if --debug");
   source = options.file;
   plog(INFO "Preprocessor stage");
   source = processor(source);
