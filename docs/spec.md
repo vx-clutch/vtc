@@ -23,7 +23,7 @@ int *
 string *
 
 ## Functions
-{TYPE} {IDENT}({PARAMETERS})
+fn {RETURN TYPE} {IDENT}({PARAMETERS})
 {
     ;; code...
 }
@@ -68,11 +68,11 @@ asm {
 >=
 
 ## Variables
-{TYPE} {IDENT};
-{TYPE} mut {IDENT};
+{TYPE} {IDENT}
+{TYPE} mut {IDENT}
 
 ### Assign
-{IDNET} = {EXPR};
+{IDNET} = {EXPR}
 
 ## Return
-return {INT};
+return {INT}
