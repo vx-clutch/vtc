@@ -1,5 +1,5 @@
 # vtc
-Faster-than-Light
+VX turing compiler
 
 > [!WARNING]  
 > vtc is currently in its **alpha** stages of development and should not be used for anything major.
