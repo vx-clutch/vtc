@@ -23,6 +23,8 @@ func get_header_for(__which *C.char) *C.char {
 	}
 }
 
+/* Source: $@
+ * Version: $@ */
 //export populate
 func populate(__header *C.char, source *C.char, version *C.char) *C.char {
 	pop := strings.Replace(strings.Replace(C.GoString(__header), "$@", C.GoString(source), 1), "$$", C.GoString(version), 1)
