@@ -20,6 +20,9 @@
 /* max ammout of tokens */
 #define MAXTOKENS 1024
 
+/* force options to use verbose mode */
+#define FORCE_VERBOSE
+
 #endif
 
 /* vtc is a simple and extensible compiler.

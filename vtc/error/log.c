@@ -7,8 +7,10 @@
 void
 plog(int status, const char *message)
 {
+#ifndef FORCE_VERBOSE
   if (!options.verbose)
     return;
+#endif
 
   switch (status)
   {
@@ -32,8 +34,10 @@ plogf(int status, const char *format, ...)
 {
   va_list args;
   va_start(args, format);
+#ifndef FORCE_VERBOSE
   if (!options.verbose)
     return;
+#endif
 
   switch (status)
   {
