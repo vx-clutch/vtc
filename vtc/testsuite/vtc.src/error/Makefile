@@ -1,11 +1,11 @@
 CC=gcc
 
-error_impl=../../../error/log.c
-error_impl+=../../../error/colors.c
-error_impl+=../../../error/debug.c
-error_impl+=../../../error/error.c
-error_impl+=../../../error/fatal.c
-error_impl+=../../../error/warning.c
+error_impl=../../../syslog/log.c
+error_impl+=../../../syslog/colors.c
+error_impl+=../../../syslog/debug.c
+error_impl+=../../../syslog/error.c
+error_impl+=../../../syslog/fatal.c
+error_impl+=../../../syslog/warning.c
 
 all: test_error test_fatalf
 

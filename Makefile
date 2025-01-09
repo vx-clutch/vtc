@@ -6,7 +6,7 @@ ifeq ($(PREFIX),)
 endif
 
 CC := gcc
-CFLAGS := -Wall -Wextra -O2 -pedantic -static -std=c11 -I./vtc -D COMPILER_PLATFORM="\"$(shell uname -o) $(shell uname -r)\""
+CFLAGS := -Wall -Wextra -O2 -pedantic -static -std=c11 -I./vtc -I./vtc/syslog -D COMPILER_PLATFORM="\"$(shell uname -o) $(shell uname -r)\""
 LDFLAGS :=
 SRC := $(wildcard vtc/*.c) $(wildcard vtc/error/*.c)
 BIN_DIR := build

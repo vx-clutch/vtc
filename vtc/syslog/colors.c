@@ -1,7 +1,7 @@
 // Copyright (C) 2025 vx-clutch ( owestness@gmail.com )
 // See end of file for extended copyright information.
 
-#include "../error.h"
+#include "error.h"
 
 const char *RESET = "[0m";
 const char *RED = "[1;91m";

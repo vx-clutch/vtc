@@ -1,66 +1,63 @@
 // Copyright (C) 2025 vx-clutch ( owestness@gmail.com )
 // See end of file for extended copyright information.
+#ifndef EREROR_H
+#define EREROR_H
 
-#include "../error.h"
+#include "../config.h"
+#include "../parse_args.h"
 #include <stdarg.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+// ANSI color codes
+extern const char *RESET;
+extern const char *RED;
+extern const char *PURPLE;
+extern const char *WHITE;
+extern const char *GREEN;
+extern const char *YELLOW;
 
 void
-plog(int status, const char *message)
-{
-#ifndef FORCE_VERBOSE
-  if (!options.verbose)
-    return;
-#endif
-
-  switch (status)
-  {
-  case 0:
-    printf("[ %sINFO%s ] %s\n", PURPLE, RESET, message);
-    break;
-  case 1:
-    printf("[ %sOKAY%s ] %s\n", GREEN, RESET, message);
-    break;
-  case 2:
-    printf("[ %sWARN%s ] %s\n", YELLOW, RESET, message);
-    break;
-  case 3:
-    printf("[ %sFAIL%s ] %s\n", RED, RESET, message);
-    break;
-  }
-}
+pfatal(const char *message);
 
 void
-plogf(int status, const char *format, ...)
-{
-  va_list args;
-  va_start(args, format);
-#ifndef FORCE_VERBOSE
-  if (!options.verbose)
-    return;
-#endif
+pfatalf(const char *format, ...);
 
-  switch (status)
-  {
-  case 0:
-    printf("[ %sINFO%s ] ", PURPLE, RESET);
-    vprintf(format, args);
-    break;
-  case 1:
-    printf("[ %sOKAY%s ] ", GREEN, RESET);
-    vprintf(format, args);
-    break;
-  case 2:
-    printf("[ %sWARN%s ] ", YELLOW, RESET);
-    vprintf(format, args);
-    break;
-  case 3:
-    printf("[ %sFAIL%s ] ", RED, RESET);
-    vprintf(format, args);
-    break;
-  }
-  putchar('\n');
-  va_end(args);
-}
+#define perror __perror
+int
+__perror(const char *message);
+
+void
+perrorf(const char *format, ...);
+
+
+int
+pwarning(const char *message);
+
+void
+pwarningf(const char *format, ...);
+
+#define pdebug(desc, message) __pdebug(__LINE__, __FILE__, desc, message)
+#define pdebugf(desc, message, ...) __pdebugf(__LINE__, __FILE__, desc, message, ##__VA_ARGS__)
+
+int
+__pdebug(int line, const char *file, const char *desc, const char *message);
+
+int
+__pdebugf(int line, const char *file, const char *desc, const char *format, ...);
+
+void
+plog(int status, const char *message);
+
+void
+plogf(int status, const char *format, ...);
+
+#define INFO 0,
+#define OK 1,
+#define WARNING 2,
+#define FAILURE 3,
+
+#endif
 
 /* vtc is a simple and extensible compiler.
  * Copyright (C) 2024 vx-clutch
@@ -91,3 +88,4 @@ plogf(int status, const char *format, ...)
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
+

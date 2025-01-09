@@ -1,33 +1,26 @@
 // Copyright (C) 2025 vx-clutch ( owestness@gmail.com )
 // See end of file for extended copyright information.
 
-#include "../error.h"
-#include <stdio.h>
+#include "error.h"
 
 int
-__pdebug(int line, const char *file, const char *desc, const char *message)
+perror(const char *message)
 {
-  if (!options.debug)
-    return 0;
-  printf("%s%s%s: %sdebug: %s:%d%s: %s: %s\n", WHITE, COMPILER_NAME, RESET,
-         WHITE, file, line, RESET, desc, message);
+  fprintf(stderr, "%s%s%s: %serror%s: %s\n", WHITE, COMPILER_NAME, RESET, RED,
+          RESET, message);
   return 0;
 }
 
-int
-__pdebugf(int line, const char *file, const char *desc, const char *format, ...)
+void
+perrorf(const char *format, ...)
 {
-  if (!options.debug)
-    return 0;
   va_list args;
   va_start(args, format);
-  printf("%s%s%s: %sdebug: %s:%d%s: ", WHITE, COMPILER_NAME, RESET, WHITE, file,
-         line, RESET);
-  fprintf(stdout, "%s: ", desc);
-  vfprintf(stdout, format, args);
-  putchar('\n');
+  fprintf(stderr, "%s%s%s: %serror%s: ", WHITE, COMPILER_NAME, RESET, RED,
+          RESET);
+  vfprintf(stderr, format, args);
+  fprintf(stderr, "\n");
   va_end(args);
-  return 0;
 }
 
 /* vtc is a simple and extensible compiler.

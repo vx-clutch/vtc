@@ -1,4 +1,4 @@
-#include "../../../error.h"
+#include "../../../syslog/error.h"
 #include "../../../parse_args.h"
 
 Options options = {
