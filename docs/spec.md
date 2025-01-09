@@ -7,20 +7,17 @@
 The vx turning language uses the `.vl` file extention
 
 ## Types
-void
 int
-string
+char
 
 ### Extended Types
 #### Array
-void[]
 int[]
-string[]
+char[]
 
 #### Pointers
-void *
 int *
-string *
+char *
 
 ## Functions
 fn {RETURN TYPE} {IDENT}({PARAMETERS})
@@ -68,11 +65,11 @@ asm {
 >=
 
 ## Variables
-{TYPE} {IDENT}
-{TYPE} mut {IDENT}
+{TYPE} {IDENT};
+{TYPE} mut {IDENT};
 
 ### Assign
-{IDNET} = {EXPR}
+{IDNET} = {EXPR};
 
 ## Return
-return {INT}
+return {EXPR};
