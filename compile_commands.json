@@ -1,0 +1,275 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-Wall",
+      "-Wextra",
+      "-O2",
+      "-pedantic",
+      "-std=c11",
+      "-Ivtc/syslog",
+      "-Ivtc",
+      "-D",
+      "COMPILER_PLATFORM=\"GNU/Linux 5.15.167.4-microsoft-standard-WSL2\"",
+      "-c",
+      "-o",
+      "build/obj/vtc/generation.o",
+      "vtc/generation.c"
+    ],
+    "directory": "/home/owen/git/vtc",
+    "file": "/home/owen/git/vtc/vtc/generation.c",
+    "output": "/home/owen/git/vtc/build/obj/vtc/generation.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-Wall",
+      "-Wextra",
+      "-O2",
+      "-pedantic",
+      "-std=c11",
+      "-Ivtc/syslog",
+      "-Ivtc",
+      "-D",
+      "COMPILER_PLATFORM=\"GNU/Linux 5.15.167.4-microsoft-standard-WSL2\"",
+      "-c",
+      "-o",
+      "build/obj/vtc/lexer.o",
+      "vtc/lexer.c"
+    ],
+    "directory": "/home/owen/git/vtc",
+    "file": "/home/owen/git/vtc/vtc/lexer.c",
+    "output": "/home/owen/git/vtc/build/obj/vtc/lexer.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-Wall",
+      "-Wextra",
+      "-O2",
+      "-pedantic",
+      "-std=c11",
+      "-Ivtc/syslog",
+      "-Ivtc",
+      "-D",
+      "COMPILER_PLATFORM=\"GNU/Linux 5.15.167.4-microsoft-standard-WSL2\"",
+      "-c",
+      "-o",
+      "build/obj/vtc/main.o",
+      "vtc/main.c"
+    ],
+    "directory": "/home/owen/git/vtc",
+    "file": "/home/owen/git/vtc/vtc/main.c",
+    "output": "/home/owen/git/vtc/build/obj/vtc/main.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-Wall",
+      "-Wextra",
+      "-O2",
+      "-pedantic",
+      "-std=c11",
+      "-Ivtc/syslog",
+      "-Ivtc",
+      "-D",
+      "COMPILER_PLATFORM=\"GNU/Linux 5.15.167.4-microsoft-standard-WSL2\"",
+      "-c",
+      "-o",
+      "build/obj/vtc/parse_args.o",
+      "vtc/parse_args.c"
+    ],
+    "directory": "/home/owen/git/vtc",
+    "file": "/home/owen/git/vtc/vtc/parse_args.c",
+    "output": "/home/owen/git/vtc/build/obj/vtc/parse_args.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-Wall",
+      "-Wextra",
+      "-O2",
+      "-pedantic",
+      "-std=c11",
+      "-Ivtc/syslog",
+      "-Ivtc",
+      "-D",
+      "COMPILER_PLATFORM=\"GNU/Linux 5.15.167.4-microsoft-standard-WSL2\"",
+      "-c",
+      "-o",
+      "build/obj/vtc/parser.o",
+      "vtc/parser.c"
+    ],
+    "directory": "/home/owen/git/vtc",
+    "file": "/home/owen/git/vtc/vtc/parser.c",
+    "output": "/home/owen/git/vtc/build/obj/vtc/parser.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-Wall",
+      "-Wextra",
+      "-O2",
+      "-pedantic",
+      "-std=c11",
+      "-Ivtc/syslog",
+      "-Ivtc",
+      "-D",
+      "COMPILER_PLATFORM=\"GNU/Linux 5.15.167.4-microsoft-standard-WSL2\"",
+      "-c",
+      "-o",
+      "build/obj/vtc/processor.o",
+      "vtc/processor.c"
+    ],
+    "directory": "/home/owen/git/vtc",
+    "file": "/home/owen/git/vtc/vtc/processor.c",
+    "output": "/home/owen/git/vtc/build/obj/vtc/processor.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-Wall",
+      "-Wextra",
+      "-O2",
+      "-pedantic",
+      "-std=c11",
+      "-Ivtc/syslog",
+      "-Ivtc",
+      "-D",
+      "COMPILER_PLATFORM=\"GNU/Linux 5.15.167.4-microsoft-standard-WSL2\"",
+      "-c",
+      "-o",
+      "build/obj/vtc/toplev.o",
+      "vtc/toplev.c"
+    ],
+    "directory": "/home/owen/git/vtc",
+    "file": "/home/owen/git/vtc/vtc/toplev.c",
+    "output": "/home/owen/git/vtc/build/obj/vtc/toplev.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-Wall",
+      "-Wextra",
+      "-O2",
+      "-pedantic",
+      "-std=c11",
+      "-Ivtc/syslog",
+      "-Ivtc",
+      "-D",
+      "COMPILER_PLATFORM=\"GNU/Linux 5.15.167.4-microsoft-standard-WSL2\"",
+      "-c",
+      "-o",
+      "build/obj/vtc/syslog/colors.o",
+      "vtc/syslog/colors.c"
+    ],
+    "directory": "/home/owen/git/vtc",
+    "file": "/home/owen/git/vtc/vtc/syslog/colors.c",
+    "output": "/home/owen/git/vtc/build/obj/vtc/syslog/colors.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-Wall",
+      "-Wextra",
+      "-O2",
+      "-pedantic",
+      "-std=c11",
+      "-Ivtc/syslog",
+      "-Ivtc",
+      "-D",
+      "COMPILER_PLATFORM=\"GNU/Linux 5.15.167.4-microsoft-standard-WSL2\"",
+      "-c",
+      "-o",
+      "build/obj/vtc/syslog/debug.o",
+      "vtc/syslog/debug.c"
+    ],
+    "directory": "/home/owen/git/vtc",
+    "file": "/home/owen/git/vtc/vtc/syslog/debug.c",
+    "output": "/home/owen/git/vtc/build/obj/vtc/syslog/debug.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-Wall",
+      "-Wextra",
+      "-O2",
+      "-pedantic",
+      "-std=c11",
+      "-Ivtc/syslog",
+      "-Ivtc",
+      "-D",
+      "COMPILER_PLATFORM=\"GNU/Linux 5.15.167.4-microsoft-standard-WSL2\"",
+      "-c",
+      "-o",
+      "build/obj/vtc/syslog/error.o",
+      "vtc/syslog/error.c"
+    ],
+    "directory": "/home/owen/git/vtc",
+    "file": "/home/owen/git/vtc/vtc/syslog/error.c",
+    "output": "/home/owen/git/vtc/build/obj/vtc/syslog/error.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-Wall",
+      "-Wextra",
+      "-O2",
+      "-pedantic",
+      "-std=c11",
+      "-Ivtc/syslog",
+      "-Ivtc",
+      "-D",
+      "COMPILER_PLATFORM=\"GNU/Linux 5.15.167.4-microsoft-standard-WSL2\"",
+      "-c",
+      "-o",
+      "build/obj/vtc/syslog/fatal.o",
+      "vtc/syslog/fatal.c"
+    ],
+    "directory": "/home/owen/git/vtc",
+    "file": "/home/owen/git/vtc/vtc/syslog/fatal.c",
+    "output": "/home/owen/git/vtc/build/obj/vtc/syslog/fatal.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-Wall",
+      "-Wextra",
+      "-O2",
+      "-pedantic",
+      "-std=c11",
+      "-Ivtc/syslog",
+      "-Ivtc",
+      "-D",
+      "COMPILER_PLATFORM=\"GNU/Linux 5.15.167.4-microsoft-standard-WSL2\"",
+      "-c",
+      "-o",
+      "build/obj/vtc/syslog/log.o",
+      "vtc/syslog/log.c"
+    ],
+    "directory": "/home/owen/git/vtc",
+    "file": "/home/owen/git/vtc/vtc/syslog/log.c",
+    "output": "/home/owen/git/vtc/build/obj/vtc/syslog/log.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-Wall",
+      "-Wextra",
+      "-O2",
+      "-pedantic",
+      "-std=c11",
+      "-Ivtc/syslog",
+      "-Ivtc",
+      "-D",
+      "COMPILER_PLATFORM=\"GNU/Linux 5.15.167.4-microsoft-standard-WSL2\"",
+      "-c",
+      "-o",
+      "build/obj/vtc/syslog/warning.o",
+      "vtc/syslog/warning.c"
+    ],
+    "directory": "/home/owen/git/vtc",
+    "file": "/home/owen/git/vtc/vtc/syslog/warning.c",
+    "output": "/home/owen/git/vtc/build/obj/vtc/syslog/warning.o"
+  }
+]
