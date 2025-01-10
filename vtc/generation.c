@@ -1,8 +1,6 @@
 // Copyright (C) 2025 vx-clutch ( owestness@gmail.com )
 // See end of file for extended copyright information.
 
-
-
 /* vtc is a simple and extensible compiler.
  * Copyright (C) 2024 vx-clutch
  *
@@ -32,4 +30,3 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
-

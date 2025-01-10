@@ -1,8 +1,8 @@
 // Copyright (C) 2025 vx-clutch ( owestness@gmail.com )
 // See end of file for extended copyright information.
 
-#include "../../../syslog/error.h"
 #include "../../../parse_args.h"
+#include "../../../syslog/error.h"
 
 Options options = {
     .verbose = 1,
@@ -44,4 +44,3 @@ main(void)
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
-

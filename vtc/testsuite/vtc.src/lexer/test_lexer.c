@@ -20,8 +20,7 @@ main()
   {
     if (i >= MAXTOKENS)
     {
-      fprintf(stderr, "Error: Too many tokens.
-");
+      fprintf(stderr, "Error: Too many tokens.");
       exit(EXIT_FAILURE);
     }
 
@@ -44,15 +43,13 @@ main()
     i++;
   }
 
-  printf("Tokens:
-");
+  printf("Tokens:");
   for (int j = 0; j < i; j++)
   {
     printf("Type: %d", token_buffer[j].type);
     if (token_buffer[j].value)
       printf(", Value: %s", token_buffer[j].value);
-    printf("
-");
+    printf("");
 
     // Free dynamically allocated memory for the token's value
     free_token(&token_buffer[j]);
@@ -90,4 +87,3 @@ main()
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
-
