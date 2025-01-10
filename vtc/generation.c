@@ -2,12 +2,17 @@
 // See end of file for extended copyright information.
 
 #include "generation.h"
+#include "config.h"
 #include "parse_args.h"
+#include "../build/obj/libgo/libgo.h"
+#include <string.h>
 
-assembly generate(node nodes[]) {
-  assembly assembly;
-  assembly.file = options.file;
-  return assembly;
+char *
+generate(char *arch, node nodes[])
+{
+  char *header = get_header_for(arch);
+  char *generated_assembly = populate(header, options.file_path, strcat(COMPILER_NAME, strcat(" ", COMPILER_VERSION)));
+  return generated_assembly;
 }
 
 /* vtc is a simple and extensible compiler.

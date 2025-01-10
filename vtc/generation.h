@@ -28,12 +28,7 @@ typedef enum
   RET,
 } optcode;
 
-typedef struct {
-  const char *file;
-  optcode instructions[];
-} assembly;
-
-assembly generate(node[]);
+char *generate(char *arch, node[]);
 
 #endif
 

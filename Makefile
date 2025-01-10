@@ -30,7 +30,6 @@ fast:
 	@echo "FAST COMPILE MODE"
 	make -j
 
-
 $(EXEC): $(OBJ) | $(BIN_DIR)/bin
 	@echo -n "  CALL  "
 	$(CC) $(CFLAGS) $(OBJ) -o $@ $(LDFLAGS)

@@ -8,7 +8,8 @@
 #include <stdint.h>
 #include <stdio.h>
 
-typedef struct {
+typedef struct
+{
   uint8_t __parsed;
   uint8_t assembly;
   uint8_t object;
@@ -16,12 +17,14 @@ typedef struct {
   uint8_t verbose;
   uint8_t debug;
   char output[MAXOUTPUTPATH];
+  char *file_path;
   char file[MAXINPUTBUFFER];
 } Options;
 
 extern Options options;
 
-Options parse_args(int argc, char **argv);
+Options
+parse_args(int argc, char **argv);
 
 #endif
 

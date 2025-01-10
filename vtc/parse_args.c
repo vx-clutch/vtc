@@ -63,8 +63,7 @@ print_version()
 Options
 parse_args(int argc, char **argv)
 {
-  int opt;
-  int option_index = 0;
+  int opt, option_index = 0;
 
   /* define long options */
   struct option long_options[] = {{"version", no_argument, 0, 1},
@@ -136,6 +135,7 @@ parse_args(int argc, char **argv)
     char *buffer;
     long file_size;
     char *path = argv[i];
+    options.file_path = path;
 
     /* file pointer */
     fp = fopen(path, "r");
