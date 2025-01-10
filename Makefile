@@ -28,7 +28,8 @@ all: $(EXEC) $(LIBGO_A)
 
 fast:
 	@echo "FAST COMPILE MODE"
-	make -Bj
+	make -j
+
 
 $(EXEC): $(OBJ) | $(BIN_DIR)/bin
 	@echo -n "  CALL  "

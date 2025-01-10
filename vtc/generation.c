@@ -1,6 +1,15 @@
 // Copyright (C) 2025 vx-clutch ( owestness@gmail.com )
 // See end of file for extended copyright information.
 
+#include "generation.h"
+#include "parse_args.h"
+
+assembly generate(node nodes[]) {
+  assembly assembly;
+  assembly.file = options.file;
+  return assembly;
+}
+
 /* vtc is a simple and extensible compiler.
  * Copyright (C) 2024 vx-clutch
  *

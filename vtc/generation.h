@@ -5,6 +5,7 @@
 #define GEN_H
 
 #include "config.h"
+#include "parser.h"
 
 typedef enum
 {
@@ -31,6 +32,8 @@ typedef struct {
   const char *file;
   optcode instructions[];
 } assembly;
+
+assembly generate(node[]);
 
 #endif
 
