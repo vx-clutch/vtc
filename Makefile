@@ -26,6 +26,10 @@ LIBGO_A := $(OBJ_DIR)/libgo/libgo.a
 
 all: $(EXEC) $(LIBGO_A)
 
+fast:
+	@echo "FAST COMPILE MODE"
+	make -Bj
+
 $(EXEC): $(OBJ) | $(BIN_DIR)/bin
 	@echo -n "  CALL  "
 	$(CC) $(CFLAGS) $(OBJ) -o $@ $(LDFLAGS)
