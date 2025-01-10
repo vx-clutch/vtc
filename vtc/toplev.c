@@ -66,7 +66,7 @@ toplev(int argc, char **argv)
 
     token_buffer[i] = token;
 
-    if (token.type == EOF)
+    if ((int)token.type == EOF)
     {
       free_token(&token);
       break;
