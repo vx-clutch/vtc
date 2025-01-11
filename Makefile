@@ -24,13 +24,9 @@ LIBGO_A := $(OBJ_DIR)/libgo/libgo.a
 
 .PHONY: all clean install uninstall
 
-all: $(EXEC) $(LIBGO_A)
+all: $(EXEC)
 
-fast:
-	@echo "FAST COMPILE MODE"
-	make -j
-
-$(EXEC): $(OBJ) | $(BIN_DIR)/bin
+$(EXEC): $(OBJ) $(LIBGO_A) | $(BIN_DIR)/bin
 	@echo -n "  CALL  "
 	$(CC) $(CFLAGS) $(OBJ) -o $@ $(LDFLAGS)
 
@@ -38,15 +34,15 @@ $(LIBGO_A): $(GOSRC) | $(LIBGO_DIR) $(BIN_DIR)/obj/libgo
 	@echo -n "  CALL  "
 	cd $(LIBGO_DIR) && $(GC) $(GOFLAGS) -o ../$(LIBGO_A) go/main.go
 
-$(BIN_DIR)/bin $(OBJ_DIR) $(BIN_DIR)/obj/libgo:
-	@echo -n "  CALL  "
-	mkdir -p $@
-
-$(OBJ_DIR)/%.o: %.c | $(OBJ_DIR)
+$(OBJ_DIR)/%.o: %.c $(LIBGO_A) | $(OBJ_DIR)
 	@echo -n "  CALL  "
 	mkdir -p $(dir $@)
 	@echo -n "  CALL  "
 	$(CC) $(CFLAGS) -c $< -o $@
+
+$(BIN_DIR)/bin $(OBJ_DIR) $(BIN_DIR)/obj/libgo:
+	@echo -n "  CALL  "
+	mkdir -p $@
 
 clean:
 	@echo -n "  CALL  "
@@ -61,9 +57,6 @@ install: $(EXEC) $(LIBGO_A)
 uninstall:
 	$(RM) $(PREFIX)/bin/vtc
 	$(RM) $(MAN_DEST)
-run:
-	export LD_LIBRARY_PATH=.
-	./build/bin/vtc
 
 # vtc is a simple and extensible compiler.
 # Copyright (C) 2024 vx-clutch

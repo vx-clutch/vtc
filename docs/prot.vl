@@ -1,0 +1,6 @@
+#include <io>
+
+proc main(void) {
+  const char foo[] = "World!";
+  printfn("Hello, %s", foo);
+} int;
