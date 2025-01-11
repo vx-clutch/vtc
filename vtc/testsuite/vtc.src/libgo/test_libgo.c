@@ -10,13 +10,8 @@ main(void)
 {
   char *header = get_header_for("linuxx64");
   char *populated = populate(header, COMPILER_NAME, "foo.vl");
-  printf("Base Header:
-%s
-
-", header);
-  printf("Populated Header:
-%s
-", populated);
+  printf("Base Header: %s", header);
+  printf("Populated Header: %s", populated);
   return 0;
 }
 

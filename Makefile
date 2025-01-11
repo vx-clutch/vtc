@@ -28,7 +28,7 @@ all: $(EXEC)
 
 $(EXEC): $(OBJ) $(LIBGO_A) | $(BIN_DIR)/bin
 	@echo -n "  CALL  "
-	$(CC) $(CFLAGS) $(OBJ) -o $@ $(LDFLAGS)
+	$(CC) $(CFLAGS) $(OBJ) $(LIBGO_A) -o $@ $(LDFLAGS)
 
 $(LIBGO_A): $(GOSRC) | $(LIBGO_DIR) $(BIN_DIR)/obj/libgo
 	@echo -n "  CALL  "
