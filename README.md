@@ -12,4 +12,3 @@ $ ./configure
 $ make
 $ sudo make install
 ```
-Or you can use the `make fast` target if you want to make faster.
