@@ -1,17 +1,16 @@
 // Copyright (C) 2025 vx-clutch ( owestness@gmail.com )
 // See end of file for extended copyright information.
 
-#include "generation.h"
-#include "config.h"
-#include "parse_args.h"
-#include "../build/obj/libgo/libgo.h"
+#include "../../../generation.h"
+#include <stdio.h>
 #include <string.h>
 
-char *
-generate(char *arch, node nodes[])
+int
+main()
 {
-  char *generated_assembly = populate(get_header_for(arch), options.file_path, strcat(COMPILER_NAME, strcat(" ", COMPILER_VERSION)));
-  return generated_assembly;
+  char *header = generate("linuxx86", NULL);
+  printf("%s\n", header);
+  return 0;
 }
 
 /* vtc is a simple and extensible compiler.
