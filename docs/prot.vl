@@ -1,6 +1,4 @@
-#include <io>
+#import "io"
 
-proc main(void) {
-  const char foo[] = "World!";
-  printfn("Hello, %s", foo);
-} int;
+proc main(void) ::
+  printfn("Hello, World!");
