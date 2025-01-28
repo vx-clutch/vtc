@@ -6,12 +6,12 @@ section .text
 global _start
 
 _start:
-  call main
-  jmp __main_exit
+  call .main
+  jmp .exit
 
-__main_exit:
+.exit:
   mov rax, 60
   xor rdi, rdi
   syscall
 
-main:
+.main:
