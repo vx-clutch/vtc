@@ -6,7 +6,7 @@ ifeq ($(PREFIX),)
 endif
 
 CC := gcc
-CFLAGS := -Wall -Wextra -O2 -pedantic -static -std=c99 -Ivtc/syslog -Ivtc -D COMPILER_PLATFORM="\"$(shell uname -o) $(shell uname -r)\""
+CFLAGS := -Wall -Wextra -Werror -O2 -pedantic -static -std=c99 -Ivtc/syslog -Ivtc -D COMPILER_PLATFORM="\"$(shell uname -o) $(shell uname -r)\""
 LDFLAGS :=
 SRC := $(wildcard vtc/*.c) $(wildcard vtc/syslog/*.c)
 BIN_DIR := build
@@ -27,25 +27,19 @@ LIBGO_A := $(OBJ_DIR)/libgo/libgo.a
 all: $(EXEC)
 
 $(EXEC): $(OBJ) $(LIBGO_A) | $(BIN_DIR)/bin
-	@echo -n "  CALL  "
 	$(CC) $(CFLAGS) $(OBJ) $(LIBGO_A) -o $@ $(LDFLAGS)
 
 $(LIBGO_A): $(GOSRC) | $(LIBGO_DIR) $(BIN_DIR)/obj/libgo
-	@echo -n "  CALL  "
 	cd $(LIBGO_DIR) && $(GC) $(GOFLAGS) -o ../$(LIBGO_A) go/main.go
 
 $(OBJ_DIR)/%.o: %.c $(LIBGO_A) | $(OBJ_DIR)
-	@echo -n "  CALL  "
 	mkdir -p $(dir $@)
-	@echo -n "  CALL  "
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(BIN_DIR)/bin $(OBJ_DIR) $(BIN_DIR)/obj/libgo:
-	@echo -n "  CALL  "
 	mkdir -p $@
 
 clean:
-	@echo -n "  CALL  "
 	$(RM) -r $(BIN_DIR)
 
 install: $(EXEC) $(LIBGO_A)
