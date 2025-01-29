@@ -13,7 +13,7 @@
 char *
 generate(char *arch, node nodes[])
 {
-  char *generated_assembly = populate(get_header_for(arch), options.file_path, strcat(COMPILER_NAME, strcat(" ", COMPILER_VERSION)));
+  char *generated_assembly = populate(get_header_for(arch), options.file_path, COMPILER_NAME " " COMPILER_VERSION);
   return generated_assembly;
 }
 #pragma GCC diagnostic pop
