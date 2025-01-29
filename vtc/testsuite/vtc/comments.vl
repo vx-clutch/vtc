@@ -1,2 +1,3 @@
-;; This is a comment
-this should stay
+not a comment.
+;; comment.
+(* Also a comment.*)

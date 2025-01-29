@@ -9,16 +9,24 @@
 void
 remove_comments(char *source)
 {
-  for (unsigned long int current_char = 0; current_char < strlen(source);
-       current_char++)
+  for (int current_char = 0; current_char < strlen(source); current_char++)
   {
     /* look for a ';;' symbol */
-    if (source[current_char] == ';' && source[current_char + 1] == ';')
+    if (source[current_char] == ';' && source[current_char++] == ';')
     {
+      source[current_char--] = ' ';
       /* if ';;' found set all chars after to '\0' until newline */
       while (source[current_char] != '\n' && source[current_char] != '\0')
       {
         /* set char to space */
+        source[current_char] = ' ';
+        current_char++;
+      }
+    }
+    if (source[current_char] == '(' && source[current_char++] == '*')
+    {
+      source[current_char--] = ' ';
+      while (source[current_char] != '*' && source[current_char++] != ')') {
         source[current_char] = ' ';
         current_char++;
       }
