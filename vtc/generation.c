@@ -7,12 +7,16 @@
 #include "../build/obj/libgo/libgo.h"
 #include <string.h>
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wunused-parameter"
+
 char *
 generate(char *arch, node nodes[])
 {
   char *generated_assembly = populate(get_header_for(arch), options.file_path, strcat(COMPILER_NAME, strcat(" ", COMPILER_VERSION)));
   return generated_assembly;
 }
+#pragma GCC diagnostic pop
 
 /* vtc is a simple and extensible compiler.
  * Copyright (C) 2024 vx-clutch
