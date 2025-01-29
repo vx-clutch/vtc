@@ -4,31 +4,38 @@
 #include "processor.h"
 #include "config.h"
 #include <ctype.h>
+#include <stddef.h>
 #include <string.h>
 
 void
 remove_comments(char *source)
 {
-  for (int current_char = 0; current_char < strlen(source); current_char++)
+  for (size_t current_char = 0; current_char < strlen(source); current_char++)
   {
-    /* look for a ';;' symbol */
-    if (source[current_char] == ';' && source[current_char++] == ';')
+    // Handle line comments ;;
+    if (source[current_char] == ';' && source[current_char + 1] == ';')
     {
-      source[current_char--] = ' ';
-      /* if ';;' found set all chars after to '\0' until newline */
+      source[current_char++] = ' ';
+      source[current_char++] = ' ';
       while (source[current_char] != '\n' && source[current_char] != '\0')
-      {
-        /* set char to space */
-        source[current_char] = ' ';
-        current_char++;
-      }
+        source[current_char++] = ' ';
     }
-    if (source[current_char] == '(' && source[current_char++] == '*')
+
+    // Handle block comments (* ... *)
+    if (source[current_char] == '(' && source[current_char + 1] == '*')
     {
-      source[current_char--] = ' ';
-      while (source[current_char] != '*' && source[current_char++] != ')') {
-        source[current_char] = ' ';
-        current_char++;
+      source[current_char++] = ' ';
+      source[current_char++] = ' ';
+
+      while (source[current_char] != '\0')
+      {
+        if (source[current_char] == '*' && source[current_char + 1] == ')')
+        {
+          source[current_char++] = ' ';
+          source[current_char++] = ' ';
+          break; // Exit after closing `*)`
+        }
+        source[current_char++] = ' ';
       }
     }
   }
