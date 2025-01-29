@@ -1,7 +1,7 @@
 # Copyright (C) 2024 vx-clutch
 # See end of file for extended copyright information.
 
-#!/bin/bash
+#!/usr/bin/env bash
 
 CCs="clang gcc icc dpc++ tcc pcc armcc mingw32-gcc riscv64-unknown-elf-gcc xlc pgcc opencc pathcc"
 
