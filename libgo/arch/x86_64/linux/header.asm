@@ -3,10 +3,10 @@
 # Source: $$
 
 .text
-.global _start
+.global main
 
-_start:
-  call .main
+main:
+  call .prog
   jmp .exit
 
 .exit:
@@ -14,4 +14,4 @@ _start:
   xorq %rdi, %rdi
   syscall
 
-.main:
+.prog:
