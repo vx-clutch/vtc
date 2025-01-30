@@ -1,3 +1,6 @@
 not a comment.
 ;; comment.
 (* Also a comment.*)
+(*
+still a comment.
+*)
