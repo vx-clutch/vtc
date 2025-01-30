@@ -3,9 +3,9 @@
 # Source: $$
 
 .text
-.global main
+.global _start
 
-main:
+_start:
   call .prog
   jmp .exit
 
