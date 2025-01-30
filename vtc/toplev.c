@@ -8,7 +8,6 @@
 #include "syslog/error.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 
 /* kill_proc either prints to stdout, or to the set file in the options struct
  * then exits with status code 0 */
@@ -19,16 +18,7 @@ __pkill(Options options, char *source)
   if (options.output[0] == '\0')
   {
     plog(0, "printing to stdout");
-    size_t line_number = 1;
-    const char *current = source;
-    const char *next_line;
-    while ((next_line = strchr(current, '\n')) != NULL)
-    {
-      printf("%zu: %.*s\n", line_number++, (int)(next_line - current), current);
-      current = next_line + 1;
-    }
-    if (*current != '\0')
-      printf("%zu: %s\n", line_number, current);
+    printf("%s\n", source);
     exit(0);
   }
   FILE *fp;
