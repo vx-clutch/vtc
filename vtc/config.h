@@ -21,7 +21,7 @@
 #define MAXTOKENS 1024
 
 /* force options to use verbose mode */
-#define FORCE_VERBOSE
+// #define FORCE_VERBOSE
 
 #endif
 
