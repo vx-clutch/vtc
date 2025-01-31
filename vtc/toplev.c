@@ -18,7 +18,7 @@ __pkill(Options options, char *source)
   if (options.output[0] == '\0')
   {
     plog(0, "printing to stdout");
-    printf("%s\n", source);
+    printf("%s", source);
     exit(0);
   }
   FILE *fp;
