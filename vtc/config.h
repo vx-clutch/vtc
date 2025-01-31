@@ -6,7 +6,7 @@
 
 /* versioning information. */
 #define COMPILER_VERSION "alpha"
-#define COMPILER_YEAR "2024"
+#define COMPILER_YEAR "2025"
 
 /* compiler name for output.h */
 #define COMPILER_NAME "vtc"

@@ -54,7 +54,7 @@ void
 print_version()
 {
   printf(
-      "vtc (VTC) %s %s (%s)\nCopyright (C) %s vx-clutch\nThis is free "
+      "vtc (VTC) %s 2024-%s (%s)\nCopyright (C) %s vx-clutch\nThis is free "
       "software; see the source for copying conditions. There is NO\nwarranty; "
       "not even for MERCHANTABLITY or FITNESS FOR A PARTICULAR PURPOSE\n",
       COMPILER_VERSION, COMPILER_YEAR, COMPILER_PLATFORM, COMPILER_YEAR);
