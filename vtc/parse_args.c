@@ -156,6 +156,8 @@ parse_args(int argc, char **argv)
     }
     else if (file_size == 0)
     {
+        plog(FAIL "input file buffer was empty.");
+        pfatal("Empty input file.");
     }
 
     buffer = (char *)malloc(file_size + 1);
