@@ -54,8 +54,8 @@ plogf(int status, const char *format, ...);
 
 #define INFO 0,
 #define OK 1,
-#define WARNING 2,
-#define FAILURE 3,
+#define WARN 2,
+#define FAIL 3,
 
 #endif
 
