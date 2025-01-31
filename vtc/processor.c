@@ -3,7 +3,6 @@
 
 #include "processor.h"
 #include "config.h"
-#include <ctype.h>
 #include <stddef.h>
 #include <string.h>
 
@@ -41,43 +40,10 @@ remove_comments(char *source)
   }
 }
 
-void
-colapse_whitespace(char *source)
-{
-  int i = 0, j = 0;
-  int len = strlen(source);
-  int space_found = 0;
-
-  while (i < len)
-  {
-    if (!isspace(source[i]))
-    {
-      source[j++] = source[i++];
-      space_found = 0;
-    }
-    else
-    {
-      if (!space_found)
-      {
-        source[j++] = ' ';
-        space_found = 1;
-      }
-      i++;
-    }
-  }
-
-  // Remove trailing space if present
-  if (j > 0 && source[j - 1] == ' ')
-    j--;
-
-  source[j] = '\0'; // Null-terminate the cleaned string
-}
-
 char *
 processor(char source[MAXINPUTBUFFER])
 {
   remove_comments(source);
-  colapse_whitespace(source);
   return source;
 }
 
