@@ -1,4 +1,8 @@
-#import "io"
+#import "io.def"
 
-proc main(void) ::
-  printfn("Hello, World!");
+proc add(int x, int y) int ::
+  return x + y;
+
+proc main(void) int ::
+  printfn("hello %d", add(34, 35));
+  return 0;
