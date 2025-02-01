@@ -6,3 +6,18 @@ proc add(int x, int y) int ::
 proc main(void) int ::
   printfn("hello %d", add(34, 35));
   return 0;
+
+(*
+#include <stdio.h>
+
+int add (int x, int y)
+{
+  return x + y;
+}
+
+int main(void)
+{
+  printf("hello %d", add(34, 35));
+  return 0;
+}
+*)
