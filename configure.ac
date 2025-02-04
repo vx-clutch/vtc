@@ -1,13 +1,24 @@
 # Copyright (C) 2024 vx-clutch (owestness@gmail.com)
 # See end of file for extended copyright information.
 
-AC_INIT([vtc], [1.0], [owestness@gmail.com])
-AM_INIT_AUTOMAKE([foreign])
+AC_PREREQ([2.61])
+AC_INIT([vtc], [0.1], [owestness@gmail.com])
+AC_CONFIG_AUX_DIR(aux-dist)
+AM_INIT_AUTOMAKE
 
-AC_PROG_CC
-AC_PROG_INSTALL
+AC_PROG_MAKE_SET
+AC_PROG_C
+AC_LANG(C)
 
-AC_CONFIG_FILES([Makefile])
+CFLAGS="-std=c99 -Wall -Wextra"
+
+AC_CONFIG_MACRO_DIR([m4])
+
+LT_PREREQ([2.2])
+LT_INIT([dlopen shared])
+
+AC_CONFIG_FILES([Makefile vtc/Makefile])
+
 AC_OUTPUT
 
 # vtc is a simple and extensible compiler.
