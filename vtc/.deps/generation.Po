@@ -18,9 +18,7 @@ vtc/generation.o: vtc/generation.c /usr/include/stdc-predef.h \
  /usr/include/bits/types/cookie_io_functions_t.h \
  /usr/include/bits/stdio_lim.h /usr/include/bits/floatn.h \
  /usr/include/bits/floatn-common.h /usr/include/bits/stdio.h \
- vtc/../build/obj/libgo/libgo.h /usr/include/string.h \
- /usr/include/bits/types/locale_t.h /usr/include/bits/types/__locale_t.h \
- /usr/include/strings.h
+ vtc/../static/libgo-linuxx64.h
 /usr/include/stdc-predef.h:
 vtc/generation.h:
 vtc/config.h:
@@ -58,8 +56,4 @@ vtc/parse_args.h:
 /usr/include/bits/floatn.h:
 /usr/include/bits/floatn-common.h:
 /usr/include/bits/stdio.h:
-vtc/../build/obj/libgo/libgo.h:
-/usr/include/string.h:
-/usr/include/bits/types/locale_t.h:
-/usr/include/bits/types/__locale_t.h:
-/usr/include/strings.h:
+vtc/../static/libgo-linuxx64.h:
