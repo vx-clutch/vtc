@@ -1,0 +1,4 @@
+vtc can be installed on linux with the following commands
+./configure
+make
+[sudo] make install
