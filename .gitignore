@@ -1,2 +1,9 @@
-build/*
-!build
+autom4te.cache/
+configure
+config.log
+config.status
+*.o
+*.tar.gz
+
+/vtc/*.o
+/vtc/syslog/*.o

@@ -1,0 +1,4 @@
+libgo is not GNU's libgo
+
+libgo uses golang's string manipulation functions to produce assembly headers.
+It also uses go:embed to embed the header files into the binary.
