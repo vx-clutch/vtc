@@ -4,8 +4,7 @@
 #include "generation.h"
 #include "config.h"
 #include "parse_args.h"
-#include "../build/obj/libgo/libgo.h"
-#include <string.h>
+#include "../static/libgo-linuxx64.h"
 
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wunused-parameter"
