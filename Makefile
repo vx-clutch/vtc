@@ -200,12 +200,12 @@ AUTOMAKE = ${SHELL} '/home/owen/git/vtc/missing' automake-1.16
 AWK = gawk
 CC = gcc
 CCDEPMODE = depmode=gcc3
-CFLAGS = -g -O2
+CFLAGS = -I./static
 CPPFLAGS = 
 CSCOPE = cscope
 CTAGS = ctags
 CYGPATH_W = echo
-DEFS = -DPACKAGE_NAME=\"vtc\" -DPACKAGE_TARNAME=\"vtc\" -DPACKAGE_VERSION=\"0.1\" -DPACKAGE_STRING=\"vtc\ 0.1\" -DPACKAGE_BUGREPORT=\"owestness@gmail.com\" -DPACKAGE_URL=\"\" -DPACKAGE=\"vtc\" -DVERSION=\"0.1\"
+DEFS = -DPACKAGE_NAME=\"vtc\" -DPACKAGE_TARNAME=\"vtc\" -DPACKAGE_VERSION=\"0.1\" -DPACKAGE_STRING=\"vtc\ 0.1\" -DPACKAGE_BUGREPORT=\"owen@gmail.com\" -DPACKAGE_URL=\"\" -DPACKAGE=\"vtc\" -DVERSION=\"0.1\" -DHAVE_STDIO_H=1 -DHAVE_STDLIB_H=1 -DHAVE_STRING_H=1 -DHAVE_INTTYPES_H=1 -DHAVE_STDINT_H=1 -DHAVE_STRINGS_H=1 -DHAVE_SYS_STAT_H=1 -DHAVE_SYS_TYPES_H=1 -DHAVE_UNISTD_H=1 -DSTDC_HEADERS=1 -DHAVE_LIBGO_LINUXX64_H=1
 DEPDIR = .deps
 ECHO_C = 
 ECHO_N = -n
@@ -217,7 +217,7 @@ INSTALL_DATA = ${INSTALL} -m 644
 INSTALL_PROGRAM = ${INSTALL}
 INSTALL_SCRIPT = ${INSTALL}
 INSTALL_STRIP_PROGRAM = $(install_sh) -c -s
-LDFLAGS = 
+LDFLAGS = -L./static/libgo-linuxx64.a
 LIBOBJS = 
 LIBS = 
 LTLIBOBJS = 
@@ -225,7 +225,7 @@ MAKEINFO = ${SHELL} '/home/owen/git/vtc/missing' makeinfo
 MKDIR_P = /usr/bin/mkdir -p
 OBJEXT = o
 PACKAGE = vtc
-PACKAGE_BUGREPORT = owestness@gmail.com
+PACKAGE_BUGREPORT = owen@gmail.com
 PACKAGE_NAME = vtc
 PACKAGE_STRING = vtc 0.1
 PACKAGE_TARNAME = vtc
