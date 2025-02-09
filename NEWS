@@ -1,0 +1,10 @@
+VTC is in its alpha stages of development. It will be in alpha until it can
+compile a program that just exits, or what a Smallest Viable Program (SVP). At
+least for x86_64 linux systems.
+
+VTC will reach its beta stage of development when it can compile a
+truth-machine. This is very close to a turning complete language, and a common
+test for eso-langs.
+
+VTC will reach 1.0 when it can compile a fully turning complete program. This
+is goal, any features after this will just add ergonomics.
