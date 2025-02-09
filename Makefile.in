@@ -86,7 +86,7 @@ POST_INSTALL = :
 NORMAL_UNINSTALL = :
 PRE_UNINSTALL = :
 POST_UNINSTALL = :
-bin_PROGRAMS = vtc$(EXEEXT)
+bin_PROGRAMS = bin/vtc$(EXEEXT)
 subdir = .
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/configure.ac
@@ -102,14 +102,14 @@ CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
 am__dirstamp = $(am__leading_dot)dirstamp
-am_vtc_OBJECTS = vtc/main.$(OBJEXT) vtc/generation.$(OBJEXT) \
+am_bin_vtc_OBJECTS = vtc/main.$(OBJEXT) vtc/generation.$(OBJEXT) \
 	vtc/lexer.$(OBJEXT) vtc/parse_args.$(OBJEXT) \
 	vtc/processor.$(OBJEXT) vtc/toplev.$(OBJEXT) \
 	vtc/syslog/colors.$(OBJEXT) vtc/syslog/debug.$(OBJEXT) \
 	vtc/syslog/error.$(OBJEXT) vtc/syslog/fatal.$(OBJEXT) \
 	vtc/syslog/log.$(OBJEXT) vtc/syslog/warning.$(OBJEXT)
-vtc_OBJECTS = $(am_vtc_OBJECTS)
-vtc_LDADD = $(LDADD)
+bin_vtc_OBJECTS = $(am_bin_vtc_OBJECTS)
+bin_vtc_LDADD = $(LDADD)
 AM_V_P = $(am__v_P_@AM_V@)
 am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
 am__v_P_0 = false
@@ -145,8 +145,8 @@ AM_V_CCLD = $(am__v_CCLD_@AM_V@)
 am__v_CCLD_ = $(am__v_CCLD_@AM_DEFAULT_V@)
 am__v_CCLD_0 = @echo "  CCLD    " $@;
 am__v_CCLD_1 = 
-SOURCES = $(vtc_SOURCES)
-DIST_SOURCES = $(vtc_SOURCES)
+SOURCES = $(bin_vtc_SOURCES)
+DIST_SOURCES = $(bin_vtc_SOURCES)
 am__can_run_installinfo = \
   case $$AM_UPDATE_INFO_DIR in \
     n|no|NO) false;; \
@@ -279,7 +279,7 @@ target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-vtc_SOURCES = vtc/main.c vtc/generation.c vtc/lexer.c vtc/parse_args.c vtc/processor.c vtc/toplev.c vtc/syslog/colors.c vtc/syslog/debug.c vtc/syslog/error.c vtc/syslog/fatal.c vtc/syslog/log.c vtc/syslog/warning.c
+bin_vtc_SOURCES = vtc/main.c vtc/generation.c vtc/lexer.c vtc/parse_args.c vtc/processor.c vtc/toplev.c vtc/syslog/colors.c vtc/syslog/debug.c vtc/syslog/error.c vtc/syslog/fatal.c vtc/syslog/log.c vtc/syslog/warning.c
 all: all-am
 
 .SUFFIXES:
@@ -393,10 +393,13 @@ vtc/syslog/log.$(OBJEXT): vtc/syslog/$(am__dirstamp) \
 	vtc/syslog/$(DEPDIR)/$(am__dirstamp)
 vtc/syslog/warning.$(OBJEXT): vtc/syslog/$(am__dirstamp) \
 	vtc/syslog/$(DEPDIR)/$(am__dirstamp)
+bin/$(am__dirstamp):
+	@$(MKDIR_P) bin
+	@: > bin/$(am__dirstamp)
 
-vtc$(EXEEXT): $(vtc_OBJECTS) $(vtc_DEPENDENCIES) $(EXTRA_vtc_DEPENDENCIES) 
-	@rm -f vtc$(EXEEXT)
-	$(AM_V_CCLD)$(LINK) $(vtc_OBJECTS) $(vtc_LDADD) $(LIBS)
+bin/vtc$(EXEEXT): $(bin_vtc_OBJECTS) $(bin_vtc_DEPENDENCIES) $(EXTRA_bin_vtc_DEPENDENCIES) bin/$(am__dirstamp)
+	@rm -f bin/vtc$(EXEEXT)
+	$(AM_V_CCLD)$(LINK) $(bin_vtc_OBJECTS) $(bin_vtc_LDADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
@@ -704,6 +707,7 @@ clean-generic:
 distclean-generic:
 	-test -z "$(CONFIG_CLEAN_FILES)" || rm -f $(CONFIG_CLEAN_FILES)
 	-test . = "$(srcdir)" || test -z "$(CONFIG_CLEAN_VPATH_FILES)" || rm -f $(CONFIG_CLEAN_VPATH_FILES)
+	-rm -f bin/$(am__dirstamp)
 	-rm -f vtc/$(DEPDIR)/$(am__dirstamp)
 	-rm -f vtc/$(am__dirstamp)
 	-rm -f vtc/syslog/$(DEPDIR)/$(am__dirstamp)
