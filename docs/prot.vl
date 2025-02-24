@@ -1,23 +1,10 @@
 #import "std.io"
 
-proc add(int x, int y) int ::
-  return x + y;
-
-proc main(void) int ::
-  printfn("hello %d", add(34, 35));
-  return 0;
-
-(*
-#include <stdio.h>
-
-int add (int x, int y)
-{
-  return x + y;
+:proc add (int a, int y) -> int {
+  return a + b;
 }
 
-int main(void)
-{
-  printf("hello %d", add(34, 35));
+:proc main () -> int {
+  printfn("hello %s\n", add(34, 35);
   return 0;
 }
-*)
